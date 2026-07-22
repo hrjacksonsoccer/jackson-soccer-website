@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jackson Soccer Club – Jackson, NJ</title>
+  <meta name="description" content="Jackson Soccer Club – recreational and travel soccer for kids ages 3–17 in Jackson Township, New Jersey.">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<main>
+  <!-- Hero -->
+  <div class="home-hero">
+    <img src="assets/logo.png" alt="Jackson Soccer Club Logo"
+         style="height:110px;width:auto;margin:0 auto 1rem;display:block;filter:drop-shadow(0 4px 12px rgba(0,0,0,0.4));">
+    <h1>Jackson Soccer Club</h1>
+    <p>Jackson Township, New Jersey &nbsp;·&nbsp; Play · Train · Grow · Succeed</p>
+    <a href="https://login.stacksports.com/login?client_id=612b0399b1854a002e427f78&redirect_uri=https://core-api.bluesombrero.com/login/redirect/portal/50583&app_name=Jackson+Soccer+Club&portalid=50583&instancekey=clubs&returnurl=%2fDefault.aspx%3ftabid%3d755727%26ctl%3dManageProgramDivisionListing%26mid%3d1504400" target="_blank" rel="noopener" class="hero-btn">Register for Fall 2026 →</a>
+  </div>
+
+  <!-- Home content -->
+  <div class="page-body">
+
+    <!-- Top row: Helpful Links + Get Directions side by side on desktop -->
+    <div class="home-top-row">
+
+      <section>
+        <h2 class="section-title">🔗 Helpful Links</h2>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.5rem;">
+          <li><a href="recreational.html" style="color:var(--red);font-weight:600;text-decoration:none;">📋 Intramural Overview</a></li>
+          <li><a href="recreational.html" style="color:var(--red);font-weight:600;text-decoration:none;">✏️ Intramural Registration</a></li>
+          <li><a href="https://soccerparentresourcecenter.com/" target="_blank" rel="noopener" style="color:var(--red);font-weight:600;text-decoration:none;">⚽ Soccer Parent Resource Center</a></li>
+          <li><a href="recreational.html#volunteer" style="color:var(--red);font-weight:600;text-decoration:none;">🙋 Volunteer Opportunities</a></li>
+          <li><a href="travel.html" style="color:var(--red);font-weight:600;text-decoration:none;">🏅 Travel Team Registration</a></li>
+          <li><a href="club-info.html" style="color:var(--red);font-weight:600;text-decoration:none;">🤝 Sponsorships</a></li>
+          <li><a href="#field-status-section" style="color:var(--red);font-weight:600;text-decoration:none;">🟢 Field Status</a></li>
+          <li><a href="https://x.com/jacksonnjsoccer" target="_blank" rel="noopener" style="color:var(--red);font-weight:600;text-decoration:none;">𝕏 Jackson Soccer Club on X</a></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="section-title">📍 Get Directions</h2>
+        <div style="display:flex;flex-direction:column;gap:0.5rem;">
+          <a href="https://maps.google.com/?q=1+Jackson+Drive+Jackson+NJ+08527" target="_blank" rel="noopener"
+             style="display:flex;align-items:center;gap:0.5rem;padding:0.6rem 0.9rem;background:var(--gray);border:1px solid var(--border);border-radius:7px;color:var(--text);text-decoration:none;font-size:0.88rem;font-weight:600;">
+            🏟️ Justice Complex (JSC) <span style="margin-left:auto;color:var(--red);">→</span>
+          </a>
+          <a href="https://maps.google.com/?q=334+Jackson+Mills+Road+Jackson+NJ+08527" target="_blank" rel="noopener"
+             style="display:flex;align-items:center;gap:0.5rem;padding:0.6rem 0.9rem;background:var(--gray);border:1px solid var(--border);border-radius:7px;color:var(--text);text-decoration:none;font-size:0.88rem;font-weight:600;">
+            ⚽ Jackson Mills Complex <span style="margin-left:auto;color:var(--red);">→</span>
+          </a>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Announcements: full width -->
+    <section style="margin-bottom:2rem;">
+      <h2 class="section-title">
+        📢 Announcements &amp; Flyers
+        <span class="pill" id="announcement-count">Loading…</span>
+      </h2>
+      <div id="announcements" class="cards-grid">
+        <div class="loading">Loading announcements…</div>
+      </div>
+    </section>
+
+    <!-- Field Status: full width -->
+    <section id="field-status-section">
+      <h2 class="section-title">
+        ⚽ Field Status
+        <span class="pill" id="field-refresh">–</span>
+      </h2>
+      <div id="field-status">
+        <div class="loading">Loading…</div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="assets/site.js"></script>
+<script>
+  initSite('home');
+  loadAnnouncements('announcements', 'announcement-count');
+  loadFieldStatus('field-status', 'field-refresh');
+</script>
+</body>
+</html>
