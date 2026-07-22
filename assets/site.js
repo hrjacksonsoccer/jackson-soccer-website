@@ -402,14 +402,20 @@ async function loadFieldStatus(containerId, refreshId) {
     const order = [];
     for (const row of rows) {
       const key = row['Complex'];
+      if (!key) continue;
       if (!map[key]) {
-        map[key] = { complex: key, address: row['Address'], status: row['Status'], updated: row['LastUpdated'], fields: [] };
+        map[key] = { complex: key, address: row['Address'], updated: row['LastUpdated'], fields: [] };
         order.push(key);
       }
       if (row['FieldName']) {
         map[key].fields.push({ name: row['FieldName'], status: row['Status'], updated: row['LastUpdated'] });
       }
     }
+    // Complex is Open if any field is open; Closed only if all fields are closed
+    order.forEach(k => {
+      const allClosed = map[k].fields.length > 0 && map[k].fields.every(f => f.status.toLowerCase() === 'closed');
+      map[k].status = allClosed ? 'Closed' : 'Open';
+    });
     renderFieldStatus(order.map(k => map[k]), containerId, refreshId);
   } catch (_) {
     renderFieldStatus(DEMO_FIELDS, containerId, refreshId);
