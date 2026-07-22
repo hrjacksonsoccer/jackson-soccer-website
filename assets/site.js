@@ -393,7 +393,11 @@ async function loadFieldStatus(containerId, refreshId) {
   }
   try {
     const res = await fetch(CONFIG.FIELD_STATUS_CSV);
-    const rows = parseCSV(await res.text());
+    const rawText = await res.text();
+    const lines = rawText.split(/\r?\n/);
+    const headerIdx = lines.findIndex(l => l.startsWith('Complex'));
+    const csvToParse = headerIdx >= 0 ? lines.slice(headerIdx).join('\n') : rawText;
+    const rows = parseCSV(csvToParse);
     const map = {};
     const order = [];
     for (const row of rows) {
