@@ -23,7 +23,7 @@
 ================================================================ */
 
 const CONFIG = {
-  FIELD_STATUS_CSV:    'YOUR_FIELD_STATUS_CSV_URL_HERE',
+  FIELD_STATUS_CSV:    'https://docs.google.com/spreadsheets/d/e/2PACX-1vTLJNTDIV0yN6fCLPU6WkjlB_l8vSkLHaXJ-p050qznRzDl5WsVJv6lMhD5VbKHeu07cVOL29ccZGGX/pub?output=csv',
   ANNOUNCEMENTS_CSV:   'YOUR_ANNOUNCEMENTS_CSV_URL_HERE',
   GOOGLE_CALENDAR_SRC: 'YOUR_GOOGLE_CALENDAR_EMBED_SRC_HERE',
   REGISTER_URL:        'https://login.stacksports.com/login?client_id=612b0399b1854a002e427f78&redirect_uri=https://core-api.bluesombrero.com/login/redirect/portal/50583&app_name=Jackson+Soccer+Club&portalid=50583&instancekey=clubs&returnurl=%2fDefault.aspx%3ftabid%3d755727%26ctl%3dManageProgramDivisionListing%26mid%3d1504400',
