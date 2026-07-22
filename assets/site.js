@@ -404,17 +404,26 @@ async function loadFieldStatus(containerId, refreshId) {
       const key = row['Complex'];
       if (!key) continue;
       if (!map[key]) {
-        map[key] = { complex: key, address: row['Address'], updated: row['LastUpdated'], fields: [] };
+        map[key] = { complex: key, address: row['Address'], updated: row['LastUpdated'], override: null, fields: [] };
         order.push(key);
       }
-      if (row['FieldName']) {
+      if (!row['FieldName']) {
+        // Blank FieldName row = complex-level master toggle
+        map[key].override = row['Status'];
+      } else {
         map[key].fields.push({ name: row['FieldName'], status: row['Status'], updated: row['LastUpdated'] });
       }
     }
-    // Complex is Open if any field is open; Closed only if all fields are closed
+    // Compute complex status: override takes priority, otherwise open if any field open
     order.forEach(k => {
-      const allClosed = map[k].fields.length > 0 && map[k].fields.every(f => f.status.toLowerCase() === 'closed');
-      map[k].status = allClosed ? 'Closed' : 'Open';
+      const c = map[k];
+      if (c.override && c.override.toLowerCase() === 'closed') {
+        c.status = 'Closed';
+        c.fields = c.fields.map(f => ({ ...f, status: 'Closed' }));
+      } else {
+        const allClosed = c.fields.length > 0 && c.fields.every(f => f.status.toLowerCase() === 'closed');
+        c.status = allClosed ? 'Closed' : 'Open';
+      }
     });
     renderFieldStatus(order.map(k => map[k]), containerId, refreshId);
   } catch (_) {
