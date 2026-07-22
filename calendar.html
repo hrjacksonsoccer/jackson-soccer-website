@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendar – Jackson Soccer Club</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<main>
+  <div class="page-hero">
+    <h1>JSC Calendar</h1>
+    <p>Games, practices, meetings &amp; events</p>
+  </div>
+
+  <div class="page-body">
+
+    <div class="alert-banner">
+      📅 <strong>Upcoming:</strong> General Membership Meetings are held at Jackson Township Senior Center (8–9 PM) on:
+      Aug 19 &nbsp;·&nbsp; Sep 16 &nbsp;·&nbsp; Oct 21 &nbsp;·&nbsp; Nov 18, 2026
+    </div>
+
+    <div id="calendar-embed"></div>
+
+    <div class="content-section" style="margin-top:1.5rem;">
+      <h2>Season Schedule</h2>
+
+      <h3>Fall 2026</h3>
+      <ul>
+        <li>Open Registration: June 1 – August 20, 2026</li>
+        <li>Practices Begin: Mid-August 2026</li>
+        <li>Games: September – early November 2026</li>
+        <li>Season Length: 8 weeks</li>
+      </ul>
+
+      <h3>Spring 2027</h3>
+      <ul>
+        <li>Practices Begin: End of March 2027</li>
+        <li>Games: April – mid-June 2027</li>
+        <li>Season Length: 8 weeks</li>
+      </ul>
+
+      <h3>Game Day</h3>
+      <ul>
+        <li>All age groups play Saturday mornings: 8:30 AM – noon</li>
+        <li>Collegiate &amp; Major League: Wednesday night practices</li>
+        <li>Specific times will be communicated by your coach before the season</li>
+      </ul>
+    </div>
+
+  </div>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="assets/site.js"></script>
+<script>
+  initSite('calendar');
+  loadCalendar('calendar-embed');
+</script>
+</body>
+</html>
