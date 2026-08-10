@@ -12,7 +12,7 @@
       Paste the URL into FIELD_STATUS_CSV below.
 
    2. ANNOUNCEMENTS (Google Sheet):
-      Columns (in order): Title | Date | Description | ImageURL | LinkURL
+      Columns (in order): Title | Date | Description | Emoji | LinkURL
       File > Share > Publish to web > select sheet > CSV > Publish
       Paste the URL into ANNOUNCEMENTS_CSV below.
 
@@ -644,9 +644,9 @@ async function loadAnnouncements(containerId, countId) {
         title: r['Title'],
         date: r['Date'],
         description: r['Description'],
-        imageUrl: r['ImageURL'],
+        imageUrl: null,
         linkUrl: r['LinkURL'],
-        emoji: '📢'
+        emoji: r['Emoji'] || '📢'
       }));
     renderAnnouncements(items.length ? items : DEMO_ANNOUNCEMENTS, containerId, countId);
   } catch (_) {
