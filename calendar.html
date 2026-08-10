@@ -58,8 +58,10 @@
 
 <script src="assets/site.js"></script>
 <script>
-  initSite('calendar');
-  loadCalendar('calendar-embed');
+  loadSettings().then(() => {
+    initSite('calendar');
+    loadCalendar('calendar-embed');
+  });
 </script>
 </body>
 </html>

@@ -24,11 +24,26 @@
 
 const CONFIG = {
   FIELD_STATUS_CSV:    'https://docs.google.com/spreadsheets/d/e/2PACX-1vTLJNTDIV0yN6fCLPU6WkjlB_l8vSkLHaXJ-p050qznRzDl5WsVJv6lMhD5VbKHeu07cVOL29ccZGGX/pub?output=csv',
-  ANNOUNCEMENTS_CSV:   'YOUR_ANNOUNCEMENTS_CSV_URL_HERE',
-  GOOGLE_CALENDAR_SRC: 'YOUR_GOOGLE_CALENDAR_EMBED_SRC_HERE',
+  ANNOUNCEMENTS_CSV:   '',
+  GOOGLE_CALENDAR_SRC: '',
   REGISTER_URL:        'https://login.stacksports.com/login?client_id=612b0399b1854a002e427f78&redirect_uri=https://core-api.bluesombrero.com/login/redirect/portal/50583&app_name=Jackson+Soccer+Club&portalid=50583&instancekey=clubs&returnurl=%2fDefault.aspx%3ftabid%3d755727%26ctl%3dManageProgramDivisionListing%26mid%3d1504400',
   STORE_URL:           'https://www.soccer.com/club/#/2000598230/fanwear?category=Shirts',
 };
+
+/* ── SETTINGS LOADER (CloudCannon-managed) ──────────────────── */
+
+async function loadSettings() {
+  try {
+    const res = await fetch('_data/settings.json');
+    if (!res.ok) return;
+    const s = await res.json();
+    if (s.register_url)      CONFIG.REGISTER_URL        = s.register_url;
+    if (s.store_url)         CONFIG.STORE_URL            = s.store_url;
+    if (s.field_status_csv)  CONFIG.FIELD_STATUS_CSV     = s.field_status_csv;
+    if (s.announcements_csv) CONFIG.ANNOUNCEMENTS_CSV    = s.announcements_csv;
+    if (s.google_calendar_src) CONFIG.GOOGLE_CALENDAR_SRC = s.google_calendar_src;
+  } catch (_) {}
+}
 
 /* ── DEMO DATA ─────────────────────────────────────────────── */
 
@@ -429,6 +444,30 @@ async function loadFieldStatus(containerId, refreshId) {
   } catch (_) {
     renderFieldStatus(DEMO_FIELDS, containerId, refreshId);
   }
+}
+
+/* ── BOARD OF DIRECTORS ─────────────────────────────────────── */
+
+async function loadBoard(containerId) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  try {
+    const res = await fetch('_data/board.json');
+    if (!res.ok) return;
+    const members = await res.json();
+    container.innerHTML = members.map(m => m.open ? `
+      <div class="board-card open-seat">
+        <div class="board-name">${m.name}</div>
+        <div class="board-role">${m.role}</div>
+      </div>
+    ` : `
+      <div class="board-card">
+        <div class="board-name">${m.name}</div>
+        <div class="board-role">${m.role}</div>
+        ${m.email ? `<a class="board-email" href="mailto:${m.email}">Email</a>` : ''}
+      </div>
+    `).join('');
+  } catch (_) {}
 }
 
 /* ── ANNOUNCEMENTS ──────────────────────────────────────────── */

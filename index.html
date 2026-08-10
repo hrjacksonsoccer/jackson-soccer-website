@@ -86,9 +86,11 @@
 
 <script src="assets/site.js"></script>
 <script>
-  initSite('home');
-  loadAnnouncements('announcements', 'announcement-count');
-  loadFieldStatus('field-status', 'field-refresh');
+  loadSettings().then(() => {
+    initSite('home');
+    loadAnnouncements('announcements', 'announcement-count');
+    loadFieldStatus('field-status', 'field-refresh');
+  });
 </script>
 </body>
 </html>

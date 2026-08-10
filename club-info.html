@@ -38,65 +38,8 @@
       <h2>Board of Directors</h2>
       <p>Jackson Soccer Club is run by a volunteer board dedicated to providing a safe and fun environment for youth soccer in Jackson Township.</p>
 
-      <div class="board-grid">
-        <div class="board-card">
-          <div class="board-name">Robert Buonocore</div>
-          <div class="board-role">President</div>
-          <a class="board-email" href="mailto:info@jacksonsoccer.com">Email</a>
-        </div>
-        <div class="board-card">
-          <div class="board-name">Greg Ginis</div>
-          <div class="board-role">Vice-President</div>
-          <a class="board-email" href="mailto:info@jacksonsoccer.com">Email</a>
-        </div>
-        <div class="board-card">
-          <div class="board-name">Ryan Monday</div>
-          <div class="board-role">Overall Commissioner</div>
-          <a class="board-email" href="mailto:info@jacksonsoccer.com">Email</a>
-        </div>
-        <div class="board-card">
-          <div class="board-name">Shaun Olsen</div>
-          <div class="board-role">Treasurer</div>
-          <a class="board-email" href="mailto:info@jacksonsoccer.com">Email</a>
-        </div>
-        <div class="board-card">
-          <div class="board-name">Zack Henry</div>
-          <div class="board-role">Secretary</div>
-          <a class="board-email" href="mailto:info@jacksonsoccer.com">Email</a>
-        </div>
-        <div class="board-card">
-          <div class="board-name">Lou Vitanov</div>
-          <div class="board-role">Intramural Director</div>
-          <a class="board-email" href="mailto:info@jacksonsoccer.com">Email</a>
-        </div>
-        <div class="board-card open-seat">
-          <div class="board-name">Open Position</div>
-          <div class="board-role">Deputy Intramural Director</div>
-        </div>
-        <div class="board-card open-seat">
-          <div class="board-name">Open Position</div>
-          <div class="board-role">Director of Soccer Complex Operations</div>
-        </div>
-        <div class="board-card">
-          <div class="board-name">Ben Felicelli</div>
-          <div class="board-role">Director of Fields &amp; Grounds</div>
-          <a class="board-email" href="mailto:info@jacksonsoccer.com">Email</a>
-        </div>
-        <div class="board-card">
-          <div class="board-name">Anthony Desiderio</div>
-          <div class="board-role">Director of Coaching</div>
-          <a class="board-email" href="mailto:info@jacksonsoccer.com">Email</a>
-        </div>
-        <div class="board-card">
-          <div class="board-name">Mary Taveira</div>
-          <div class="board-role">Director of Fundraising</div>
-          <a class="board-email" href="mailto:info@jacksonsoccer.com">Email</a>
-        </div>
-        <div class="board-card">
-          <div class="board-name">Mike Pinto</div>
-          <div class="board-role">Registrar</div>
-          <a class="board-email" href="mailto:info@jacksonsoccer.com">Email</a>
-        </div>
+      <div class="board-grid" id="board-grid">
+        <div class="loading">Loading board members…</div>
       </div>
     </div>
 
@@ -169,6 +112,11 @@
 <div id="site-footer"></div>
 
 <script src="assets/site.js"></script>
-<script>initSite('club-info');</script>
+<script>
+  loadSettings().then(() => {
+    initSite('club-info');
+    loadBoard('board-grid');
+  });
+</script>
 </body>
 </html>

@@ -68,8 +68,10 @@
 
 <script src="assets/site.js"></script>
 <script>
-  initSite('fields');
-  loadFieldStatus('field-status', 'field-refresh');
+  loadSettings().then(() => {
+    initSite('fields');
+    loadFieldStatus('field-status', 'field-refresh');
+  });
 </script>
 </body>
 </html>

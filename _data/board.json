@@ -1,0 +1,14 @@
+[
+  { "name": "Robert Buonocore", "role": "President", "email": "info@jacksonsoccer.com", "open": false },
+  { "name": "Greg Ginis", "role": "Vice-President", "email": "info@jacksonsoccer.com", "open": false },
+  { "name": "Ryan Monday", "role": "Overall Commissioner", "email": "info@jacksonsoccer.com", "open": false },
+  { "name": "Shaun Olsen", "role": "Treasurer", "email": "info@jacksonsoccer.com", "open": false },
+  { "name": "Zack Henry", "role": "Secretary", "email": "info@jacksonsoccer.com", "open": false },
+  { "name": "Lou Vitanov", "role": "Intramural Director", "email": "info@jacksonsoccer.com", "open": false },
+  { "name": "Open Position", "role": "Deputy Intramural Director", "email": "", "open": true },
+  { "name": "Open Position", "role": "Director of Soccer Complex Operations", "email": "", "open": true },
+  { "name": "Ben Felicelli", "role": "Director of Fields & Grounds", "email": "info@jacksonsoccer.com", "open": false },
+  { "name": "Anthony Desiderio", "role": "Director of Coaching", "email": "info@jacksonsoccer.com", "open": false },
+  { "name": "Mary Taveira", "role": "Director of Fundraising", "email": "info@jacksonsoccer.com", "open": false },
+  { "name": "Mike Pinto", "role": "Registrar", "email": "info@jacksonsoccer.com", "open": false }
+]
