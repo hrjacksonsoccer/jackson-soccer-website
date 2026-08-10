@@ -14,9 +14,7 @@ collections_config:
 
   site_data:
     path: data
-    output: false
     name: Data
-    icon: generic
 
 _inputs:
   # Settings fields
