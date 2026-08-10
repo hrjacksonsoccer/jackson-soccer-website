@@ -12,11 +12,13 @@ collections_config:
     icon: page
     name: Pages
 
-data_config:
-  settings:
-    path: _data/settings.json
-  board:
-    path: _data/board.json
+  data:
+    path: _data
+    output: false
+    _enabled_editors:
+      - data
+    icon: data
+    name: Data
 
 _inputs:
   # Settings fields
