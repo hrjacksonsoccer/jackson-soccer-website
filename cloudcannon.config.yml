@@ -12,13 +12,11 @@ collections_config:
     icon: page
     name: Pages
 
-  data:
+  site_data:
     path: _data
     output: false
-    _enabled_editors:
-      - data
-    icon: data
     name: Data
+    icon: generic
 
 _inputs:
   # Settings fields
