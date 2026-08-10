@@ -464,6 +464,7 @@ async function loadBoard(containerId) {
       <div class="board-card">
         <div class="board-name">${m.name}</div>
         <div class="board-role">${m.role}</div>
+        ${m.bio ? `<div class="board-bio">${m.bio}</div>` : ''}
         ${m.email ? `<a class="board-email" href="mailto:${m.email}">Email</a>` : ''}
       </div>
     `).join('');

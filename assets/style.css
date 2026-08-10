@@ -787,6 +787,14 @@ a { color: var(--red); }
   margin-bottom: 0.5rem;
 }
 
+.board-bio {
+  font-size: 0.82rem;
+  color: #555;
+  line-height: 1.5;
+  margin: 0.35rem 0 0.5rem;
+  white-space: pre-wrap;
+}
+
 .board-email {
   font-size: 0.8rem;
   color: var(--red);

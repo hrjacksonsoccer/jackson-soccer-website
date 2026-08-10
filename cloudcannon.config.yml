@@ -53,6 +53,10 @@ _inputs:
     type: checkbox
     label: Open Position
     comment: Check this if the seat is currently vacant
+  bio:
+    type: textarea
+    label: Bio
+    comment: Optional short bio or note — displays below their title on the website
 
 _array_structures:
   board:
@@ -62,10 +66,12 @@ _array_structures:
           name: ''
           role: ''
           email: ''
+          bio: ''
           open: false
       - label: Open Position
         value:
           name: Open Position
           role: ''
           email: ''
+          bio: ''
           open: true
