@@ -34,7 +34,7 @@ const CONFIG = {
 
 async function loadSettings() {
   try {
-    const res = await fetch('_data/settings.json');
+    const res = await fetch('data/settings.json');
     if (!res.ok) return;
     const s = await res.json();
     if (s.register_url)      CONFIG.REGISTER_URL        = s.register_url;
@@ -452,7 +452,7 @@ async function loadBoard(containerId) {
   const container = document.getElementById(containerId);
   if (!container) return;
   try {
-    const res = await fetch('_data/board.json');
+    const res = await fetch('data/board.json');
     if (!res.ok) return;
     const members = await res.json();
     container.innerHTML = members.map(m => m.open ? `

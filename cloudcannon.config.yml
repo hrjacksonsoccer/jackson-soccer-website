@@ -13,7 +13,7 @@ collections_config:
     name: Pages
 
   site_data:
-    path: _data
+    path: data
     output: false
     name: Data
     icon: generic
