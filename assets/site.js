@@ -26,6 +26,7 @@ const CONFIG = {
   FIELD_STATUS_CSV:    'https://docs.google.com/spreadsheets/d/e/2PACX-1vTLJNTDIV0yN6fCLPU6WkjlB_l8vSkLHaXJ-p050qznRzDl5WsVJv6lMhD5VbKHeu07cVOL29ccZGGX/pub?output=csv',
   ANNOUNCEMENTS_CSV:   '',
   GOOGLE_CALENDAR_SRC: '',
+  TRAVEL_TEAMS_CSV:    '',
   REGISTER_URL:        'https://login.stacksports.com/login?client_id=612b0399b1854a002e427f78&redirect_uri=https://core-api.bluesombrero.com/login/redirect/portal/50583&app_name=Jackson+Soccer+Club&portalid=50583&instancekey=clubs&returnurl=%2fDefault.aspx%3ftabid%3d755727%26ctl%3dManageProgramDivisionListing%26mid%3d1504400',
   STORE_URL:           'https://www.soccer.com/club/#/2000598230/fanwear?category=Shirts',
 };
@@ -42,6 +43,7 @@ async function loadSettings() {
     if (s.field_status_csv)  CONFIG.FIELD_STATUS_CSV     = s.field_status_csv;
     if (s.announcements_csv) CONFIG.ANNOUNCEMENTS_CSV    = s.announcements_csv;
     if (s.google_calendar_src) CONFIG.GOOGLE_CALENDAR_SRC = s.google_calendar_src;
+    if (s.travel_teams_csv)   CONFIG.TRAVEL_TEAMS_CSV    = s.travel_teams_csv;
   } catch (_) {}
 }
 
@@ -711,4 +713,66 @@ function loadCalendar(containerId) {
         title="Jackson Soccer Club Calendar">
       </iframe>
     </div>`;
+}
+
+/* ── TRAVEL TEAMS ───────────────────────────────────────────── */
+
+function renderTravelTeamsTable(rows) {
+  if (!rows.length) return '<p style="color:#888;font-size:0.9rem;">No teams listed yet.</p>';
+  return `
+    <div style="overflow-x:auto;">
+      <table class="div-table">
+        <thead>
+          <tr>
+            <th>Age</th>
+            <th>Team</th>
+            <th>Birth Year</th>
+            <th>League</th>
+            <th>Coaches</th>
+            <th>Contact</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${rows.map(r => {
+            const coaches = [r['Coach1'], r['Coach2'], r['Coach3']].filter(Boolean);
+            const emails  = [r['Email1'], r['Email2'], r['Email3']].filter(Boolean);
+            const coachHTML   = coaches.join('<br>') || '—';
+            const contactHTML = emails.map(e => `<a href="mailto:${e}">${e}</a>`).join('<br>') || '—';
+            return `
+              <tr>
+                <td>${r['Age'] || ''}</td>
+                <td><strong>${r['Team'] || ''}</strong></td>
+                <td>${r['BirthYear'] || ''}</td>
+                <td>${r['League'] || ''}</td>
+                <td>${coachHTML}</td>
+                <td>${contactHTML}</td>
+              </tr>`;
+          }).join('')}
+        </tbody>
+      </table>
+    </div>`;
+}
+
+async function loadTravelTeams(csvUrl) {
+  const girlsEl = document.getElementById('travel-teams-girls');
+  const boysEl  = document.getElementById('travel-teams-boys');
+  if (!girlsEl && !boysEl) return;
+
+  if (!csvUrl) {
+    if (girlsEl) girlsEl.innerHTML = '<p style="color:#888;font-size:0.9rem;">Teams coming soon.</p>';
+    if (boysEl)  boysEl.innerHTML  = '<p style="color:#888;font-size:0.9rem;">Teams coming soon.</p>';
+    return;
+  }
+
+  try {
+    const res  = await fetch(csvUrl);
+    const rows = parseCSV(await res.text());
+    const girls = rows.filter(r => r['Gender'] && r['Gender'].toLowerCase().startsWith('g'));
+    const boys  = rows.filter(r => r['Gender'] && r['Gender'].toLowerCase().startsWith('b'));
+    if (girlsEl) girlsEl.innerHTML = renderTravelTeamsTable(girls);
+    if (boysEl)  boysEl.innerHTML  = renderTravelTeamsTable(boys);
+  } catch (_) {
+    if (girlsEl) girlsEl.innerHTML = '<p style="color:#888;font-size:0.9rem;">Unable to load teams. Please try again later.</p>';
+    if (boysEl)  boysEl.innerHTML  = '<p style="color:#888;font-size:0.9rem;">Unable to load teams. Please try again later.</p>';
+  }
 }
