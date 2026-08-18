@@ -790,6 +790,12 @@ a { color: var(--red); }
   border: 2px solid var(--border);
 }
 
+.board-avatar--clickable {
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+.board-avatar--clickable:hover { opacity: 0.85; }
+
 .board-avatar--initials,
 .board-avatar--empty {
   background: var(--red);

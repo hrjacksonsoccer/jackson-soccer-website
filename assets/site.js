@@ -482,10 +482,16 @@ async function loadBoard(containerId) {
     }
 
     const PREVIEW_LEN = 120;
+    function avatarHTML(m, idx) {
+      if (m.photo) return `<img class="board-avatar board-avatar--photo board-avatar--clickable" src="${m.photo}" alt="${m.name}" data-idx="${idx}">`;
+      const initials = m.name.split(' ').map(w => w[0]).filter(Boolean).join('').slice(0, 2);
+      return `<div class="board-avatar board-avatar--initials">${initials}</div>`;
+    }
+
     container.innerHTML = members.map((m, i) => m.open ? `
       <div class="board-card open-seat">
         <div class="board-card-top">
-          <div class="board-avatar board-avatar--empty">?</div>
+          <div class="board-avatar board-avatar--initials" style="opacity:0.4;">${m.name.split(' ').map(w => w[0]).filter(Boolean).join('').slice(0,2) || '?'}</div>
           <div>
             <div class="board-name">${m.name}</div>
             <div class="board-role">${m.role || ''}</div>
@@ -495,10 +501,7 @@ async function loadBoard(containerId) {
     ` : `
       <div class="board-card">
         <div class="board-card-top">
-          ${m.photo
-            ? `<img class="board-avatar board-avatar--photo" src="${m.photo}" alt="${m.name}">`
-            : `<div class="board-avatar board-avatar--initials">${m.name.split(' ').map(w => w[0]).join('').slice(0,2)}</div>`
-          }
+          ${avatarHTML(m, i)}
           <div>
             <div class="board-name">${m.name}</div>
             <div class="board-role">${m.role || ''}</div>
@@ -512,25 +515,31 @@ async function loadBoard(containerId) {
       </div>
     `).join('');
 
+    // Wire up photo click to open modal
+    function openModal(m) {
+      const modal = document.getElementById('board-bio-modal');
+      modal.querySelector('.bbm-name').textContent = m.name;
+      modal.querySelector('.bbm-role').textContent = m.role || '';
+      modal.querySelector('.bbm-bio').textContent = m.bio || '';
+      const modalPhoto = modal.querySelector('.bbm-photo');
+      if (m.photo) {
+        modalPhoto.src = m.photo;
+        modalPhoto.alt = m.name;
+        modalPhoto.style.display = '';
+      } else {
+        modalPhoto.style.display = 'none';
+      }
+      modal.classList.add('bbm-open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    container.querySelectorAll('.board-avatar--clickable').forEach(img => {
+      img.addEventListener('click', () => openModal(members[+img.dataset.idx]));
+    });
+
     // Wire up "Read more" buttons
     container.querySelectorAll('.board-bio-more').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const m = members[+btn.dataset.idx];
-        const modal = document.getElementById('board-bio-modal');
-        modal.querySelector('.bbm-name').textContent = m.name;
-        modal.querySelector('.bbm-role').textContent = m.role;
-        modal.querySelector('.bbm-bio').textContent = m.bio;
-        const modalPhoto = modal.querySelector('.bbm-photo');
-        if (m.photo) {
-          modalPhoto.src = m.photo;
-          modalPhoto.alt = m.name;
-          modalPhoto.style.display = '';
-        } else {
-          modalPhoto.style.display = 'none';
-        }
-        modal.classList.add('bbm-open');
-        document.body.style.overflow = 'hidden';
-      });
+      btn.addEventListener('click', () => openModal(members[+btn.dataset.idx]));
     });
 
   } catch (_) {}
