@@ -476,6 +476,7 @@ async function loadBoard(containerId) {
       modal.querySelector('.bbm-close').addEventListener('click', close);
     }
 
+    const PREVIEW_LEN = 120;
     container.innerHTML = members.map((m, i) => m.open ? `
       <div class="board-card open-seat">
         <div class="board-name">${m.name}</div>
@@ -485,7 +486,10 @@ async function loadBoard(containerId) {
       <div class="board-card">
         <div class="board-name">${m.name}</div>
         <div class="board-role">${m.role}</div>
-        ${m.bio ? `<div class="board-bio">${m.bio}</div><button class="board-bio-more" data-idx="${i}">Read more →</button>` : ''}
+        ${m.bio ? `
+          <div class="board-bio">${m.bio.length > PREVIEW_LEN ? m.bio.slice(0, PREVIEW_LEN).trimEnd() + '…' : m.bio}</div>
+          ${m.bio.length > PREVIEW_LEN ? `<button class="board-bio-more" data-idx="${i}">Read more →</button>` : ''}
+        ` : ''}
         ${m.email ? `<a class="board-email" href="mailto:${m.email}">Email</a>` : ''}
       </div>
     `).join('');

@@ -54,7 +54,7 @@ a { color: var(--red); }
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1.25rem;
-  height: 66px;
+  height: 88px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -70,7 +70,7 @@ a { color: var(--red); }
 }
 
 .site-logo img {
-  height: 50px;
+  height: 64px;
   width: auto;
 }
 
