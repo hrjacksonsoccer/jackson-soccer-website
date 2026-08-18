@@ -1,65 +1,81 @@
-# CloudCannon CMS Configuration — Jackson Soccer Club
-# Plain HTML site with JSON-driven content
-
 collections_config:
   pages:
     path: ''
     glob:
       - '*.html'
-    output: true
+    name: Pages
+    icon: page
+    disable_url: false
+    include_developer_files: false
     _enabled_editors:
       - source
-    icon: page
-    name: Pages
-
+    disable_add: false
+    disable_add_folder: false
+    disable_file_actions: false
+  data:
+    path: data
+    icon: data_usage
+    disable_url: false
+    include_developer_files: false
+    disable_add: false
+    disable_add_folder: false
+    disable_file_actions: false
+_inputs:
+  register_url:
+    type: url
+    label: Registration URL
+    comment: Link for the "Register Now" button throughout the site
+    cascade: true
+  store_url:
+    type: url
+    label: Club Store URL
+    comment: Link to the team gear store
+    cascade: true
+  field_status_csv:
+    type: url
+    label: Field Status Google Sheet CSV URL
+    comment: >-
+      Publish your Field Status sheet: File > Share > Publish to web > CSV,
+      paste URL here
+    cascade: true
+  announcements_csv:
+    type: url
+    label: Announcements Google Sheet CSV URL
+    comment: Leave blank to use demo announcements
+    cascade: true
+  google_calendar_src:
+    type: url
+    label: Google Calendar Embed URL
+    comment: The src= URL from your Google Calendar embed code
+    cascade: true
+  name:
+    type: text
+    label: Name
+    cascade: true
+  role:
+    type: text
+    label: Role / Title
+    cascade: true
+  email:
+    type: email
+    label: Email Address
+    cascade: true
+  open:
+    type: checkbox
+    label: Open Position
+    comment: Check this if the seat is currently vacant
+    cascade: true
+  bio:
+    type: textarea
+    label: Bio
+    comment: Optional short bio or note — displays below their title on the website
+    cascade: true
 data_config:
   board:
     path: data/board.json
   settings:
     path: data/settings.json
-
-_inputs:
-  # Settings fields
-  register_url:
-    type: url
-    label: Registration URL
-    comment: Link for the "Register Now" button throughout the site
-  store_url:
-    type: url
-    label: Club Store URL
-    comment: Link to the team gear store
-  field_status_csv:
-    type: url
-    label: Field Status Google Sheet CSV URL
-    comment: "Publish your Field Status sheet: File > Share > Publish to web > CSV, paste URL here"
-  announcements_csv:
-    type: url
-    label: Announcements Google Sheet CSV URL
-    comment: Leave blank to use demo announcements
-  google_calendar_src:
-    type: url
-    label: Google Calendar Embed URL
-    comment: The src= URL from your Google Calendar embed code
-
-  # Board member fields
-  name:
-    type: text
-    label: Name
-  role:
-    type: text
-    label: Role / Title
-  email:
-    type: email
-    label: Email Address
-  open:
-    type: checkbox
-    label: Open Position
-    comment: Check this if the seat is currently vacant
-  bio:
-    type: textarea
-    label: Bio
-    comment: Optional short bio or note — displays below their title on the website
-
+timezone: Etc/UTC
 _array_structures:
   board:
     values:
