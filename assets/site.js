@@ -466,8 +466,13 @@ async function loadBoard(containerId) {
         <div class="bbm-overlay"></div>
         <div class="bbm-box">
           <button class="bbm-close">✕</button>
-          <div class="bbm-name"></div>
-          <div class="bbm-role"></div>
+          <div class="bbm-header">
+            <img class="bbm-photo" src="" alt="" style="display:none;">
+            <div>
+              <div class="bbm-name"></div>
+              <div class="bbm-role"></div>
+            </div>
+          </div>
           <div class="bbm-bio"></div>
         </div>`;
       document.body.appendChild(modal);
@@ -479,13 +484,26 @@ async function loadBoard(containerId) {
     const PREVIEW_LEN = 120;
     container.innerHTML = members.map((m, i) => m.open ? `
       <div class="board-card open-seat">
-        <div class="board-name">${m.name}</div>
-        <div class="board-role">${m.role}</div>
+        <div class="board-card-top">
+          <div class="board-avatar board-avatar--empty">?</div>
+          <div>
+            <div class="board-name">${m.name}</div>
+            <div class="board-role">${m.role || ''}</div>
+          </div>
+        </div>
       </div>
     ` : `
       <div class="board-card">
-        <div class="board-name">${m.name}</div>
-        <div class="board-role">${m.role}</div>
+        <div class="board-card-top">
+          ${m.photo
+            ? `<img class="board-avatar board-avatar--photo" src="${m.photo}" alt="${m.name}">`
+            : `<div class="board-avatar board-avatar--initials">${m.name.split(' ').map(w => w[0]).join('').slice(0,2)}</div>`
+          }
+          <div>
+            <div class="board-name">${m.name}</div>
+            <div class="board-role">${m.role || ''}</div>
+          </div>
+        </div>
         ${m.bio ? `
           <div class="board-bio">${m.bio.length > PREVIEW_LEN ? m.bio.slice(0, PREVIEW_LEN).trimEnd() + '…' : m.bio}</div>
           ${m.bio.length > PREVIEW_LEN ? `<button class="board-bio-more" data-idx="${i}">Read more →</button>` : ''}
@@ -502,6 +520,14 @@ async function loadBoard(containerId) {
         modal.querySelector('.bbm-name').textContent = m.name;
         modal.querySelector('.bbm-role').textContent = m.role;
         modal.querySelector('.bbm-bio').textContent = m.bio;
+        const modalPhoto = modal.querySelector('.bbm-photo');
+        if (m.photo) {
+          modalPhoto.src = m.photo;
+          modalPhoto.alt = m.name;
+          modalPhoto.style.display = '';
+        } else {
+          modalPhoto.style.display = 'none';
+        }
         modal.classList.add('bbm-open');
         document.body.style.overflow = 'hidden';
       });
