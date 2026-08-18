@@ -936,6 +936,50 @@ a { color: var(--red); }
 
 .board-email:hover { text-decoration: underline; }
 
+/* ── PHOTO LIGHTBOX ── */
+#photo-lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+}
+#photo-lightbox.plb-open { display: flex; }
+.plb-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.82);
+}
+.plb-box {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 90vw;
+  max-height: 90vh;
+}
+.plb-img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 8px;
+  object-fit: contain;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+}
+.plb-close {
+  position: absolute;
+  top: -2.5rem;
+  right: 0;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #fff;
+  cursor: pointer;
+  line-height: 1;
+}
+.plb-close:hover { color: #ddd; }
+
 /* ── DIVISIONS TABLE ── */
 .div-table {
   width: 100%;

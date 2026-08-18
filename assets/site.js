@@ -515,7 +515,28 @@ async function loadBoard(containerId) {
       </div>
     `).join('');
 
-    // Wire up photo click to open modal
+    // Wire up photo click to enlarge photo in lightbox
+    if (!document.getElementById('photo-lightbox')) {
+      const lb = document.createElement('div');
+      lb.id = 'photo-lightbox';
+      lb.innerHTML = `<div class="plb-overlay"></div><div class="plb-box"><button class="plb-close">✕</button><img class="plb-img" src="" alt=""></div>`;
+      document.body.appendChild(lb);
+      const closeLb = () => { lb.classList.remove('plb-open'); document.body.style.overflow = ''; };
+      lb.querySelector('.plb-overlay').addEventListener('click', closeLb);
+      lb.querySelector('.plb-close').addEventListener('click', closeLb);
+    }
+
+    container.querySelectorAll('.board-avatar--clickable').forEach(img => {
+      img.addEventListener('click', () => {
+        const lb = document.getElementById('photo-lightbox');
+        lb.querySelector('.plb-img').src = img.src;
+        lb.querySelector('.plb-img').alt = img.alt;
+        lb.classList.add('plb-open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    // Wire up "Read more" buttons to open bio modal
     function openModal(m) {
       const modal = document.getElementById('board-bio-modal');
       modal.querySelector('.bbm-name').textContent = m.name;
@@ -532,10 +553,6 @@ async function loadBoard(containerId) {
       modal.classList.add('bbm-open');
       document.body.style.overflow = 'hidden';
     }
-
-    container.querySelectorAll('.board-avatar--clickable').forEach(img => {
-      img.addEventListener('click', () => openModal(members[+img.dataset.idx]));
-    });
 
     // Wire up "Read more" buttons
     container.querySelectorAll('.board-bio-more').forEach(btn => {
