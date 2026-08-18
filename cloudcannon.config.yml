@@ -12,9 +12,11 @@ collections_config:
     icon: page
     name: Pages
 
-  site_data:
-    path: data
-    name: Data
+data_config:
+  board:
+    path: data/board.json
+  settings:
+    path: data/settings.json
 
 _inputs:
   # Settings fields

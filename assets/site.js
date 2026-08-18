@@ -455,7 +455,26 @@ async function loadBoard(containerId) {
     const res = await fetch('data/board.json');
     if (!res.ok) return;
     const members = await res.json();
-    container.innerHTML = members.map(m => m.open ? `
+
+    // Create bio modal once
+    if (!document.getElementById('board-bio-modal')) {
+      const modal = document.createElement('div');
+      modal.id = 'board-bio-modal';
+      modal.innerHTML = `
+        <div class="bbm-overlay"></div>
+        <div class="bbm-box">
+          <button class="bbm-close">✕</button>
+          <div class="bbm-name"></div>
+          <div class="bbm-role"></div>
+          <div class="bbm-bio"></div>
+        </div>`;
+      document.body.appendChild(modal);
+      const close = () => { modal.classList.remove('bbm-open'); document.body.style.overflow = ''; };
+      modal.querySelector('.bbm-overlay').addEventListener('click', close);
+      modal.querySelector('.bbm-close').addEventListener('click', close);
+    }
+
+    container.innerHTML = members.map((m, i) => m.open ? `
       <div class="board-card open-seat">
         <div class="board-name">${m.name}</div>
         <div class="board-role">${m.role}</div>
@@ -464,10 +483,24 @@ async function loadBoard(containerId) {
       <div class="board-card">
         <div class="board-name">${m.name}</div>
         <div class="board-role">${m.role}</div>
-        ${m.bio ? `<div class="board-bio">${m.bio}</div>` : ''}
+        ${m.bio ? `<div class="board-bio">${m.bio}</div><button class="board-bio-more" data-idx="${i}">Read more →</button>` : ''}
         ${m.email ? `<a class="board-email" href="mailto:${m.email}">Email</a>` : ''}
       </div>
     `).join('');
+
+    // Wire up "Read more" buttons
+    container.querySelectorAll('.board-bio-more').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const m = members[+btn.dataset.idx];
+        const modal = document.getElementById('board-bio-modal');
+        modal.querySelector('.bbm-name').textContent = m.name;
+        modal.querySelector('.bbm-role').textContent = m.role;
+        modal.querySelector('.bbm-bio').textContent = m.bio;
+        modal.classList.add('bbm-open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
   } catch (_) {}
 }
 
