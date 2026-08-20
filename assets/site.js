@@ -734,9 +734,9 @@ async function loadAnnouncements(containerId, countId) {
           title: a.title,
           date: a.date || '',
           description: a.description || '',
-          imageUrl: a.photo || null,
+          imageUrl: a.announcement_photo || a.photo || null,
           linkUrl: a.link_url || '',
-          emoji: a.emoji || '📢'
+          emoji: '📢'
         }));
       if (items.length) {
         renderAnnouncements(items, containerId, countId);

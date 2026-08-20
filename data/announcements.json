@@ -4,8 +4,7 @@
     "date": "May 14, 2026",
     "description": "Fall Registration Open May 14, 2026 to Aug. 30, 2026. All levels welcome, ages 3–17.",
     "link_url": "https://login.stacksports.com/login?client_id=612b0399b1854a002e427f78&redirect_uri=https://core-api.bluesombrero.com/login/redirect/portal/50583&app_name=Jackson+Soccer+Club&portalid=50583&instancekey=clubs",
-    "emoji": "⚽",
-    "photo": "",
+    "announcement_photo": "assets/announce-register.png",
     "active": true
   },
   {
@@ -13,8 +12,7 @@
     "date": "",
     "description": "JSC Recreational Coach Honored as New Jersey Youth Soccer Coach of the Year!",
     "link_url": "",
-    "emoji": "🏅",
-    "photo": "",
+    "announcement_photo": "assets/announce-coach-award.png",
     "active": true
   },
   {
@@ -22,8 +20,7 @@
     "date": "",
     "description": "Congratulations 2012 TES Girls Tournament Champions",
     "link_url": "",
-    "emoji": "🏆",
-    "photo": "",
+    "announcement_photo": "assets/announce-sunburst.png",
     "active": true
   },
   {
@@ -31,8 +28,7 @@
     "date": "",
     "description": "2014 TES Boys Manalapan Memorial Day Tournament Champions",
     "link_url": "",
-    "emoji": "🏆",
-    "photo": "",
+    "announcement_photo": "assets/announce-manalapan.png",
     "active": true
   },
   {
@@ -40,53 +36,12 @@
     "date": "",
     "description": "Interested in becoming a referee? Click for more information.",
     "link_url": "https://www.njrefs.com/",
-    "emoji": "🟡",
-    "photo": "",
+    "announcement_photo": "assets/announce-referee.png",
     "active": true
   },
-  {
-    "title": "",
-    "date": "",
-    "description": "",
-    "link_url": "",
-    "emoji": "",
-    "photo": "",
-    "active": false
-  },
-  {
-    "title": "",
-    "date": "",
-    "description": "",
-    "link_url": "",
-    "emoji": "",
-    "photo": "",
-    "active": false
-  },
-  {
-    "title": "",
-    "date": "",
-    "description": "",
-    "link_url": "",
-    "emoji": "",
-    "photo": "",
-    "active": false
-  },
-  {
-    "title": "",
-    "date": "",
-    "description": "",
-    "link_url": "",
-    "emoji": "",
-    "photo": "",
-    "active": false
-  },
-  {
-    "title": "",
-    "date": "",
-    "description": "",
-    "link_url": "",
-    "emoji": "",
-    "photo": "",
-    "active": false
-  }
+  { "title": "", "date": "", "description": "", "link_url": "", "announcement_photo": "", "active": false },
+  { "title": "", "date": "", "description": "", "link_url": "", "announcement_photo": "", "active": false },
+  { "title": "", "date": "", "description": "", "link_url": "", "announcement_photo": "", "active": false },
+  { "title": "", "date": "", "description": "", "link_url": "", "announcement_photo": "", "active": false },
+  { "title": "", "date": "", "description": "", "link_url": "", "announcement_photo": "", "active": false }
 ]

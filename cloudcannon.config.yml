@@ -41,7 +41,7 @@ _inputs:
   announcements_csv:
     type: url
     label: Announcements Google Sheet CSV URL
-    comment: Leave blank to use demo announcements
+    comment: Leave blank to use CloudCannon announcements
     cascade: true
   google_calendar_src:
     type: url
@@ -62,19 +62,18 @@ _inputs:
     cascade: true
   photo:
     type: image
-    label: Photo
-    comment: Upload a photo (headshot or announcement image)
+    label: Headshot Photo
+    comment: Upload a headshot (square crop works best)
     cascade: true
-    uploads_dir: uploads
-  open:
-    type: checkbox
-    label: Open Position
-    comment: Check this if the seat is currently vacant
+    uploads_dir: assets/board
+  title:
+    type: text
+    label: Title
     cascade: true
-  bio:
-    type: textarea
-    label: Bio
-    comment: Optional short bio or note — displays below their title on the website
+  date:
+    type: text
+    label: Date
+    comment: e.g. May 14, 2026 — leave blank if not applicable
     cascade: true
   description:
     type: textarea
@@ -85,15 +84,26 @@ _inputs:
     label: Link URL
     comment: Optional — leave blank if no link
     cascade: true
-  emoji:
-    type: text
-    label: Emoji
-    comment: Shown when no photo is uploaded (e.g. ⚽ 🏆 📢)
+  announcement_photo:
+    type: image
+    label: Photo
+    comment: Upload an image for this announcement
     cascade: true
+    uploads_dir: assets/announcements
   active:
     type: checkbox
     label: Show on site
     comment: Uncheck to hide this announcement without deleting it
+    cascade: true
+  open:
+    type: checkbox
+    label: Open Position
+    comment: Check this if the seat is currently vacant
+    cascade: true
+  bio:
+    type: textarea
+    label: Bio
+    comment: Optional short bio — displays on the website
     cascade: true
 data_config:
   board:
@@ -112,8 +122,7 @@ _array_structures:
           date: ''
           description: ''
           link_url: ''
-          emoji: '📢'
-          photo: ''
+          announcement_photo: ''
           active: true
   board:
     values:
