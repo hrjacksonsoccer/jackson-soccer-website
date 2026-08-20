@@ -822,25 +822,23 @@ async function loadPracticeSchedule(containerId) {
     const allRows = Array.from(doc.querySelectorAll('tbody tr'));
     if (!allRows.length) throw new Error();
 
-    // Build class → color map: fetch Google's external CSS and parse it
-    const classMap = {};
-    const cssLink = doc.querySelector('link[rel="stylesheet"]');
-    if (cssLink && cssLink.href) {
-      try {
-        const cssRes = await fetch(cssLink.href);
-        const css = await cssRes.text();
-        // Match both minified (.s3{...}) and spaced (.s3 { ... }) rules
-        const ruleRe = /\.(s\d+)[^{]*\{([^}]+)\}/g;
-        let m;
-        while ((m = ruleRe.exec(css)) !== null) {
-          const cls = m[1], body = m[2];
-          const bg  = (body.match(/background-color\s*:\s*([^;]+)/i) || [])[1];
-          const fg  = (body.match(/(?:^|;)\s*color\s*:\s*([^;]+)/i) || [])[1];
-          const bld = /font-weight\s*:\s*bold/i.test(body);
-          if (bg || fg) classMap[cls] = { bg: bg?.trim(), fg: fg?.trim(), bold: bld };
-        }
-      } catch(_) {}
-    }
+    // Hard-coded color map from Google Sheets pubhtml CSS (external CSS is CORS-blocked)
+    // Values derived from getComputedStyle on live sheet cells
+    const classMap = {
+      s1:  { bg: '#999999', fg: null,    bold: false },
+      s3:  { bg: '#274e13', fg: '#ffffff', bold: true  },
+      s6:  { bg: '#92d050', fg: null,    bold: false },
+      s7:  { bg: '#92d050', fg: null,    bold: true  },
+      s8:  { bg: '#92d050', fg: null,    bold: false },
+      s10: { bg: '#ffff00', fg: null,    bold: false },
+      s11: { bg: '#ffff00', fg: null,    bold: true  },
+      s12: { bg: '#000000', fg: '#ffffff', bold: true  },
+      s13: { bg: '#00ff00', fg: null,    bold: false },
+      s17: { bg: '#ff0000', fg: '#ffffff', bold: true  },
+      s23: { bg: '#00ff00', fg: null,    bold: false },
+      s33: { bg: '#00ff00', fg: null,    bold: false },
+      s47: { bg: '#00ff00', fg: null,    bold: false },
+    };
 
     // Group rows by day; skip rows where every cell is empty text
     const groups = {};
