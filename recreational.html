@@ -21,10 +21,10 @@
     <!-- Registration CTA -->
     <div style="background:var(--red);color:#fff;border-radius:10px;padding:1.5rem 1.75rem;margin-bottom:1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
       <div>
-        <div style="font-size:1.1rem;font-weight:800;text-transform:uppercase;letter-spacing:0.05em;">Fall 2026 Registration Open</div>
-        <div style="font-size:0.88rem;opacity:0.88;margin-top:0.25rem;">June 1 – August 20, 2026 &nbsp;·&nbsp; Season starts early September</div>
+        <div id="rec-cta-heading" style="font-size:1.1rem;font-weight:800;text-transform:uppercase;letter-spacing:0.05em;">Fall 2026 Registration Open</div>
+        <div id="rec-cta-subtext" style="font-size:0.88rem;opacity:0.88;margin-top:0.25rem;">June 1 – August 20, 2026 &nbsp;·&nbsp; Season starts early September</div>
       </div>
-      <a href="https://login.stacksports.com/login?client_id=612b0399b1854a002e427f78&redirect_uri=https://core-api.bluesombrero.com/login/redirect/portal/50583&app_name=Jackson+Soccer+Club&portalid=50583&instancekey=clubs&returnurl=%2fDefault.aspx%3ftabid%3d755727%26ctl%3dManageProgramDivisionListing%26mid%3d1504400" target="_blank" rel="noopener"
+      <a id="rec-register-btn" href="#" target="_blank" rel="noopener"
          style="background:#fff;color:var(--red);padding:0.65rem 1.5rem;border-radius:25px;font-size:0.85rem;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;text-decoration:none;flex-shrink:0;">
         Register Now →
       </a>
@@ -33,18 +33,18 @@
     <div class="content-section">
       <h2>About the Program</h2>
       <p>The Jackson Soccer Club Intramurals is a recreational program open to children ranging in age from 3 to 17 years old. The program strives to create a safe, fun, and exciting environment for children to learn the game of soccer.</p>
-      <p>We form teams and divisions based on age. We follow US Soccer principles to develop kids — physically, technically, strategically, and grow their Soccer IQ.</p>
+      <p id="rec-about-intro">We form teams and divisions based on age. We follow US Soccer principles to develop kids — physically, technically, strategically, and grow their Soccer IQ.</p>
       <p>We offer both a <strong>Fall</strong> and <strong>Spring</strong> season:</p>
       <ul id="rec-about-bullets">
         <li><strong>Fall:</strong> Teams begin practicing mid-August; games run September to early November.</li>
         <li><strong>Spring:</strong> Teams begin practicing end of March; games run April to mid-June.</li>
       </ul>
-      <div class="highlight" id="volunteer">
+      <div class="highlight" id="volunteer"><span id="rec-volunteer-cta" style="display:contents;">
         🙋 <strong>We need volunteer coaches at every level — no experience required!</strong><br>
         We have trainers who support coaches throughout the season. If you have energy and want to help, we want you.
         <br><br>
         <a href="mailto:info@jacksonsoccer.com" style="color:#fff;font-weight:700;">Email us to volunteer →</a>
-      </div>
+      </span></div>
     </div>
 
     <div class="content-section">
@@ -58,7 +58,7 @@
             <th>Schedule</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="rec-divisions-table">
           <tr>
             <td><strong>Peanuts</strong></td>
             <td>Pre-K</td>
@@ -97,7 +97,7 @@
           </tr>
         </tbody>
       </table>
-      <p style="margin-top:0.75rem;font-size:0.82rem;color:#888;">All age groups play Saturday mornings between 8:30 AM and noon. Professional Tecnica trainers lead every training session and are present on game days to support coaches and players.</p>
+      <p id="rec-divisions-note" style="margin-top:0.75rem;font-size:0.82rem;color:#888;">All age groups play Saturday mornings between 8:30 AM and noon. Professional Tecnica trainers lead every training session and are present on game days to support coaches and players.</p>
     </div>
 
     <div class="content-section">
@@ -139,7 +139,7 @@
       </ul>
 
       <h3>Register Early</h3>
-      <div class="highlight">
+      <div class="highlight" id="rec-register-highlight">
         ⚠️ <strong>Please register early.</strong> Late registrations cannot be guaranteed team placement or uniforms. Full payment is required to be placed on a waitlist.
       </div>
 
@@ -191,7 +191,7 @@
 
 <div id="site-footer"></div>
 
-<script src="assets/site.js?v=6"></script>
+<script src="assets/site.js?v=7"></script>
 <script>loadSettings().then(() => { initSite('recreational'); loadRecreationalContent(); });</script>
 </body>
 </html>

@@ -1,8 +1,51 @@
 {
+  "about_intro": "We form teams and divisions based on age. We follow US Soccer principles to develop kids — physically, technically, strategically, and grow their Soccer IQ.",
   "about_bullets": [
     "<strong>Fall:</strong> Teams begin practicing mid-August; games run September to early November.",
     "<strong>Spring:</strong> Teams begin practicing end of March; games run April to mid-June."
   ],
+  "volunteer_email": "info@jacksonsoccer.com",
+  "volunteer_text": "We have trainers who support coaches throughout the season. If you have energy and want to help, we want you.",
+  "volunteer_link_label": "Email us to volunteer →",
+  "divisions": [
+    {
+      "division": "Peanuts",
+      "ages": "Pre-K",
+      "format": "Introductory fun play",
+      "schedule": "Saturdays only"
+    },
+    {
+      "division": "Future Stars",
+      "ages": "Kindergarten &amp; 1st Grade (Coed)",
+      "format": "Mini games &amp; skills",
+      "schedule": "Saturday mornings only"
+    },
+    {
+      "division": "Micro Division",
+      "ages": "2nd &amp; 3rd Grade (Coed)",
+      "format": "Small-sided games &amp; training",
+      "schedule": "Saturday only"
+    },
+    {
+      "division": "Collegiate Division",
+      "ages": "4th &amp; 5th Grade (Coed)",
+      "format": "7v7 or 9v9",
+      "schedule": "Practice Wed nights + Games Saturdays"
+    },
+    {
+      "division": "Major League",
+      "ages": "6th–8th Grade (Coed)",
+      "format": "9v9 or 11v11",
+      "schedule": "Practice Wed nights + Games Saturdays"
+    },
+    {
+      "division": "Premier Division",
+      "ages": "Ages 14–17 (High School)",
+      "format": "Full-sided",
+      "schedule": "Once per week — accommodates school schedules"
+    }
+  ],
+  "divisions_note": "All age groups play Saturday mornings between 8:30 AM and noon. Professional Tecnica trainers lead every training session and are present on game days to support coaches and players.",
   "club_provides": [
     "Team shirt (uniform)",
     "Black socks"
@@ -23,5 +66,8 @@
   "register_highlight": "Please register early. Late registrations cannot be guaranteed team placement or uniforms. Full payment is required to be placed on a waitlist.",
   "waitlist_text": "We run a waitlist when registration approaches our limit for any division. Registering for the waitlist holds your place in line. If you are on the waitlist and we don't assign you to a team by Week 3, you can receive a full refund.\n\nIf a division needs coaches, players whose parent volunteers to coach will be given priority on the waitlist.",
   "commissioner_name": "Jackson Soccer Club",
-  "commissioner_email": "info@jacksonsoccer.com"
+  "commissioner_email": "info@jacksonsoccer.com",
+  "cta_heading": "Fall 2026 Registration Open",
+  "cta_subtext": "June 1 – August 20, 2026 &nbsp;·&nbsp; Season starts early September",
+  "register_button_text": "Register Now →"
 }

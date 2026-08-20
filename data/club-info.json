@@ -11,15 +11,45 @@
   ],
   "mission_closing": "Mastering the skills of the game and having fun go hand-in-hand with developing a lifelong interest in soccer and all team sports. Our goal is to encourage every child to have fun and return to the program year after year. We also hope that all parents will enjoy their experience and feel rewarded by their involvement. We want players and families to feel they are part of a program and not just on a team.",
   "coaching_statement": "We recognize that coaches are the people who most directly make this all possible. It is our goal to provide every coach with the tools to succeed and to grow as coaches and role models. We are committed to creating a positive culture, in which coaches, trainers, parents, fans, officials and athletes work together to achieve our mission.",
+  "board_intro": "Jackson Soccer Club is run by a volunteer board dedicated to providing a safe and fun environment for youth soccer in Jackson Township.",
   "mailing_address": "Jackson Soccer Club\nP.O. Box 734\nJackson, New Jersey 08527",
   "general_email": "info@jacksonsoccer.com",
   "travel_commissioner_name": "Ryan Monday",
   "travel_commissioner_email": "info@jacksonsoccer.com",
+  "financial_transparency_text": "As a 501(c)(3) nonprofit organization, Jackson Soccer Club publishes its tax filings for public review.",
   "governing_docs": [
     {"label": "JSC By-Laws", "url": "https://drive.google.com/file/d/1WB0JVwceGJdYN4nB7Ow9imieMqsibVvo/view?usp=sharing"}
   ],
   "assistance_links": [
-    {"label": "Financial Assistance", "url": "https://www.jacksonsoccer.com/Default.aspx?tabid=1434136"},
-    {"label": "Peer Mentor Program", "url": "https://www.jacksonsoccer.com/Default.aspx?tabid=1090841"}
+    {"label": "💰 Financial Assistance", "url": "https://www.jacksonsoccer.com/Default.aspx?tabid=1434136"},
+    {"label": "🤝 Peer Mentor Program", "url": "https://www.jacksonsoccer.com/Default.aspx?tabid=1090841"}
+  ],
+  "sponsors_intro": "We are proud to partner with the following organizations in support of youth soccer in Jackson Township.",
+  "sponsors": [
+    {
+      "name": "Puma",
+      "url": "https://us.puma.com/en/us/home",
+      "logo_url": "https://www.jacksonsoccer.com/portals/50583/homesponsors/homesponsors637160232371269297.png"
+    },
+    {
+      "name": "CentraState Medical Center",
+      "url": "https://www.centrastate.com",
+      "logo_url": "https://www.jacksonsoccer.com/portals/50583/homesponsors/homesponsors637340517172952198.png"
+    },
+    {
+      "name": "Lions FC NJ",
+      "url": "https://www.jacksonlions.com",
+      "logo_url": "https://www.jacksonsoccer.com/portals/50583/homesponsors/homesponsors637340518008347504.png"
+    },
+    {
+      "name": "Positive Coaching Alliance",
+      "url": "https://positivecoach.org/",
+      "logo_url": "https://www.jacksonsoccer.com/portals/50583/homesponsors/homesponsors637340543688738436.png"
+    },
+    {
+      "name": "Soccer Parent Resource Center",
+      "url": "https://www.jacksonsoccer.com/Default.aspx?tabid=942286",
+      "logo_url": "https://www.jacksonsoccer.com/portals/50583/homesponsors/homesponsors637346870686256361.png"
+    }
   ]
 }

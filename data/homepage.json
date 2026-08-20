@@ -10,5 +10,9 @@
     {"label": "Sponsorships", "url": "club-info.html", "emoji": "🤝"},
     {"label": "Field Status", "url": "#field-status-section", "emoji": "🟢"},
     {"label": "Jackson Soccer Club on X", "url": "https://x.com/jacksonnjsoccer", "emoji": "𝕏"}
+  ],
+  "directions": [
+    {"label": "🏟️ Justice Complex (JSC)", "url": "https://maps.google.com/?q=1+Jackson+Drive+Jackson+NJ+08527"},
+    {"label": "⚽ Jackson Mills Complex", "url": "https://maps.google.com/?q=334+Jackson+Mills+Road+Jackson+NJ+08527"}
   ]
 }

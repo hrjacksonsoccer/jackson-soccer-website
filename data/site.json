@@ -1,0 +1,46 @@
+{
+  "club_name": "Jackson Soccer Club",
+  "tagline": "Play · Train · Grow · Succeed",
+  "address_line1": "P.O. Box 734",
+  "address_line2": "Jackson, New Jersey 08527",
+  "contact_email": "info@jacksonsoccer.com",
+  "login_label": "Login",
+  "login_url": "https://www.jacksonsoccer.com/Default.aspx?tabid=717119&isLogin=True",
+  "copyright_text": "Jackson Soccer Club · Jackson Township, NJ",
+  "nav_links": [
+    {"id": "home",         "label": "Home",         "href": "index.html",         "external": false},
+    {"id": "club-info",    "label": "Club Info",    "href": "club-info.html",     "external": false},
+    {"id": "coaches",      "label": "Coaches",      "href": "coaches.html",       "external": false},
+    {"id": "travel",       "label": "Travel",       "href": "travel.html",        "external": false},
+    {"id": "recreational", "label": "Recreational", "href": "recreational.html",  "external": false},
+    {"id": "fields",       "label": "Fields",       "href": "fields.html",        "external": false},
+    {"id": "calendar",     "label": "Calendar",     "href": "calendar.html",      "external": false},
+    {"id": "store",        "label": "Store",        "href": "{{STORE_URL}}",      "external": true}
+  ],
+  "social_links": [
+    {"label": "Facebook",  "url": "https://www.facebook.com/jacksonsoccerclub"},
+    {"label": "Instagram", "url": "https://www.instagram.com/jacksonnjsoccerclub"},
+    {"label": "YouTube",   "url": "https://www.youtube.com/channel/UCjI_MBOkDDY3vLQdjor0W8Q/"}
+  ],
+  "footer_club_heading": "Club",
+  "footer_club_links": [
+    {"label": "Board of Directors",  "url": "club-info.html"},
+    {"label": "Coaching Resources",  "url": "coaches.html"},
+    {"label": "Travel Program",      "url": "travel.html"},
+    {"label": "Recreational Soccer", "url": "recreational.html"}
+  ],
+  "footer_fields_heading": "Fields",
+  "footer_fields_links": [
+    {"label": "Field Status",           "url": "fields.html"},
+    {"label": "Justice Complex",        "url": "fields.html#justice"},
+    {"label": "Jackson Mills Complex",  "url": "fields.html#jackson-mills"},
+    {"label": "Field Rental",           "url": "fields.html#rental"}
+  ],
+  "footer_more_heading": "More",
+  "footer_more_links": [
+    {"label": "JSC Calendar",  "url": "calendar.html"},
+    {"label": "Club Store",    "url": "{{STORE_URL}}"},
+    {"label": "Contact Us",    "url": "mailto:info@jacksonsoccer.com"},
+    {"label": "Register Now",  "url": "{{REGISTER_URL}}"}
+  ]
+}

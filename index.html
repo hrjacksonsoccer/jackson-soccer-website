@@ -18,7 +18,7 @@
          style="height:138px;width:auto;margin:0 auto 1rem;display:block;filter:drop-shadow(0 4px 12px rgba(0,0,0,0.4));">
     <h1>Jackson Soccer Club</h1>
     <p id="hero-subtext">Jackson Township, New Jersey &nbsp;·&nbsp; Play · Train · Grow · Succeed</p>
-    <a href="https://login.stacksports.com/login?client_id=612b0399b1854a002e427f78&redirect_uri=https://core-api.bluesombrero.com/login/redirect/portal/50583&app_name=Jackson+Soccer+Club&portalid=50583&instancekey=clubs&returnurl=%2fDefault.aspx%3ftabid%3d755727%26ctl%3dManageProgramDivisionListing%26mid%3d1504400" target="_blank" rel="noopener" class="hero-btn">Register for Fall 2026 →</a>
+    <a id="hero-register-btn" href="#" target="_blank" rel="noopener" class="hero-btn">Register for Fall 2026 →</a>
   </div>
 
   <!-- Home content -->
@@ -43,7 +43,7 @@
 
       <section>
         <h2 class="section-title">📍 Get Directions</h2>
-        <div style="display:flex;flex-direction:column;gap:0.5rem;">
+        <div id="homepage-directions" style="display:flex;flex-direction:column;gap:0.5rem;">
           <a href="https://maps.google.com/?q=1+Jackson+Drive+Jackson+NJ+08527" target="_blank" rel="noopener"
              style="display:flex;align-items:center;gap:0.5rem;padding:0.6rem 0.9rem;background:var(--gray);border:1px solid var(--border);border-radius:7px;color:var(--text);text-decoration:none;font-size:0.88rem;font-weight:600;">
             🏟️ Justice Complex (JSC) <span style="margin-left:auto;color:var(--red);">→</span>
@@ -84,7 +84,7 @@
 
 <div id="site-footer"></div>
 
-<script src="assets/site.js?v=6"></script>
+<script src="assets/site.js?v=7"></script>
 <script>
   loadSettings().then(() => {
     initSite('home');

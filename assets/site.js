@@ -31,19 +31,110 @@ const CONFIG = {
   STORE_URL:           'https://www.soccer.com/club/#/2000598230/fanwear?category=Shirts',
 };
 
+/* ── GLOBAL SITE CONTENT (nav / footer) ─────────────────────────
+   These are the DEFAULTS. They are overwritten by data/site.json,
+   which is what CloudCannon editors change. If the fetch fails the
+   site still renders with these values.
+
+   href / url values support two substitution tokens:
+     {{STORE_URL}}    → CONFIG.STORE_URL    (from data/settings.json)
+     {{REGISTER_URL}} → CONFIG.REGISTER_URL (from data/settings.json)
+   so the Store / Register links stay in one place (settings.json).
+──────────────────────────────────────────────────────────────── */
+
+const SITE = {
+  club_name: 'Jackson Soccer Club',
+  tagline: 'Play · Train · Grow · Succeed',
+  address_line1: 'P.O. Box 734',
+  address_line2: 'Jackson, New Jersey 08527',
+  contact_email: 'info@jacksonsoccer.com',
+  login_label: 'Login',
+  login_url: 'https://www.jacksonsoccer.com/Default.aspx?tabid=717119&isLogin=True',
+  copyright_text: 'Jackson Soccer Club · Jackson Township, NJ',
+  nav_links: [
+    { id: 'home',         label: 'Home',         href: 'index.html',        external: false },
+    { id: 'club-info',    label: 'Club Info',    href: 'club-info.html',    external: false },
+    { id: 'coaches',      label: 'Coaches',      href: 'coaches.html',      external: false },
+    { id: 'travel',       label: 'Travel',       href: 'travel.html',       external: false },
+    { id: 'recreational', label: 'Recreational', href: 'recreational.html', external: false },
+    { id: 'fields',       label: 'Fields',       href: 'fields.html',       external: false },
+    { id: 'calendar',     label: 'Calendar',     href: 'calendar.html',     external: false },
+    { id: 'store',        label: 'Store',        href: '{{STORE_URL}}',     external: true },
+  ],
+  social_links: [
+    { label: 'Facebook',  url: 'https://www.facebook.com/jacksonsoccerclub' },
+    { label: 'Instagram', url: 'https://www.instagram.com/jacksonnjsoccerclub' },
+    { label: 'YouTube',   url: 'https://www.youtube.com/channel/UCjI_MBOkDDY3vLQdjor0W8Q/' },
+  ],
+  footer_club_heading: 'Club',
+  footer_club_links: [
+    { label: 'Board of Directors',  url: 'club-info.html' },
+    { label: 'Coaching Resources',  url: 'coaches.html' },
+    { label: 'Travel Program',      url: 'travel.html' },
+    { label: 'Recreational Soccer', url: 'recreational.html' },
+  ],
+  footer_fields_heading: 'Fields',
+  footer_fields_links: [
+    { label: 'Field Status',          url: 'fields.html' },
+    { label: 'Justice Complex',       url: 'fields.html#justice' },
+    { label: 'Jackson Mills Complex', url: 'fields.html#jackson-mills' },
+    { label: 'Field Rental',          url: 'fields.html#rental' },
+  ],
+  footer_more_heading: 'More',
+  footer_more_links: [
+    { label: 'JSC Calendar', url: 'calendar.html' },
+    { label: 'Club Store',   url: '{{STORE_URL}}' },
+    { label: 'Contact Us',   url: 'mailto:info@jacksonsoccer.com' },
+    { label: 'Register Now', url: '{{REGISTER_URL}}' },
+  ],
+};
+
+/** Replace {{STORE_URL}} / {{REGISTER_URL}} tokens in a href/url value. */
+function resolveUrl(u) {
+  if (!u) return '';
+  return String(u)
+    .replace(/\{\{\s*STORE_URL\s*\}\}/g, CONFIG.STORE_URL)
+    .replace(/\{\{\s*REGISTER_URL\s*\}\}/g, CONFIG.REGISTER_URL);
+}
+
+/** True if a resolved URL should open in a new tab. */
+function isExternalUrl(u) {
+  return /^https?:\/\//i.test(u || '');
+}
+
 /* ── SETTINGS LOADER (CloudCannon-managed) ──────────────────── */
 
 async function loadSettings() {
   try {
     const res = await fetch('data/settings.json');
+    if (res.ok) {
+      const s = await res.json();
+      if (s.register_url)        CONFIG.REGISTER_URL        = s.register_url;
+      if (s.store_url)           CONFIG.STORE_URL           = s.store_url;
+      if (s.field_status_csv)    CONFIG.FIELD_STATUS_CSV    = s.field_status_csv;
+      if (s.announcements_csv)   CONFIG.ANNOUNCEMENTS_CSV   = s.announcements_csv;
+      if (s.google_calendar_src) CONFIG.GOOGLE_CALENDAR_SRC = s.google_calendar_src;
+      if (s.travel_teams_csv)    CONFIG.TRAVEL_TEAMS_CSV    = s.travel_teams_csv;
+    }
+  } catch (_) {}
+
+  // Global nav / footer content — loaded here so it is always populated
+  // before initSite() runs on every page (no per-page changes needed).
+  await loadSiteContent();
+}
+
+async function loadSiteContent() {
+  try {
+    const res = await fetch('data/site.json');
     if (!res.ok) return;
     const s = await res.json();
-    if (s.register_url)      CONFIG.REGISTER_URL        = s.register_url;
-    if (s.store_url)         CONFIG.STORE_URL            = s.store_url;
-    if (s.field_status_csv)  CONFIG.FIELD_STATUS_CSV     = s.field_status_csv;
-    if (s.announcements_csv) CONFIG.ANNOUNCEMENTS_CSV    = s.announcements_csv;
-    if (s.google_calendar_src) CONFIG.GOOGLE_CALENDAR_SRC = s.google_calendar_src;
-    if (s.travel_teams_csv)   CONFIG.TRAVEL_TEAMS_CSV    = s.travel_teams_csv;
+    Object.keys(s).forEach(k => {
+      const v = s[k];
+      if (v === null || v === undefined) return;
+      if (Array.isArray(v) && !v.length) return;   // keep defaults if array emptied
+      if (typeof v === 'string' && !v.trim()) return;
+      SITE[k] = v;
+    });
   } catch (_) {}
 }
 
@@ -186,16 +277,12 @@ function closeSearch() {
 /* ── NAV HTML ───────────────────────────────────────────────── */
 
 function buildHeader(activePage) {
-  const pages = [
-    { id: 'home',         label: 'Home',         href: 'index.html' },
-    { id: 'club-info',    label: 'Club Info',     href: 'club-info.html' },
-    { id: 'coaches',      label: 'Coaches',       href: 'coaches.html' },
-    { id: 'travel',       label: 'Travel',        href: 'travel.html' },
-    { id: 'recreational', label: 'Recreational',  href: 'recreational.html' },
-    { id: 'fields',       label: 'Fields',        href: 'fields.html' },
-    { id: 'calendar',     label: 'Calendar',      href: 'calendar.html' },
-    { id: 'store',        label: 'Store',         href: CONFIG.STORE_URL, external: true },
-  ];
+  const pages = (SITE.nav_links || []).map(p => ({
+    id: p.id || '',
+    label: p.label || '',
+    href: resolveUrl(p.href),
+    external: p.external === true || p.external === 'true' || isExternalUrl(resolveUrl(p.href)),
+  }));
 
   const desktopLinks = pages.map(p =>
     `<li><a href="${p.href}"${p.external ? ' target="_blank" rel="noopener"' : ''}${p.id === activePage ? ' class="active"' : ''}>${p.label}</a></li>`
@@ -209,10 +296,10 @@ function buildHeader(activePage) {
     <header>
       <div class="header-inner">
         <a href="index.html" class="site-logo">
-          <img src="assets/logo.png" alt="Jackson Soccer Club Logo">
+          <img src="assets/logo.png" alt="${SITE.club_name} Logo">
           <div class="logo-text">
-            Jackson Soccer Club
-            <small>Play · Train · Grow · Succeed</small>
+            ${SITE.club_name}
+            <small>${SITE.tagline}</small>
           </div>
         </a>
         <div class="header-right">
@@ -224,8 +311,8 @@ function buildHeader(activePage) {
               aria-label="Search site">
             <div id="search-results" class="search-results"></div>
           </div>
-          <a href="https://www.jacksonsoccer.com/Default.aspx?tabid=717119&isLogin=True"
-             target="_blank" rel="noopener" class="header-login-btn">⬡&nbsp; Login
+          <a href="${SITE.login_url}"
+             target="_blank" rel="noopener" class="header-login-btn">⬡&nbsp; ${SITE.login_label}
           </a>
           <button class="hamburger" onclick="toggleMobileNav()" aria-label="Open menu">☰</button>
         </div>
@@ -244,10 +331,10 @@ function buildHeader(activePage) {
           </li>
           ${mobileLinks}
           <li style="padding:0.7rem 0;border-top:1px solid #333;margin-top:0.25rem;">
-            <a href="https://www.jacksonsoccer.com/Default.aspx?tabid=717119&isLogin=True"
+            <a href="${SITE.login_url}"
                target="_blank" rel="noopener"
                style="color:#ccc;font-size:0.9rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;">
-              &#x25A1;&nbsp; Login
+              &#x25A1;&nbsp; ${SITE.login_label}
             </a>
           </li>
         </ul>
@@ -257,57 +344,50 @@ function buildHeader(activePage) {
 }
 
 function buildFooter() {
+  const footerList = (links) => (links || []).map(l => {
+    const href = resolveUrl(l.url);
+    const ext  = isExternalUrl(href) ? ' target="_blank" rel="noopener"' : '';
+    return `<li><a href="${href}"${ext}>${l.label || ''}</a></li>`;
+  }).join('');
+
+  const socials = (SITE.social_links || []).map(s =>
+    `<a href="${resolveUrl(s.url)}" target="_blank" rel="noopener">${s.label || ''}</a>`
+  ).join('');
+
   return `
     <footer>
       <div class="footer-grid">
         <div>
           <div class="footer-logo-wrap">
-            <img src="assets/logo.png" alt="JSC Logo">
+            <img src="assets/logo.png" alt="${SITE.club_name} Logo">
             <div>
-              <div class="footer-brand">Jackson Soccer Club</div>
-              <div class="footer-tagline">Play · Train · Grow · Succeed</div>
+              <div class="footer-brand">${SITE.club_name}</div>
+              <div class="footer-tagline">${SITE.tagline}</div>
             </div>
           </div>
           <p style="font-size:0.82rem;color:#888;line-height:1.7;margin-top:0.5rem;">
-            P.O. Box 734<br>Jackson, New Jersey 08527<br>
-            <a href="mailto:info@jacksonsoccer.com" style="color:#aaa;">info@jacksonsoccer.com</a>
+            ${SITE.address_line1}<br>${SITE.address_line2}<br>
+            <a href="mailto:${SITE.contact_email}" style="color:#aaa;">${SITE.contact_email}</a>
           </p>
           <div class="footer-socials">
-            <a href="https://www.facebook.com/jacksonsoccerclub" target="_blank" rel="noopener">Facebook</a>
-            <a href="https://www.instagram.com/jacksonnjsoccerclub" target="_blank" rel="noopener">Instagram</a>
-            <a href="https://www.youtube.com/channel/UCjI_MBOkDDY3vLQdjor0W8Q/" target="_blank" rel="noopener">YouTube</a>
+            ${socials}
           </div>
         </div>
         <div class="footer-col">
-          <h4>Club</h4>
-          <ul>
-            <li><a href="club-info.html">Board of Directors</a></li>
-            <li><a href="coaches.html">Coaching Resources</a></li>
-            <li><a href="travel.html">Travel Program</a></li>
-            <li><a href="recreational.html">Recreational Soccer</a></li>
-          </ul>
+          <h4>${SITE.footer_club_heading}</h4>
+          <ul>${footerList(SITE.footer_club_links)}</ul>
         </div>
         <div class="footer-col">
-          <h4>Fields</h4>
-          <ul>
-            <li><a href="fields.html">Field Status</a></li>
-            <li><a href="fields.html#justice">Justice Complex</a></li>
-            <li><a href="fields.html#jackson-mills">Jackson Mills Complex</a></li>
-            <li><a href="fields.html#rental">Field Rental</a></li>
-          </ul>
+          <h4>${SITE.footer_fields_heading}</h4>
+          <ul>${footerList(SITE.footer_fields_links)}</ul>
         </div>
         <div class="footer-col">
-          <h4>More</h4>
-          <ul>
-            <li><a href="calendar.html">JSC Calendar</a></li>
-            <li><a href="${CONFIG.STORE_URL}" target="_blank" rel="noopener">Club Store</a></li>
-            <li><a href="mailto:info@jacksonsoccer.com">Contact Us</a></li>
-            <li><a href="${CONFIG.REGISTER_URL}" target="_blank" rel="noopener">Register Now</a></li>
-          </ul>
+          <h4>${SITE.footer_more_heading}</h4>
+          <ul>${footerList(SITE.footer_more_links)}</ul>
         </div>
       </div>
       <div class="footer-bottom">
-        &copy; ${new Date().getFullYear()} Jackson Soccer Club &middot; Jackson Township, NJ
+        &copy; ${new Date().getFullYear()} ${SITE.copyright_text}
       </div>
     </footer>
   `;
@@ -913,7 +993,8 @@ async function loadCalendarContent(bannerId, scheduleId) {
     // Update meeting dates banner
     const banner = document.getElementById(bannerId);
     if (banner && d.meeting_dates) {
-      banner.innerHTML = `📅 <strong>Upcoming:</strong> General Membership Meetings are held at Jackson Township Senior Center (8–9 PM) on: ${d.meeting_dates}`;
+      const intro = d.meeting_intro || 'General Membership Meetings are held at Jackson Township Senior Center (8–9 PM) on:';
+      banner.innerHTML = `📅 <strong>Upcoming:</strong> ${intro} ${d.meeting_dates}`;
     }
 
     // Render season schedule
@@ -921,13 +1002,37 @@ async function loadCalendarContent(bannerId, scheduleId) {
     if (!el) return;
     let html = '';
     (d.seasons || []).forEach(s => {
-      html += `<h3>${s.name}</h3><ul>${(s.bullets||[]).map(b=>`<li>${b}</li>`).join('')}</ul>`;
+      html += `<h3>${s.season_name || ''}</h3><ul>${(s.bullets||[]).map(b=>`<li>${b}</li>`).join('')}</ul>`;
     });
     if (d.game_day_bullets && d.game_day_bullets.length) {
       html += `<h3>Game Day</h3><ul>${d.game_day_bullets.map(b=>`<li>${b}</li>`).join('')}</ul>`;
     }
     el.innerHTML = html;
   } catch(_) {}
+}
+
+/* ── SHARED LINK-LIST RENDERERS ──────────────────────────────── */
+
+/**
+ * Render an array of {label, url} into a container by id.
+ * cls        — CSS class for each link ('doc-link' or 'ext-link')
+ * plainWhenNoUrl — if true, entries with an empty url render as a
+ *                  non-clickable <span class="{cls} {cls}--plain">
+ */
+function renderLinkList(containerId, links, cls, plainWhenNoUrl) {
+  const el = document.getElementById(containerId);
+  if (!el || !Array.isArray(links) || !links.length) return;
+  el.innerHTML = links.map(l => {
+    const label = l.label || '';
+    const url   = resolveUrl(l.url);
+    if (!url) {
+      return plainWhenNoUrl
+        ? `<span class="${cls} ${cls}--plain">${label}</span>`
+        : '';
+    }
+    const ext = isExternalUrl(url) ? ' target="_blank" rel="noopener"' : '';
+    return `<a class="${cls}" href="${url}"${ext}>${label}</a>`;
+  }).join('');
 }
 
 /* ── COACHES CONTENT ─────────────────────────────────────────── */
@@ -937,6 +1042,19 @@ async function loadCoachesContent() {
     const res = await fetch('data/coaches.json');
     if (!res.ok) return;
     const d = await res.json();
+
+    renderLinkList('coaches-available-courses',    d.available_courses,       'doc-link', false);
+    renderLinkList('coaches-additional-resources', d.additional_resources,    'ext-link', false);
+    renderLinkList('coaches-youth-trainer-links',  d.youth_trainer_links,     'ext-link', false);
+    renderLinkList('coaches-pathway-links',        d.education_pathway_links, 'ext-link', false);
+
+    const njysEl = document.getElementById('coaches-njys-email');
+    if (njysEl && d.njys_contact_email)
+      njysEl.innerHTML = `For questions about NJYS Coaching Schools, email <a href="mailto:${d.njys_contact_email}">${d.njys_contact_email}</a>.`;
+
+    const ctaEl = document.getElementById('coaches-volunteer-cta');
+    if (ctaEl && d.volunteer_cta_email)
+      ctaEl.innerHTML = `💡 <strong>Want to volunteer?</strong> ${d.volunteer_cta_text || ''} <a href="mailto:${d.volunteer_cta_email}">${d.volunteer_cta_link_label || 'Email us to get started.'}</a>`;
 
     const ytEl = document.getElementById('youth-trainer-bullets');
     if (ytEl && d.youth_trainer_bullets)
@@ -985,13 +1103,29 @@ async function loadMissionContent(containerId) {
     if (travelEl && d.travel_commissioner_name)
       travelEl.innerHTML = `Contact <strong>${d.travel_commissioner_name}</strong> (Overall Commissioner)<br>for general travel info and field scheduling.`;
 
+    const boardIntroEl = document.getElementById('club-board-intro');
+    if (boardIntroEl && d.board_intro) boardIntroEl.textContent = d.board_intro;
+
+    const finEl = document.getElementById('club-financial-text');
+    if (finEl && d.financial_transparency_text) finEl.textContent = d.financial_transparency_text;
+
     const govDocsEl = document.getElementById('club-governing-docs');
     if (govDocsEl && d.governing_docs)
       govDocsEl.innerHTML = d.governing_docs.map(f => `<a class="doc-link" href="${f.url}" target="_blank" rel="noopener">📄 ${f.label}</a>`).join('');
 
-    const assistEl = document.getElementById('club-assistance-links');
-    if (assistEl && d.assistance_links)
-      assistEl.innerHTML = d.assistance_links.map(f => `<a class="ext-link" href="${f.url}" target="_blank" rel="noopener">${f.label}</a>`).join('');
+    renderLinkList('club-assistance-links', d.assistance_links, 'ext-link', false);
+
+    const sponsorsIntroEl = document.getElementById('club-sponsors-intro');
+    if (sponsorsIntroEl && d.sponsors_intro) sponsorsIntroEl.textContent = d.sponsors_intro;
+
+    const sponsorsEl = document.getElementById('club-sponsors-grid');
+    if (sponsorsEl && Array.isArray(d.sponsors) && d.sponsors.length)
+      sponsorsEl.innerHTML = d.sponsors
+        .filter(s => s.logo_url || s.name)
+        .map(s => `
+          <a href="${s.url || '#'}"${isExternalUrl(s.url) ? ' target="_blank" rel="noopener"' : ''} title="${s.name || ''}">
+            <img src="${s.logo_url || ''}" alt="${s.name || ''}">
+          </a>`).join('');
   } catch(_) {}
 }
 
@@ -1003,9 +1137,47 @@ async function loadRecreationalContent() {
     if (!res.ok) return;
     const d = await res.json();
 
+    const aboutIntroEl = document.getElementById('rec-about-intro');
+    if (aboutIntroEl && d.about_intro) aboutIntroEl.textContent = d.about_intro;
+
     const aboutEl = document.getElementById('rec-about-bullets');
     if (aboutEl && d.about_bullets)
       aboutEl.innerHTML = d.about_bullets.map(b => `<li>${b}</li>`).join('');
+
+    const volEl = document.getElementById('rec-volunteer-cta');
+    if (volEl && d.volunteer_email)
+      volEl.innerHTML = `🙋 <strong>We need volunteer coaches at every level — no experience required!</strong><br>
+        ${d.volunteer_text || ''}<br><br>
+        <a href="mailto:${d.volunteer_email}" style="color:#fff;font-weight:700;">${d.volunteer_link_label || 'Email us to volunteer →'}</a>`;
+
+    const divEl = document.getElementById('rec-divisions-table');
+    if (divEl && Array.isArray(d.divisions) && d.divisions.length)
+      divEl.innerHTML = d.divisions.map(r => `
+        <tr>
+          <td><strong>${r.division || ''}</strong></td>
+          <td>${r.ages || ''}</td>
+          <td>${r.format || ''}</td>
+          <td>${r.schedule || ''}</td>
+        </tr>`).join('');
+
+    const divNoteEl = document.getElementById('rec-divisions-note');
+    if (divNoteEl && d.divisions_note) divNoteEl.textContent = d.divisions_note;
+
+    const ctaHeadEl = document.getElementById('rec-cta-heading');
+    if (ctaHeadEl && d.cta_heading) ctaHeadEl.textContent = d.cta_heading;
+
+    const ctaSubEl = document.getElementById('rec-cta-subtext');
+    if (ctaSubEl && d.cta_subtext) ctaSubEl.innerHTML = d.cta_subtext;
+
+    const ctaBtnEl = document.getElementById('rec-register-btn');
+    if (ctaBtnEl) {
+      ctaBtnEl.href = CONFIG.REGISTER_URL;
+      if (d.register_button_text) ctaBtnEl.textContent = d.register_button_text;
+    }
+
+    const regHighlightEl = document.getElementById('rec-register-highlight');
+    if (regHighlightEl && d.register_highlight)
+      regHighlightEl.innerHTML = `⚠️ ${d.register_highlight}`;
 
     const providesEl = document.getElementById('rec-club-provides');
     if (providesEl && d.club_provides)
@@ -1049,21 +1221,38 @@ async function loadTravelContent() {
     if (tryoutsEl && d.tryouts_text)
       tryoutsEl.innerHTML = `<p>${d.tryouts_text}</p>`;
 
+    const tryoutsCtaEl = document.getElementById('travel-tryouts-cta');
+    if (tryoutsCtaEl && d.commissioner_email)
+      tryoutsCtaEl.innerHTML = `📋 <strong>Questions about tryouts?</strong> Contact the Overall Commissioner ${d.commissioner_name || ''} at <a href="mailto:${d.commissioner_email}" style="color:#fff;">${d.commissioner_email}</a>`;
+
+    const leaguesIntroEl = document.getElementById('travel-leagues-intro');
+    if (leaguesIntroEl && d.leagues_intro) leaguesIntroEl.textContent = d.leagues_intro;
+
+    // Leagues without a URL render as plain (non-clickable) chips.
+    renderLinkList('travel-leagues', d.leagues, 'ext-link', true);
+
+    const boysNoteEl = document.getElementById('travel-boys-note');
+    if (boysNoteEl && d.boys_teams_note_email)
+      boysNoteEl.innerHTML = `Current season roster. For the most current info contact <a href="mailto:${d.boys_teams_note_email}">${d.boys_teams_note_email}</a>.`;
+
     const tecnicaEl = document.getElementById('travel-tecnica');
     if (tecnicaEl && d.tecnica_description)
       tecnicaEl.innerHTML = `<p>${d.tecnica_description}</p>${d.tecnica_philosophy ? `<p><strong>Our Philosophy:</strong> ${d.tecnica_philosophy}</p>` : ''}`;
 
-    const formsEl = document.getElementById('travel-resource-forms');
-    if (formsEl && d.resource_forms)
-      formsEl.innerHTML = d.resource_forms.map(f => `<a class="doc-link" href="${f.url}" target="_blank" rel="noopener">📋 ${f.label}</a>`).join('');
+    const tecnicaLinkEl = document.getElementById('travel-tecnica-link');
+    if (tecnicaLinkEl && d.tecnica_url)
+      tecnicaLinkEl.innerHTML = `<a class="doc-link" href="${d.tecnica_url}" target="_blank" rel="noopener">${d.tecnica_link_label || d.tecnica_url}</a>`;
 
-    const acctEl = document.getElementById('travel-accounting-forms');
-    if (acctEl && d.accounting_forms)
-      acctEl.innerHTML = d.accounting_forms.map(f => `<a class="doc-link" href="${f.url}" target="_blank" rel="noopener">💵 ${f.label}</a>`).join('');
+    const tecnicaNoteEl = document.getElementById('travel-tecnica-social');
+    if (tecnicaNoteEl && d.tecnica_social_note) tecnicaNoteEl.innerHTML = d.tecnica_social_note;
 
-    const policyEl = document.getElementById('travel-policy-docs');
-    if (policyEl && d.policy_docs)
-      policyEl.innerHTML = d.policy_docs.map(f => `<a class="doc-link" href="${f.url}" target="_blank" rel="noopener">📄 ${f.label}</a>`).join('');
+    renderLinkList('travel-resource-forms',   d.resource_forms,   'doc-link', false);
+    renderLinkList('travel-accounting-forms', d.accounting_forms, 'doc-link', false);
+    renderLinkList('travel-policy-docs',      d.policy_docs,      'doc-link', false);
+
+    const policyNoteEl = document.getElementById('travel-policy-note');
+    if (policyNoteEl && d.policy_docs_note_email)
+      policyNoteEl.innerHTML = `Note: Document links will be updated each season. Contact <a href="mailto:${d.policy_docs_note_email}">${d.policy_docs_note_email}</a> if you cannot access a document.`;
   } catch(_) {}
 }
 
@@ -1105,10 +1294,25 @@ async function loadHomepageContent() {
     if (subtextEl && d.hero_subtext)
       subtextEl.textContent = d.hero_subtext;
 
+    const heroBtnEl = document.getElementById('hero-register-btn');
+    if (heroBtnEl) {
+      heroBtnEl.href = CONFIG.REGISTER_URL;
+      if (d.register_button_text) heroBtnEl.textContent = d.register_button_text;
+    }
+
     const linksEl = document.getElementById('helpful-links-list');
     if (linksEl && d.helpful_links)
       linksEl.innerHTML = d.helpful_links.map(l =>
-        `<li><a href="${l.url}"${l.url.startsWith('http') ? ' target="_blank" rel="noopener"' : ''} style="color:var(--red);font-weight:600;text-decoration:none;">${l.emoji ? l.emoji + ' ' : ''}${l.label}</a></li>`
+        `<li><a href="${l.url}"${isExternalUrl(l.url) ? ' target="_blank" rel="noopener"' : ''} style="color:var(--red);font-weight:600;text-decoration:none;">${l.emoji ? l.emoji + ' ' : ''}${l.label}</a></li>`
+      ).join('');
+
+    const dirEl = document.getElementById('homepage-directions');
+    if (dirEl && Array.isArray(d.directions) && d.directions.length)
+      dirEl.innerHTML = d.directions.map(l =>
+        `<a href="${l.url}"${isExternalUrl(l.url) ? ' target="_blank" rel="noopener"' : ''}
+            style="display:flex;align-items:center;gap:0.5rem;padding:0.6rem 0.9rem;background:var(--gray);border:1px solid var(--border);border-radius:7px;color:var(--text);text-decoration:none;font-size:0.88rem;font-weight:600;">
+           ${l.label || ''} <span style="margin-left:auto;color:var(--red);">→</span>
+         </a>`
       ).join('');
   } catch(_) {}
 }

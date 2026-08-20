@@ -1,8 +1,36 @@
 {
   "director_name": "Anthony Desiderio",
   "director_email": "info@jacksonsoccer.com",
+  "njys_contact_email": "coach@njyouthsoccer.com",
+  "volunteer_cta_email": "info@jacksonsoccer.com",
+  "volunteer_cta_text": "We need coaches at every level. No experience necessary — just energy and a willingness to help kids enjoy soccer.",
+  "volunteer_cta_link_label": "Email us to get started.",
+  "available_courses": [
+    {"label": "📄 State Certificate Course (formerly NJYS F Certificate)", "url": "https://www.njyouthsoccer.com/coaching-courses/#state-certificate"},
+    {"label": "📄 NJYS Y Course", "url": "http://www.njyslive.com/home.php?layout=5578641"},
+    {"label": "📄 State E Course", "url": "https://www.njyouthsoccer.com/coaching-courses/#state-certificate"},
+    {"label": "📄 US Soccer Grassroots In-Person License", "url": "http://www.njyouthsoccer.com/grassroots-in-person-licenses"},
+    {"label": "📄 US Soccer Online Grassroots Licenses – 4v4, 7v7, 9v9, 11v11 ($25)", "url": "https://www.njyouthsoccer.com/coaching-courses/#grassroots-licenses"},
+    {"label": "📄 National D License", "url": "http://www.njyslive.com/home.php?layout=5577161"},
+    {"label": "📄 National Youth Coaching Course", "url": "https://www.njyouthsoccer.com/coaching-courses/"},
+    {"label": "📄 Lost License Replacement Form", "url": "https://www.njyouthsoccer.com/coaching-courses/#lost-license"},
+    {"label": "📄 Hosting a State Certificate Course", "url": "https://www.njyouthsoccer.com/coaching-courses/#state-certificate"}
+  ],
+  "additional_resources": [
+    {"label": "⚽ Play-Practice-Play Initiative", "url": "https://www.njyouthsoccer.com/coaching-courses/"},
+    {"label": "🧠 NJYS Concussion Training", "url": "https://www.njyouthsoccer.com/safe-soccer/"},
+    {"label": "🔄 Player Transfers", "url": "https://www.njyouthsoccer.com/registration/#transfers"},
+    {"label": "🎓 US Soccer Digital Coaching Center", "url": "https://www.ussoccer.com/coaching-education"}
+  ],
+  "youth_trainer_links": [
+    {"label": "📋 NJYS Youth Trainer Role Info", "url": "https://www.njyouthsoccer.com/Default.aspx?tabid=733255"}
+  ],
+  "education_pathway_links": [
+    {"label": "🎓 NJYS Coaching Courses", "url": "https://www.njyouthsoccer.com/coaching-courses/"},
+    {"label": "⚽ US Soccer Coaching Education", "url": "https://www.ussoccer.com/coaching-education"}
+  ],
   "youth_trainer_bullets": [
-    "Youth Trainers must be 18 or older to hold a USYS Coach's Pass issued by NJYS.",
+    "Youth Trainers must be <strong>18 or older</strong> to hold a USYS Coach's Pass issued by NJYS.",
     "Must complete a medical waiver certification.",
     "Must maintain a copy of their NJYS State Certificate and CDC Concussion Awareness Certification.",
     "An adult coach must always be supervising and leading during any training event."

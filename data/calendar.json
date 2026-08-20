@@ -1,8 +1,9 @@
 {
   "meeting_dates": "Aug 19 · Sep 16 · Oct 21 · Nov 18, 2026",
+  "meeting_intro": "General Membership Meetings are held at Jackson Township Senior Center (8–9 PM) on:",
   "seasons": [
     {
-      "name": "Fall 2026",
+      "season_name": "Fall 2026",
       "bullets": [
         "Open Registration: June 1 – August 20, 2026",
         "Practices Begin: Mid-August 2026",
@@ -11,7 +12,7 @@
       ]
     },
     {
-      "name": "Spring 2027",
+      "season_name": "Spring 2027",
       "bullets": [
         "Practices Begin: End of March 2027",
         "Games: April – mid-June 2027",

@@ -104,10 +104,15 @@ _inputs:
     label: Membership Meeting Dates
     comment: Shown in the banner on the Calendar page (e.g. Aug 19 · Sep 16 · Oct 21)
     cascade: true
-  name:
+  season_name:
     type: text
     label: Season Name
     comment: e.g. Fall 2026
+    cascade: true
+  meeting_intro:
+    type: textarea
+    label: Membership Meeting Intro Sentence
+    comment: Text shown before the meeting dates in the Calendar page banner
     cascade: true
   bullets:
     type: array
@@ -208,6 +213,11 @@ _inputs:
   accounting_forms:
     type: array
     label: Accounting Forms
+    comment: >-
+      ACTION NEEDED: "Check Request Form" and "Deposit Request Form" still point
+      at old /LinkClick.aspx?... addresses from the previous DNN website. Those
+      links are broken. Replace both URLs with the real Google Drive / Google
+      Form links.
     cascade: true
   policy_docs:
     type: array
@@ -273,6 +283,259 @@ _inputs:
     type: text
     label: Register Button Text
     cascade: true
+  label:
+    type: text
+    label: Link Text
+    comment: The words shown on the link. Emoji at the start of the text are fine.
+    cascade: true
+  url:
+    type: text
+    label: Link URL
+    comment: >-
+      Full address (https://…), a page on this site (travel.html), or leave
+      blank where a plain, non-clickable label is wanted.
+    cascade: true
+
+  # ── Coaches page ───────────────────────────────────────────
+  njys_contact_email:
+    type: email
+    label: NJYS Coaching Schools Email
+    cascade: true
+  available_courses:
+    type: array
+    label: Available Coaching Courses
+    cascade: true
+  additional_resources:
+    type: array
+    label: Additional Coaching Resources
+    cascade: true
+  youth_trainer_links:
+    type: array
+    label: Youth Trainer Links
+    cascade: true
+  education_pathway_links:
+    type: array
+    label: Coaching Education Pathway Links
+    cascade: true
+  volunteer_cta_email:
+    type: email
+    label: Coach Volunteer Email
+    cascade: true
+  volunteer_cta_text:
+    type: textarea
+    label: Coach Volunteer Callout Text
+    cascade: true
+  volunteer_cta_link_label:
+    type: text
+    label: Coach Volunteer Link Text
+    cascade: true
+
+  # ── Club Info page ─────────────────────────────────────────
+  board_intro:
+    type: textarea
+    label: Board of Directors Intro Paragraph
+    cascade: true
+  financial_transparency_text:
+    type: textarea
+    label: Financial Transparency Paragraph
+    cascade: true
+  sponsors_intro:
+    type: textarea
+    label: Sponsors Intro Paragraph
+    cascade: true
+  sponsors:
+    type: array
+    label: Partners & Sponsors
+    comment: Logos shown at the bottom of the Club Info page
+    cascade: true
+  logo_url:
+    type: image
+    label: Sponsor Logo
+    comment: Upload a logo image, or paste the address of one hosted elsewhere
+    uploads_dir: uploads
+    cascade: true
+
+  # ── Travel page ────────────────────────────────────────────
+  leagues:
+    type: array
+    label: Travel Leagues
+    comment: Leave the Link URL blank for a league with no website — it shows as plain text
+    cascade: true
+  leagues_intro:
+    type: textarea
+    label: Travel Leagues Intro Paragraph
+    cascade: true
+  tecnica_url:
+    type: url
+    label: Tecnica Website URL
+    cascade: true
+  tecnica_link_label:
+    type: text
+    label: Tecnica Link Text
+    cascade: true
+  tecnica_social_note:
+    type: textarea
+    label: Tecnica Social Media Note
+    cascade: true
+  boys_teams_note_email:
+    type: email
+    label: Boys Travel Teams Contact Email
+    cascade: true
+  policy_docs_note_email:
+    type: email
+    label: Policy Documents Contact Email
+    cascade: true
+
+  # ── Recreational page ──────────────────────────────────────
+  about_intro:
+    type: textarea
+    label: About the Program Intro Paragraph
+    cascade: true
+  divisions:
+    type: array
+    label: Program Divisions Table
+    comment: One entry per row of the Program Divisions table
+    cascade: true
+  division:
+    type: text
+    label: Division Name
+    cascade: true
+  ages:
+    type: text
+    label: Ages / Grade
+    cascade: true
+  format:
+    type: text
+    label: Format
+    cascade: true
+  schedule:
+    type: text
+    label: Schedule
+    cascade: true
+  divisions_note:
+    type: textarea
+    label: Program Divisions Footnote
+    cascade: true
+  volunteer_email:
+    type: email
+    label: Volunteer Coach Email
+    cascade: true
+  volunteer_text:
+    type: textarea
+    label: Volunteer Callout Text
+    cascade: true
+  volunteer_link_label:
+    type: text
+    label: Volunteer Link Text
+    cascade: true
+  cta_heading:
+    type: text
+    label: Registration Banner Heading
+    cascade: true
+  cta_subtext:
+    type: text
+    label: Registration Banner Subtext
+    cascade: true
+
+  # ── Homepage ───────────────────────────────────────────────
+  directions:
+    type: array
+    label: Get Directions Links
+    cascade: true
+
+  # ── Site-wide navigation & footer (data/site.json) ─────────
+  club_name:
+    type: text
+    label: Club Name
+    comment: Shown in the header logo and the footer
+    cascade: true
+  tagline:
+    type: text
+    label: Club Tagline
+    cascade: true
+  address_line1:
+    type: text
+    label: Footer Address Line 1
+    cascade: true
+  address_line2:
+    type: text
+    label: Footer Address Line 2
+    cascade: true
+  contact_email:
+    type: email
+    label: Footer Contact Email
+    cascade: true
+  login_label:
+    type: text
+    label: Login Button Text
+    cascade: true
+  login_url:
+    type: url
+    label: Login Button URL
+    cascade: true
+  copyright_text:
+    type: text
+    label: Footer Copyright Text
+    comment: The year is added automatically in front of this text
+    cascade: true
+  nav_links:
+    type: array
+    label: Main Navigation Links
+    comment: >-
+      The top navigation bar on every page. Use {{STORE_URL}} or
+      {{REGISTER_URL}} as the Link URL to reuse the Club Store URL / Registration
+      URL from Settings, so those two addresses only need updating in one place.
+    cascade: true
+  href:
+    type: text
+    label: Link URL
+    comment: >-
+      A page on this site (travel.html), a full https:// address, or the token
+      {{STORE_URL}} / {{REGISTER_URL}} to pull the value from Settings.
+    cascade: true
+  external:
+    type: checkbox
+    label: Open in a New Tab
+    cascade: true
+  id:
+    type: text
+    label: Page ID
+    comment: >-
+      Internal name used to highlight the current page in the nav — must match
+      the page (home, club-info, coaches, travel, recreational, fields,
+      calendar, store). Leave as-is unless adding a brand new page.
+    cascade: true
+  social_links:
+    type: array
+    label: Social Media Links
+    cascade: true
+  footer_club_heading:
+    type: text
+    label: Footer "Club" Column Heading
+    cascade: true
+  footer_club_links:
+    type: array
+    label: Footer "Club" Column Links
+    cascade: true
+  footer_fields_heading:
+    type: text
+    label: Footer "Fields" Column Heading
+    cascade: true
+  footer_fields_links:
+    type: array
+    label: Footer "Fields" Column Links
+    cascade: true
+  footer_more_heading:
+    type: text
+    label: Footer "More" Column Heading
+    cascade: true
+  footer_more_links:
+    type: array
+    label: Footer "More" Column Links
+    comment: >-
+      Use {{STORE_URL}} or {{REGISTER_URL}} as a Link URL to reuse the values
+      from Settings.
+    cascade: true
 data_config:
   board:
     path: data/board.json
@@ -294,6 +557,8 @@ data_config:
     path: data/fields.json
   homepage:
     path: data/homepage.json
+  site:
+    path: data/site.json
 timezone: Etc/UTC
 _array_structures:
   announcements:
@@ -361,3 +626,92 @@ _array_structures:
           label: ''
           url: ''
           emoji: ''
+  directions:
+    values:
+      - label: Directions Link
+        value:
+          label: ''
+          url: ''
+  available_courses:
+    values:
+      - label: Coaching Course
+        value:
+          label: ''
+          url: ''
+  additional_resources:
+    values:
+      - label: Coaching Resource
+        value:
+          label: ''
+          url: ''
+  youth_trainer_links:
+    values:
+      - label: Youth Trainer Link
+        value:
+          label: ''
+          url: ''
+  education_pathway_links:
+    values:
+      - label: Education Pathway Link
+        value:
+          label: ''
+          url: ''
+  leagues:
+    values:
+      - label: League
+        value:
+          label: ''
+          url: ''
+  sponsors:
+    values:
+      - label: Sponsor
+        value:
+          name: ''
+          url: ''
+          logo_url: ''
+  divisions:
+    values:
+      - label: Division
+        value:
+          division: ''
+          ages: ''
+          format: ''
+          schedule: ''
+  seasons:
+    values:
+      - label: Season
+        value:
+          season_name: ''
+          bullets: []
+  nav_links:
+    values:
+      - label: Navigation Link
+        value:
+          id: ''
+          label: ''
+          href: ''
+          external: false
+  social_links:
+    values:
+      - label: Social Media Link
+        value:
+          label: ''
+          url: ''
+  footer_club_links:
+    values:
+      - label: Footer Link
+        value:
+          label: ''
+          url: ''
+  footer_fields_links:
+    values:
+      - label: Footer Link
+        value:
+          label: ''
+          url: ''
+  footer_more_links:
+    values:
+      - label: Footer Link
+        value:
+          label: ''
+          url: ''
