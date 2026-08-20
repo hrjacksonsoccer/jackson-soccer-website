@@ -63,7 +63,7 @@ _inputs:
   photo:
     type: image
     label: Photo
-    comment: Upload a photo
+    comment: Upload an announcement image
     cascade: true
     uploads_dir: uploads
   title:
