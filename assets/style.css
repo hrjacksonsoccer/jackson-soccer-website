@@ -1201,12 +1201,15 @@ a { color: var(--red); }
   .footer-grid { grid-template-columns: 1fr 1fr; }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 1024px) {
   .desktop-nav { display: none; }
   .hamburger { display: block; }
-  /* Hide login button and desktop search on mobile — both are in the mobile menu */
+  /* Hide login button and desktop search — both are in the mobile menu */
   .header-login-btn { display: none !important; }
   .search-wrap { display: none; }
+}
+
+@media (max-width: 640px) {
   /* Let the logo shrink so hamburger is never clipped */
   .site-logo { flex-shrink: 1; min-width: 0; }
   .logo-text { font-size: 0.82rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
