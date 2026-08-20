@@ -62,10 +62,10 @@ _inputs:
     cascade: true
   photo:
     type: image
-    label: Headshot Photo
-    comment: Upload a headshot (square crop works best)
+    label: Photo
+    comment: Upload a photo
     cascade: true
-    uploads_dir: assets/board
+    uploads_dir: uploads
   title:
     type: text
     label: Title
@@ -84,12 +84,6 @@ _inputs:
     label: Link URL
     comment: Optional — leave blank if no link
     cascade: true
-  announcement_photo:
-    type: image
-    label: Photo
-    comment: Upload an image for this announcement
-    cascade: true
-    uploads_dir: assets/announcements
   active:
     type: checkbox
     label: Show on site
@@ -122,7 +116,7 @@ _array_structures:
           date: ''
           description: ''
           link_url: ''
-          announcement_photo: ''
+          photo: ''
           active: true
   board:
     values:
