@@ -62,10 +62,10 @@ _inputs:
     cascade: true
   photo:
     type: image
-    label: Headshot Photo
-    comment: Upload a headshot photo (square crop works best)
+    label: Photo
+    comment: Upload a photo (headshot or announcement image)
     cascade: true
-    uploads_dir: assets/board
+    uploads_dir: uploads
   open:
     type: checkbox
     label: Open Position
@@ -76,13 +76,45 @@ _inputs:
     label: Bio
     comment: Optional short bio or note — displays below their title on the website
     cascade: true
+  description:
+    type: textarea
+    label: Description
+    cascade: true
+  link_url:
+    type: url
+    label: Link URL
+    comment: Optional — leave blank if no link
+    cascade: true
+  emoji:
+    type: text
+    label: Emoji
+    comment: Shown when no photo is uploaded (e.g. ⚽ 🏆 📢)
+    cascade: true
+  active:
+    type: checkbox
+    label: Show on site
+    comment: Uncheck to hide this announcement without deleting it
+    cascade: true
 data_config:
   board:
     path: data/board.json
+  announcements:
+    path: data/announcements.json
   settings:
     path: data/settings.json
 timezone: Etc/UTC
 _array_structures:
+  announcements:
+    values:
+      - label: Announcement
+        value:
+          title: ''
+          date: ''
+          description: ''
+          link_url: ''
+          emoji: '📢'
+          photo: ''
+          active: true
   board:
     values:
       - label: Board Member

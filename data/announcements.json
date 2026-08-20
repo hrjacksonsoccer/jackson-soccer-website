@@ -1,0 +1,92 @@
+[
+  {
+    "title": "Register for Fall Soccer",
+    "date": "May 14, 2026",
+    "description": "Fall Registration Open May 14, 2026 to Aug. 30, 2026. All levels welcome, ages 3–17.",
+    "link_url": "https://login.stacksports.com/login?client_id=612b0399b1854a002e427f78&redirect_uri=https://core-api.bluesombrero.com/login/redirect/portal/50583&app_name=Jackson+Soccer+Club&portalid=50583&instancekey=clubs",
+    "emoji": "⚽",
+    "photo": "",
+    "active": true
+  },
+  {
+    "title": "NJYS Awards JSC Coach of the Year Honors",
+    "date": "",
+    "description": "JSC Recreational Coach Honored as New Jersey Youth Soccer Coach of the Year!",
+    "link_url": "",
+    "emoji": "🏅",
+    "photo": "",
+    "active": true
+  },
+  {
+    "title": "Sunburst Tournament Champions",
+    "date": "",
+    "description": "Congratulations 2012 TES Girls Tournament Champions",
+    "link_url": "",
+    "emoji": "🏆",
+    "photo": "",
+    "active": true
+  },
+  {
+    "title": "2014 TES – Manalapan Tournament",
+    "date": "",
+    "description": "2014 TES Boys Manalapan Memorial Day Tournament Champions",
+    "link_url": "",
+    "emoji": "🏆",
+    "photo": "",
+    "active": true
+  },
+  {
+    "title": "Become a Referee",
+    "date": "",
+    "description": "Interested in becoming a referee? Click for more information.",
+    "link_url": "https://www.njrefs.com/",
+    "emoji": "🟡",
+    "photo": "",
+    "active": true
+  },
+  {
+    "title": "",
+    "date": "",
+    "description": "",
+    "link_url": "",
+    "emoji": "",
+    "photo": "",
+    "active": false
+  },
+  {
+    "title": "",
+    "date": "",
+    "description": "",
+    "link_url": "",
+    "emoji": "",
+    "photo": "",
+    "active": false
+  },
+  {
+    "title": "",
+    "date": "",
+    "description": "",
+    "link_url": "",
+    "emoji": "",
+    "photo": "",
+    "active": false
+  },
+  {
+    "title": "",
+    "date": "",
+    "description": "",
+    "link_url": "",
+    "emoji": "",
+    "photo": "",
+    "active": false
+  },
+  {
+    "title": "",
+    "date": "",
+    "description": "",
+    "link_url": "",
+    "emoji": "",
+    "photo": "",
+    "active": false
+  }
+]

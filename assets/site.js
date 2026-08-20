@@ -722,27 +722,53 @@ function renderAnnouncements(items, containerId, countId) {
 }
 
 async function loadAnnouncements(containerId, countId) {
-  if (CONFIG.ANNOUNCEMENTS_CSV === 'YOUR_ANNOUNCEMENTS_CSV_URL_HERE') {
-    renderAnnouncements(DEMO_ANNOUNCEMENTS, containerId, countId);
-    return;
-  }
+  // 1. Try data/announcements.json (CloudCannon-managed)
   try {
-    const res = await fetch(CONFIG.ANNOUNCEMENTS_CSV);
-    const rows = parseCSV(await res.text());
-    const items = rows
-      .filter(r => r['Title'])
-      .map(r => ({
-        title: r['Title'],
-        date: r['Date'],
-        description: r['Description'],
-        imageUrl: null,
-        linkUrl: r['LinkURL'],
-        emoji: r['Emoji'] || '📢'
-      }));
-    renderAnnouncements(items.length ? items : DEMO_ANNOUNCEMENTS, containerId, countId);
-  } catch (_) {
-    renderAnnouncements(DEMO_ANNOUNCEMENTS, containerId, countId);
+    const res = await fetch('data/announcements.json');
+    if (res.ok) {
+      const raw = await res.json();
+      const items = raw
+        .filter(a => a.active && a.title)
+        .slice(0, 10)
+        .map(a => ({
+          title: a.title,
+          date: a.date || '',
+          description: a.description || '',
+          imageUrl: a.photo || null,
+          linkUrl: a.link_url || '',
+          emoji: a.emoji || '📢'
+        }));
+      if (items.length) {
+        renderAnnouncements(items, containerId, countId);
+        return;
+      }
+    }
+  } catch (_) {}
+
+  // 2. Fall back to CSV if configured
+  if (CONFIG.ANNOUNCEMENTS_CSV) {
+    try {
+      const res = await fetch(CONFIG.ANNOUNCEMENTS_CSV);
+      const rows = parseCSV(await res.text());
+      const items = rows
+        .filter(r => r['Title'])
+        .map(r => ({
+          title: r['Title'],
+          date: r['Date'],
+          description: r['Description'],
+          imageUrl: null,
+          linkUrl: r['LinkURL'],
+          emoji: r['Emoji'] || '📢'
+        }));
+      if (items.length) {
+        renderAnnouncements(items, containerId, countId);
+        return;
+      }
+    } catch (_) {}
   }
+
+  // 3. Demo data
+  renderAnnouncements(DEMO_ANNOUNCEMENTS, containerId, countId);
 }
 
 /* ── CALENDAR EMBED ─────────────────────────────────────────── */
