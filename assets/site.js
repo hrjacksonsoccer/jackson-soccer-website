@@ -215,10 +215,7 @@ function buildHeader(activePage) {
             <small>Play · Train · Grow · Succeed</small>
           </div>
         </a>
-        <nav class="desktop-nav" aria-label="Main navigation">
-          <ul>${desktopLinks}</ul>
-        </nav>
-        <div style="display:flex;align-items:center;gap:0.75rem;flex-shrink:0;">
+        <div class="header-right">
           <div class="search-wrap">
             <input type="search" id="site-search" placeholder="Search…" autocomplete="off"
               oninput="handleSearch(this.value,'search-results')"
@@ -228,15 +225,14 @@ function buildHeader(activePage) {
             <div id="search-results" class="search-results"></div>
           </div>
           <a href="https://www.jacksonsoccer.com/Default.aspx?tabid=717119&isLogin=True"
-             target="_blank" rel="noopener" class="header-login-btn"
-             style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.38rem 0.9rem;border:1px solid #555;border-radius:5px;color:#ddd;text-decoration:none;font-size:0.78rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;transition:border-color 0.15s,color 0.15s;"
-             onmouseover="this.style.borderColor='#C8102E';this.style.color='#fff';"
-             onmouseout="this.style.borderColor='#555';this.style.color='#ddd';">
-            &#x25A1;&nbsp; Login
+             target="_blank" rel="noopener" class="header-login-btn">⬡&nbsp; Login
           </a>
           <button class="hamburger" onclick="toggleMobileNav()" aria-label="Open menu">☰</button>
         </div>
       </div>
+      <nav class="main-nav-bar" aria-label="Main navigation">
+        <ul>${desktopLinks}</ul>
+      </nav>
       <nav id="mobile-nav" aria-label="Mobile navigation">
         <ul>
           <li class="mobile-search-li">
@@ -257,7 +253,6 @@ function buildHeader(activePage) {
         </ul>
       </nav>
     </header>
-    <div class="accent-bar"></div>
   `;
 }
 
