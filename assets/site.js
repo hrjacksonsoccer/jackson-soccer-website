@@ -822,22 +822,21 @@ async function loadPracticeSchedule(containerId) {
     const allRows = Array.from(doc.querySelectorAll('tbody tr'));
     if (!allRows.length) throw new Error();
 
-    // Hard-coded color map from Google Sheets pubhtml CSS (external CSS is CORS-blocked)
-    // Values derived from getComputedStyle on live sheet cells
+    // Color map from getComputedStyle on live sheet — covers all sN classes in this sheet
     const classMap = {
-      s1:  { bg: '#999999', fg: null,    bold: false },
-      s3:  { bg: '#274e13', fg: '#ffffff', bold: true  },
-      s6:  { bg: '#92d050', fg: null,    bold: false },
-      s7:  { bg: '#92d050', fg: null,    bold: true  },
-      s8:  { bg: '#92d050', fg: null,    bold: false },
-      s10: { bg: '#ffff00', fg: null,    bold: false },
-      s11: { bg: '#ffff00', fg: null,    bold: true  },
-      s12: { bg: '#000000', fg: '#ffffff', bold: true  },
-      s13: { bg: '#00ff00', fg: null,    bold: false },
-      s17: { bg: '#ff0000', fg: '#ffffff', bold: true  },
-      s23: { bg: '#00ff00', fg: null,    bold: false },
-      s33: { bg: '#00ff00', fg: null,    bold: false },
-      s47: { bg: '#00ff00', fg: null,    bold: false },
+      s1:  { bg: 'rgb(153,153,153)', fg: null,    bold: true  },
+      s3:  { bg: 'rgb(39,78,19)',    fg: '#ffffff', bold: true  },
+      s6:  { bg: 'rgb(146,208,80)',  fg: null,    bold: true  },
+      s8:  { bg: 'rgb(146,208,80)',  fg: null,    bold: true  },
+      s10: { bg: 'rgb(255,255,0)',   fg: null,    bold: true  },
+      s12: { bg: 'rgb(0,0,0)',       fg: '#ffffff', bold: true  },
+      s13: { bg: 'rgb(0,255,0)',     fg: null,    bold: true  },
+      s14: { bg: 'rgb(255,255,0)',   fg: null,    bold: true  },
+      s15: { bg: 'rgb(255,255,0)',   fg: null,    bold: true  },
+      s17: { bg: 'rgb(255,0,0)',     fg: '#ffffff', bold: true  },
+      s23: { bg: 'rgb(0,255,0)',     fg: null,    bold: true  },
+      s24: { bg: 'rgb(153,153,153)', fg: null,    bold: false },
+      s33: { bg: 'rgb(0,255,0)',     fg: null,    bold: true  },
     };
 
     // Group rows by day; skip rows where every cell is empty text
@@ -848,7 +847,7 @@ async function loadPracticeSchedule(containerId) {
       const text = row.textContent.trim();
       const match = DAYS.find(d => text.includes(d));
       if (match) currentDay = match;
-      const hasContent = Array.from(row.querySelectorAll('td')).some(td => td.textContent.trim() !== '');
+      const hasContent = Array.from(row.querySelectorAll('td')).some(td => td.textContent.replace(/[\s ]+/g, '') !== '');
       if (currentDay && hasContent) groups[currentDay].push(row);
     });
 
