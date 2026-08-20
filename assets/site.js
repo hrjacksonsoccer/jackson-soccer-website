@@ -822,15 +822,17 @@ async function loadPracticeSchedule(containerId) {
     const allRows = Array.from(doc.querySelectorAll('tbody tr'));
     if (!allRows.length) throw new Error();
 
-    // Group rows by day
+    // Group rows by day, skip fully-empty rows
     const groups = {};
     DAYS.forEach(d => groups[d] = []);
     let currentDay = null;
     allRows.forEach(row => {
-      const text = row.textContent;
+      const text = row.textContent.trim();
       const match = DAYS.find(d => text.includes(d));
       if (match) currentDay = match;
-      if (currentDay) groups[currentDay].push(row);
+      // Skip rows where every cell is blank
+      const hasContent = Array.from(row.querySelectorAll('td')).some(td => td.textContent.trim() !== '');
+      if (currentDay && hasContent) groups[currentDay].push(row);
     });
 
     const tabBtns = DAYS.map((d, i) =>
@@ -845,7 +847,15 @@ async function loadPracticeSchedule(containerId) {
           const cs = td.getAttribute('colspan') ? ` colspan="${td.getAttribute('colspan')}"` : '';
           const rs = td.getAttribute('rowspan') ? ` rowspan="${td.getAttribute('rowspan')}"` : '';
           const txt = td.textContent.trim();
-          return `<td${cs}${rs}>${txt}</td>`;
+          // Extract background-color from Google's inline style
+          const styleAttr = td.getAttribute('style') || '';
+          const bgMatch = styleAttr.match(/background-color\s*:\s*([^;]+)/i);
+          const colorMatch = styleAttr.match(/(?:^|;)\s*color\s*:\s*([^;]+)/i);
+          let style = '';
+          if (bgMatch) style += `background-color:${bgMatch[1].trim()};`;
+          if (colorMatch) style += `color:${colorMatch[1].trim()};`;
+          const styleStr = style ? ` style="${style}"` : '';
+          return `<td${cs}${rs}${styleStr}>${txt}</td>`;
         }).join('');
         return `<tr>${cells}</tr>`;
       }).join('');
