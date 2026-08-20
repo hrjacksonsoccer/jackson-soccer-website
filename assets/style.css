@@ -1011,6 +1011,24 @@ a { color: var(--red); }
 }
 .plb-close:hover { color: #ddd; }
 
+/* ── GOOGLE SHEET EMBED ── */
+.sheet-embed-wrap {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-top: 0.75rem;
+}
+
+#practice-schedule-frame {
+  width: 100%;
+  min-width: 600px;
+  height: 600px;
+  border: none;
+  display: block;
+}
+
 /* ── DIVISIONS TABLE ── */
 .div-table {
   width: 100%;
