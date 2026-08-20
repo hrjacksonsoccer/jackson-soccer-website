@@ -3,6 +3,6 @@
   "store_url": "https://www.soccer.com/club/#/2000598230/fanwear?category=Shirts",
   "field_status_csv": "https://docs.google.com/spreadsheets/d/e/2PACX-1vTLJNTDIV0yN6fCLPU6WkjlB_l8vSkLHaXJ-p050qznRzDl5WsVJv6lMhD5VbKHeu07cVOL29ccZGGX/pub?output=csv",
   "announcements_csv": "",
-  "google_calendar_src": "",
+  "google_calendar_src": "https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=America%2FNew_York&src=amFja3NvbnNvY2Nlci5jb21fbTNsNXVmNHN0b2ZvbHMyYTM1ZDluaTI2b2dAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&color=%23870101&mode=AGENDA",
   "travel_teams_csv": "https://docs.google.com/spreadsheets/d/e/2PACX-1vSU_2LrMhfupqIUvT_Gpt8rc0-JaEEXe5Vzk0PPPk0-XAju0OP-RmWSMtrNbo39P1Yc4JanYqlzBano/pub?output=csv"
 }
