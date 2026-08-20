@@ -1100,8 +1100,12 @@ async function loadMissionContent(containerId) {
       generalEl.innerHTML = `<a href="mailto:${d.general_email}">${d.general_email}</a>`;
 
     const travelEl = document.getElementById('club-contact-travel');
-    if (travelEl && d.travel_commissioner_name)
-      travelEl.innerHTML = `Contact <strong>${d.travel_commissioner_name}</strong> (Overall Commissioner)<br>for general travel info and field scheduling.`;
+    if (travelEl && d.travel_commissioner_name) {
+      const tEmail = d.travel_commissioner_email
+        ? ` <a href="mailto:${d.travel_commissioner_email}">${d.travel_commissioner_email}</a>`
+        : '';
+      travelEl.innerHTML = `Contact <strong>${d.travel_commissioner_name}</strong> (Overall Commissioner)<br>for general travel info and field scheduling.${tEmail}`;
+    }
 
     const boardIntroEl = document.getElementById('club-board-intro');
     if (boardIntroEl && d.board_intro) boardIntroEl.textContent = d.board_intro;
