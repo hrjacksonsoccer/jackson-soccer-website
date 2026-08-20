@@ -20,18 +20,20 @@
 
     <div class="content-section">
       <h2>Mission &amp; Vision</h2>
-      <p>Jackson Soccer Club aspires to be an outstanding educational-athletic organization that provides a high-quality experience to every athlete and promotes the positives of team sports. A high-quality experience is one in which every athlete:</p>
-      <ul>
-        <li>Learns the skills, tactics, and strategies of the game and improves as a player</li>
-        <li>Is challenged to improve and achieve as a player</li>
-        <li>Shares positive and valuable experiences with friends</li>
-        <li>Feels like an important part of the team regardless of performance</li>
-        <li>Learns "life lessons" that have value beyond the playing field</li>
-        <li>Is coached using the principles of Positive Coaching</li>
-        <li>Has fun at practices and games</li>
-      </ul>
-      <p>Mastering the skills of the game and having fun go hand-in-hand with developing a lifelong interest in soccer and all team sports. Our goal is to encourage every child to have fun and return to the program year after year. We also hope that all parents will enjoy their experience and feel rewarded by their involvement. We want players and families to feel they are part of a program and not just on a team.</p>
-      <p>We recognize that coaches are the people who most directly make this all possible. It is our goal to provide every coach with the tools to succeed and to grow as coaches and role models. We are committed to creating a positive culture, in which coaches, trainers, parents, fans, officials and athletes work together to achieve our mission.</p>
+      <div id="mission-content">
+        <p>Jackson Soccer Club aspires to be an outstanding educational-athletic organization that provides a high-quality experience to every athlete and promotes the positives of team sports. A high-quality experience is one in which every athlete:</p>
+        <ul>
+          <li>Learns the skills, tactics, and strategies of the game and improves as a player</li>
+          <li>Is challenged to improve and achieve as a player</li>
+          <li>Shares positive and valuable experiences with friends</li>
+          <li>Feels like an important part of the team regardless of performance</li>
+          <li>Learns "life lessons" that have value beyond the playing field</li>
+          <li>Is coached using the principles of Positive Coaching</li>
+          <li>Has fun at practices and games</li>
+        </ul>
+        <p>Mastering the skills of the game and having fun go hand-in-hand with developing a lifelong interest in soccer and all team sports. Our goal is to encourage every child to have fun and return to the program year after year. We also hope that all parents will enjoy their experience and feel rewarded by their involvement. We want players and families to feel they are part of a program and not just on a team.</p>
+        <p>We recognize that coaches are the people who most directly make this all possible. It is our goal to provide every coach with the tools to succeed and to grow as coaches and role models. We are committed to creating a positive culture, in which coaches, trainers, parents, fans, officials and athletes work together to achieve our mission.</p>
+      </div>
     </div>
 
     <div class="content-section">
@@ -116,6 +118,7 @@
   loadSettings().then(() => {
     initSite('club-info');
     loadBoard('board-grid');
+    loadMissionContent('mission-content');
   });
 </script>
 </body>

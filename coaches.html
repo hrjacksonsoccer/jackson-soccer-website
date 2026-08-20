@@ -48,7 +48,7 @@
     <div class="content-section">
       <h2>Youth Trainer Pass</h2>
       <p>The NJYS Youth Trainer program identifies individuals who are reliable, interested in helping children, and want to serve as Youth Trainers assisting adult coaches during practices and games.</p>
-      <ul>
+      <ul id="youth-trainer-bullets">
         <li>Youth Trainers must be <strong>18 or older</strong> to hold a USYS Coach's Pass issued by NJYS.</li>
         <li>Must complete a medical waiver certification.</li>
         <li>Must maintain a copy of their NJYS State Certificate and CDC Concussion Awareness Certification.</li>
@@ -73,7 +73,7 @@
       <p>JSC provides support for all volunteer coaches. Here are tools and contacts to help you run a successful season.</p>
 
       <h3>Recreational Coaches</h3>
-      <ul>
+      <ul id="rec-coach-bullets">
         <li>Peanuts, Mini Kickers, and Micro Divisions have JSC trainer-led sessions.</li>
         <li>Collegiate &amp; Major League coaches receive trainer-led Wednesday night practice support.</li>
         <li>No prior soccer experience required — we train and support all volunteer coaches.</li>
@@ -81,7 +81,7 @@
       </ul>
 
       <h3>Travel Coaches</h3>
-      <ul>
+      <ul id="travel-coach-bullets">
         <li>Contact the Overall Commissioner (Ryan Monday) for field scheduling and travel league info.</li>
         <li>JSC supports 30+ travel teams each Fall and Spring season.</li>
         <li>Leagues include EDP, MAPS, JAGS, MOSA, and Ocean County Recreation.</li>
@@ -94,7 +94,7 @@
 
     <div class="content-section">
       <h2>Contact — Director of Coaching</h2>
-      <div class="contact-block">
+      <div class="contact-block" id="director-contact">
         <h3>Anthony Desiderio</h3>
         <p>Director of Coaching<br>
         <a href="mailto:info@jacksonsoccer.com">info@jacksonsoccer.com</a></p>
@@ -107,6 +107,6 @@
 <div id="site-footer"></div>
 
 <script src="assets/site.js?v=5"></script>
-<script>loadSettings().then(() => initSite('coaches'));</script>
+<script>loadSettings().then(() => { initSite('coaches'); loadCoachesContent(); });</script>
 </body>
 </html>

@@ -99,6 +99,60 @@ _inputs:
     label: Bio
     comment: Optional short bio — displays on the website
     cascade: true
+  meeting_dates:
+    type: text
+    label: Membership Meeting Dates
+    comment: Shown in the banner on the Calendar page (e.g. Aug 19 · Sep 16 · Oct 21)
+    cascade: true
+  name:
+    type: text
+    label: Season Name
+    comment: e.g. Fall 2026
+    cascade: true
+  bullets:
+    type: array
+    label: Schedule Bullets
+    cascade: true
+  game_day_bullets:
+    type: array
+    label: Game Day Info
+    cascade: true
+  mission_intro:
+    type: textarea
+    label: Mission Intro Paragraph
+    cascade: true
+  mission_bullets:
+    type: array
+    label: Mission Bullet Points
+    cascade: true
+  mission_closing:
+    type: textarea
+    label: Mission Closing Paragraph
+    cascade: true
+  coaching_statement:
+    type: textarea
+    label: Coaching Statement
+    cascade: true
+  director_name:
+    type: text
+    label: Director of Coaching Name
+    cascade: true
+  director_email:
+    type: email
+    label: Director of Coaching Email
+    cascade: true
+  youth_trainer_bullets:
+    type: array
+    label: Youth Trainer Requirements
+    cascade: true
+  rec_coach_bullets:
+    type: array
+    label: Recreational Coach Info
+    cascade: true
+  travel_coach_bullets:
+    type: array
+    label: Travel Coach Info
+    cascade: true
 data_config:
   board:
     path: data/board.json
@@ -106,6 +160,12 @@ data_config:
     path: data/announcements.json
   settings:
     path: data/settings.json
+  calendar:
+    path: data/calendar.json
+  coaches:
+    path: data/coaches.json
+  club_info:
+    path: data/club-info.json
 timezone: Etc/UTC
 _array_structures:
   announcements:

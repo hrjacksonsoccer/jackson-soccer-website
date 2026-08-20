@@ -1,0 +1,27 @@
+{
+  "meeting_dates": "Aug 19 · Sep 16 · Oct 21 · Nov 18, 2026",
+  "seasons": [
+    {
+      "name": "Fall 2026",
+      "bullets": [
+        "Open Registration: June 1 – August 20, 2026",
+        "Practices Begin: Mid-August 2026",
+        "Games: September – early November 2026",
+        "Season Length: 8 weeks"
+      ]
+    },
+    {
+      "name": "Spring 2027",
+      "bullets": [
+        "Practices Begin: End of March 2027",
+        "Games: April – mid-June 2027",
+        "Season Length: 8 weeks"
+      ]
+    }
+  ],
+  "game_day_bullets": [
+    "All age groups play Saturday mornings: 8:30 AM – noon",
+    "Collegiate & Major League: Wednesday night practices",
+    "Specific times will be communicated by your coach before the season"
+  ]
+}

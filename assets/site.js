@@ -902,6 +902,77 @@ async function loadPracticeSchedule(containerId) {
   } catch(_) { fallback(); }
 }
 
+/* ── CALENDAR CONTENT ───────────────────────────────────────── */
+
+async function loadCalendarContent(bannerId, scheduleId) {
+  try {
+    const res = await fetch('data/calendar.json');
+    if (!res.ok) return;
+    const d = await res.json();
+
+    // Update meeting dates banner
+    const banner = document.getElementById(bannerId);
+    if (banner && d.meeting_dates) {
+      banner.innerHTML = `📅 <strong>Upcoming:</strong> General Membership Meetings are held at Jackson Township Senior Center (8–9 PM) on: ${d.meeting_dates}`;
+    }
+
+    // Render season schedule
+    const el = document.getElementById(scheduleId);
+    if (!el) return;
+    let html = '';
+    (d.seasons || []).forEach(s => {
+      html += `<h3>${s.name}</h3><ul>${(s.bullets||[]).map(b=>`<li>${b}</li>`).join('')}</ul>`;
+    });
+    if (d.game_day_bullets && d.game_day_bullets.length) {
+      html += `<h3>Game Day</h3><ul>${d.game_day_bullets.map(b=>`<li>${b}</li>`).join('')}</ul>`;
+    }
+    el.innerHTML = html;
+  } catch(_) {}
+}
+
+/* ── COACHES CONTENT ─────────────────────────────────────────── */
+
+async function loadCoachesContent() {
+  try {
+    const res = await fetch('data/coaches.json');
+    if (!res.ok) return;
+    const d = await res.json();
+
+    const ytEl = document.getElementById('youth-trainer-bullets');
+    if (ytEl && d.youth_trainer_bullets)
+      ytEl.innerHTML = d.youth_trainer_bullets.map(b=>`<li>${b}</li>`).join('');
+
+    const recEl = document.getElementById('rec-coach-bullets');
+    if (recEl && d.rec_coach_bullets)
+      recEl.innerHTML = d.rec_coach_bullets.map(b=>`<li>${b}</li>`).join('');
+
+    const trvEl = document.getElementById('travel-coach-bullets');
+    if (trvEl && d.travel_coach_bullets)
+      trvEl.innerHTML = d.travel_coach_bullets.map(b=>`<li>${b}</li>`).join('');
+
+    const dirEl = document.getElementById('director-contact');
+    if (dirEl && d.director_name)
+      dirEl.innerHTML = `<h3>${d.director_name}</h3><p>Director of Coaching<br><a href="mailto:${d.director_email}">${d.director_email}</a></p>`;
+  } catch(_) {}
+}
+
+/* ── CLUB INFO / MISSION ─────────────────────────────────────── */
+
+async function loadMissionContent(containerId) {
+  try {
+    const res = await fetch('data/club-info.json');
+    if (!res.ok) return;
+    const d = await res.json();
+    const el = document.getElementById(containerId);
+    if (!el) return;
+    el.innerHTML = `
+      ${d.mission_intro ? `<p>${d.mission_intro}</p>` : ''}
+      ${d.mission_bullets ? `<ul>${d.mission_bullets.map(b=>`<li>${b}</li>`).join('')}</ul>` : ''}
+      ${d.mission_closing ? `<p>${d.mission_closing}</p>` : ''}
+      ${d.coaching_statement ? `<p>${d.coaching_statement}</p>` : ''}`;
+  } catch(_) {}
+}
+
 /* ── TRAVEL TEAMS ───────────────────────────────────────────── */
 
 function renderTravelTeamsTable(rows) {

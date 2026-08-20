@@ -18,7 +18,7 @@
 
   <div class="page-body">
 
-    <div class="alert-banner">
+    <div class="alert-banner" id="meeting-dates-banner">
       📅 <strong>Upcoming:</strong> General Membership Meetings are held at Jackson Township Senior Center (8–9 PM) on:
       Aug 19 &nbsp;·&nbsp; Sep 16 &nbsp;·&nbsp; Oct 21 &nbsp;·&nbsp; Nov 18, 2026
     </div>
@@ -27,28 +27,27 @@
 
     <div class="content-section" style="margin-top:1.5rem;">
       <h2>Season Schedule</h2>
-
-      <h3>Fall 2026</h3>
-      <ul>
-        <li>Open Registration: June 1 – August 20, 2026</li>
-        <li>Practices Begin: Mid-August 2026</li>
-        <li>Games: September – early November 2026</li>
-        <li>Season Length: 8 weeks</li>
-      </ul>
-
-      <h3>Spring 2027</h3>
-      <ul>
-        <li>Practices Begin: End of March 2027</li>
-        <li>Games: April – mid-June 2027</li>
-        <li>Season Length: 8 weeks</li>
-      </ul>
-
-      <h3>Game Day</h3>
-      <ul>
-        <li>All age groups play Saturday mornings: 8:30 AM – noon</li>
-        <li>Collegiate &amp; Major League: Wednesday night practices</li>
-        <li>Specific times will be communicated by your coach before the season</li>
-      </ul>
+      <div id="season-schedule">
+        <h3>Fall 2026</h3>
+        <ul>
+          <li>Open Registration: June 1 – August 20, 2026</li>
+          <li>Practices Begin: Mid-August 2026</li>
+          <li>Games: September – early November 2026</li>
+          <li>Season Length: 8 weeks</li>
+        </ul>
+        <h3>Spring 2027</h3>
+        <ul>
+          <li>Practices Begin: End of March 2027</li>
+          <li>Games: April – mid-June 2027</li>
+          <li>Season Length: 8 weeks</li>
+        </ul>
+        <h3>Game Day</h3>
+        <ul>
+          <li>All age groups play Saturday mornings: 8:30 AM – noon</li>
+          <li>Collegiate &amp; Major League: Wednesday night practices</li>
+          <li>Specific times will be communicated by your coach before the season</li>
+        </ul>
+      </div>
     </div>
 
   </div>
@@ -61,6 +60,7 @@
   loadSettings().then(() => {
     initSite('calendar');
     loadCalendar('calendar-embed');
+    loadCalendarContent('meeting-dates-banner', 'season-schedule');
   });
 </script>
 </body>
