@@ -822,7 +822,23 @@ async function loadPracticeSchedule(containerId) {
     const allRows = Array.from(doc.querySelectorAll('tbody tr'));
     if (!allRows.length) throw new Error();
 
-    // Group rows by day, skip fully-empty rows
+    // Build class → color map from Google's <style> tag
+    const classMap = {};
+    const styleEl = doc.querySelector('style');
+    if (styleEl) {
+      const css = styleEl.textContent;
+      const rules = css.match(/\.[a-z]\d+\s*\{[^}]*\}/gi) || [];
+      rules.forEach(rule => {
+        const cls = (rule.match(/\.([a-z]\d+)/i) || [])[1];
+        if (!cls) return;
+        const bg  = (rule.match(/background-color\s*:\s*([^;}"]+)/i) || [])[1];
+        const fg  = (rule.match(/(?:^|[;{])\s*color\s*:\s*([^;}"]+)/i) || [])[1];
+        const bld = /font-weight\s*:\s*bold/i.test(rule);
+        classMap[cls] = { bg: bg ? bg.trim() : null, fg: fg ? fg.trim() : null, bold: bld };
+      });
+    }
+
+    // Group rows by day; skip rows where every cell is empty text
     const groups = {};
     DAYS.forEach(d => groups[d] = []);
     let currentDay = null;
@@ -830,7 +846,6 @@ async function loadPracticeSchedule(containerId) {
       const text = row.textContent.trim();
       const match = DAYS.find(d => text.includes(d));
       if (match) currentDay = match;
-      // Skip rows where every cell is blank
       const hasContent = Array.from(row.querySelectorAll('td')).some(td => td.textContent.trim() !== '');
       if (currentDay && hasContent) groups[currentDay].push(row);
     });
@@ -838,6 +853,8 @@ async function loadPracticeSchedule(containerId) {
     const tabBtns = DAYS.map((d, i) =>
       `<button class="sched-tab${i===0?' active':''}" data-day="${d}">${d.slice(0,3).toUpperCase()}</button>`
     ).join('');
+
+    const WHITE = /^(#fff(fff)?|rgb\(255,\s*255,\s*255\)|white)$/i;
 
     const panels = DAYS.map((d, i) => {
       const rows = groups[d];
@@ -847,15 +864,13 @@ async function loadPracticeSchedule(containerId) {
           const cs = td.getAttribute('colspan') ? ` colspan="${td.getAttribute('colspan')}"` : '';
           const rs = td.getAttribute('rowspan') ? ` rowspan="${td.getAttribute('rowspan')}"` : '';
           const txt = td.textContent.trim();
-          // Extract background-color from Google's inline style
-          const styleAttr = td.getAttribute('style') || '';
-          const bgMatch = styleAttr.match(/background-color\s*:\s*([^;]+)/i);
-          const colorMatch = styleAttr.match(/(?:^|;)\s*color\s*:\s*([^;]+)/i);
+          const cls = td.getAttribute('class') || '';
+          const cm  = classMap[cls] || {};
           let style = '';
-          if (bgMatch) style += `background-color:${bgMatch[1].trim()};`;
-          if (colorMatch) style += `color:${colorMatch[1].trim()};`;
-          const styleStr = style ? ` style="${style}"` : '';
-          return `<td${cs}${rs}${styleStr}>${txt}</td>`;
+          if (cm.bg && !WHITE.test(cm.bg)) style += `background-color:${cm.bg};`;
+          if (cm.fg && !/^(#000(000)?|rgb\(0,\s*0,\s*0\)|black)$/i.test(cm.fg)) style += `color:${cm.fg};`;
+          if (cm.bold) style += 'font-weight:700;';
+          return `<td${cs}${rs}${style ? ` style="${style}"` : ''}>${txt}</td>`;
         }).join('');
         return `<tr>${cells}</tr>`;
       }).join('');
