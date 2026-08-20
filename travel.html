@@ -70,16 +70,8 @@
 
     <div class="content-section">
       <h2>Practice Schedule</h2>
-      <p>The schedule below is updated by the club. If you have trouble viewing it on mobile, <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSwq5L_mTvhaOXzfJOfLhwu37TF_Qu7bFwSnYSKJTsEZ7EJMRMyEZ7x_UXG2xgYqeiEWY44tcDLB575/pubhtml?gid=939394155&single=true" target="_blank" rel="noopener">open it in a new tab</a>.</p>
-      <div class="sheet-embed-wrap">
-        <iframe
-          src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSwq5L_mTvhaOXzfJOfLhwu37TF_Qu7bFwSnYSKJTsEZ7EJMRMyEZ7x_UXG2xgYqeiEWY44tcDLB575/pubhtml?gid=939394155&single=true&widget=false&headers=false&chrome=false"
-          title="JSC Practice Schedule"
-          frameborder="0"
-          scrolling="no"
-          id="practice-schedule-frame">
-        </iframe>
-      </div>
+      <p>Select a day to view the practice schedule for that day. Schedule is updated automatically from the club's Google Sheet.</p>
+      <div id="practice-schedule"><p style="color:#888;font-size:0.9rem;">Loading…</p></div>
     </div>
 
     <div class="content-section">
@@ -125,18 +117,11 @@
 
 <script src="assets/site.js?v=3"></script>
 <script>
-  loadSettings().then(() => { initSite('travel'); loadTravelTeams(CONFIG.TRAVEL_TEAMS_CSV); });
-
-  // Auto-resize practice schedule iframe to fit its content
-  const frame = document.getElementById('practice-schedule-frame');
-  if (frame) {
-    frame.addEventListener('load', () => {
-      try {
-        const h = frame.contentDocument.body.scrollHeight;
-        if (h > 100) frame.style.height = (h + 32) + 'px';
-      } catch(_) {}
-    });
-  }
+  loadSettings().then(() => {
+    initSite('travel');
+    loadTravelTeams(CONFIG.TRAVEL_TEAMS_CSV);
+    loadPracticeSchedule('practice-schedule');
+  });
 </script>
 </body>
 </html>

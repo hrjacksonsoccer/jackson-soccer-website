@@ -792,6 +792,90 @@ function loadCalendar(containerId) {
     </div>`;
 }
 
+/* ── PRACTICE SCHEDULE ──────────────────────────────────────── */
+
+const PRACTICE_SCHEDULE_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSwq5L_mTvhaOXzfJOfLhwu37TF_Qu7bFwSnYSKJTsEZ7EJMRMyEZ7x_UXG2xgYqeiEWY44tcDLB575/pubhtml?gid=939394155&single=true&widget=false&headers=false';
+
+async function loadPracticeSchedule(containerId) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  el.innerHTML = '<p style="color:#888;padding:0.5rem 0;">Loading schedule…</p>';
+
+  const DAYS = ['Monday','Tuesday','Wednesday','Thursday','Friday'];
+
+  function fallback() {
+    el.innerHTML = `
+      <div style="text-align:center;padding:2rem 1rem;">
+        <p style="color:#666;margin-bottom:1.25rem;">Tap below to view the full practice schedule.</p>
+        <a href="${PRACTICE_SCHEDULE_URL}" target="_blank" rel="noopener"
+           style="display:inline-block;background:var(--red);color:#fff;padding:0.75rem 2rem;border-radius:8px;font-weight:700;text-decoration:none;font-size:1rem;">
+          📅 Open Practice Schedule →
+        </a>
+      </div>`;
+  }
+
+  try {
+    const res = await fetch(PRACTICE_SCHEDULE_URL);
+    if (!res.ok) throw new Error();
+    const html = await res.text();
+    const doc = new DOMParser().parseFromString(html, 'text/html');
+    const allRows = Array.from(doc.querySelectorAll('tbody tr'));
+    if (!allRows.length) throw new Error();
+
+    // Group rows by day
+    const groups = {};
+    DAYS.forEach(d => groups[d] = []);
+    let currentDay = null;
+    allRows.forEach(row => {
+      const text = row.textContent;
+      const match = DAYS.find(d => text.includes(d));
+      if (match) currentDay = match;
+      if (currentDay) groups[currentDay].push(row);
+    });
+
+    const tabBtns = DAYS.map((d, i) =>
+      `<button class="sched-tab${i===0?' active':''}" data-day="${d}">${d.slice(0,3).toUpperCase()}</button>`
+    ).join('');
+
+    const panels = DAYS.map((d, i) => {
+      const rows = groups[d];
+      if (!rows.length) return `<div class="sched-panel${i===0?' active':''}" data-day="${d}"><p style="color:#888;padding:1rem 0;">No schedule listed for ${d}.</p></div>`;
+      const tableRows = rows.map(r => {
+        const cells = Array.from(r.querySelectorAll('td')).map(td => {
+          const cs = td.getAttribute('colspan') ? ` colspan="${td.getAttribute('colspan')}"` : '';
+          const rs = td.getAttribute('rowspan') ? ` rowspan="${td.getAttribute('rowspan')}"` : '';
+          const txt = td.textContent.trim();
+          return `<td${cs}${rs}>${txt}</td>`;
+        }).join('');
+        return `<tr>${cells}</tr>`;
+      }).join('');
+      return `
+        <div class="sched-panel${i===0?' active':''}" data-day="${d}">
+          <div class="sched-scroll">
+            <table class="sched-table"><tbody>${tableRows}</tbody></table>
+          </div>
+        </div>`;
+    }).join('');
+
+    el.innerHTML = `
+      <div class="sched-tabs">${tabBtns}</div>
+      <div class="sched-panels">${panels}</div>
+      <p style="font-size:0.78rem;color:#aaa;margin-top:0.75rem;text-align:right;">
+        <a href="${PRACTICE_SCHEDULE_URL}" target="_blank" rel="noopener" style="color:#aaa;">Open full schedule ↗</a>
+      </p>`;
+
+    el.querySelectorAll('.sched-tab').forEach(btn => {
+      btn.addEventListener('click', () => {
+        el.querySelectorAll('.sched-tab').forEach(b => b.classList.remove('active'));
+        el.querySelectorAll('.sched-panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        el.querySelector(`.sched-panel[data-day="${btn.dataset.day}"]`).classList.add('active');
+      });
+    });
+
+  } catch(_) { fallback(); }
+}
+
 /* ── TRAVEL TEAMS ───────────────────────────────────────────── */
 
 function renderTravelTeamsTable(rows) {
