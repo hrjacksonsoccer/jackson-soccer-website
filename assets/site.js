@@ -822,20 +822,24 @@ async function loadPracticeSchedule(containerId) {
     const allRows = Array.from(doc.querySelectorAll('tbody tr'));
     if (!allRows.length) throw new Error();
 
-    // Build class → color map from Google's <style> tag
+    // Build class → color map: fetch Google's external CSS and parse it
     const classMap = {};
-    const styleEl = doc.querySelector('style');
-    if (styleEl) {
-      const css = styleEl.textContent;
-      const rules = css.match(/\.[a-z]\d+\s*\{[^}]*\}/gi) || [];
-      rules.forEach(rule => {
-        const cls = (rule.match(/\.([a-z]\d+)/i) || [])[1];
-        if (!cls) return;
-        const bg  = (rule.match(/background-color\s*:\s*([^;}"]+)/i) || [])[1];
-        const fg  = (rule.match(/(?:^|[;{])\s*color\s*:\s*([^;}"]+)/i) || [])[1];
-        const bld = /font-weight\s*:\s*bold/i.test(rule);
-        classMap[cls] = { bg: bg ? bg.trim() : null, fg: fg ? fg.trim() : null, bold: bld };
-      });
+    const cssLink = doc.querySelector('link[rel="stylesheet"]');
+    if (cssLink && cssLink.href) {
+      try {
+        const cssRes = await fetch(cssLink.href);
+        const css = await cssRes.text();
+        // Match both minified (.s3{...}) and spaced (.s3 { ... }) rules
+        const ruleRe = /\.(s\d+)[^{]*\{([^}]+)\}/g;
+        let m;
+        while ((m = ruleRe.exec(css)) !== null) {
+          const cls = m[1], body = m[2];
+          const bg  = (body.match(/background-color\s*:\s*([^;]+)/i) || [])[1];
+          const fg  = (body.match(/(?:^|;)\s*color\s*:\s*([^;]+)/i) || [])[1];
+          const bld = /font-weight\s*:\s*bold/i.test(body);
+          if (bg || fg) classMap[cls] = { bg: bg?.trim(), fg: fg?.trim(), bold: bld };
+        }
+      } catch(_) {}
     }
 
     // Group rows by day; skip rows where every cell is empty text
@@ -864,8 +868,8 @@ async function loadPracticeSchedule(containerId) {
           const cs = td.getAttribute('colspan') ? ` colspan="${td.getAttribute('colspan')}"` : '';
           const rs = td.getAttribute('rowspan') ? ` rowspan="${td.getAttribute('rowspan')}"` : '';
           const txt = td.textContent.trim();
-          const cls = td.getAttribute('class') || '';
-          const cm  = classMap[cls] || {};
+          const sClass = ((td.getAttribute('class') || '').split(/\s+/).find(c => /^s\d+$/.test(c)) || '');
+          const cm  = classMap[sClass] || {};
           let style = '';
           if (cm.bg && !WHITE.test(cm.bg)) style += `background-color:${cm.bg};`;
           if (cm.fg && !/^(#000(000)?|rgb\(0,\s*0,\s*0\)|black)$/i.test(cm.fg)) style += `color:${cm.fg};`;
