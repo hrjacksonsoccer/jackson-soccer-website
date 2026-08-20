@@ -963,13 +963,153 @@ async function loadMissionContent(containerId) {
     const res = await fetch('data/club-info.json');
     if (!res.ok) return;
     const d = await res.json();
+
     const el = document.getElementById(containerId);
-    if (!el) return;
-    el.innerHTML = `
-      ${d.mission_intro ? `<p>${d.mission_intro}</p>` : ''}
-      ${d.mission_bullets ? `<ul>${d.mission_bullets.map(b=>`<li>${b}</li>`).join('')}</ul>` : ''}
-      ${d.mission_closing ? `<p>${d.mission_closing}</p>` : ''}
-      ${d.coaching_statement ? `<p>${d.coaching_statement}</p>` : ''}`;
+    if (el) {
+      el.innerHTML = `
+        ${d.mission_intro ? `<p>${d.mission_intro}</p>` : ''}
+        ${d.mission_bullets ? `<ul>${d.mission_bullets.map(b=>`<li>${b}</li>`).join('')}</ul>` : ''}
+        ${d.mission_closing ? `<p>${d.mission_closing}</p>` : ''}
+        ${d.coaching_statement ? `<p>${d.coaching_statement}</p>` : ''}`;
+    }
+
+    const mailingEl = document.getElementById('club-mailing-address');
+    if (mailingEl && d.mailing_address)
+      mailingEl.innerHTML = d.mailing_address.split('\n').join('<br>');
+
+    const generalEl = document.getElementById('club-contact-general');
+    if (generalEl && d.general_email)
+      generalEl.innerHTML = `<a href="mailto:${d.general_email}">${d.general_email}</a>`;
+
+    const travelEl = document.getElementById('club-contact-travel');
+    if (travelEl && d.travel_commissioner_name)
+      travelEl.innerHTML = `Contact <strong>${d.travel_commissioner_name}</strong> (Overall Commissioner)<br>for general travel info and field scheduling.`;
+
+    const govDocsEl = document.getElementById('club-governing-docs');
+    if (govDocsEl && d.governing_docs)
+      govDocsEl.innerHTML = d.governing_docs.map(f => `<a class="doc-link" href="${f.url}" target="_blank" rel="noopener">📄 ${f.label}</a>`).join('');
+
+    const assistEl = document.getElementById('club-assistance-links');
+    if (assistEl && d.assistance_links)
+      assistEl.innerHTML = d.assistance_links.map(f => `<a class="ext-link" href="${f.url}" target="_blank" rel="noopener">${f.label}</a>`).join('');
+  } catch(_) {}
+}
+
+/* ── RECREATIONAL CONTENT ────────────────────────────────────── */
+
+async function loadRecreationalContent() {
+  try {
+    const res = await fetch('data/recreational.json');
+    if (!res.ok) return;
+    const d = await res.json();
+
+    const aboutEl = document.getElementById('rec-about-bullets');
+    if (aboutEl && d.about_bullets)
+      aboutEl.innerHTML = d.about_bullets.map(b => `<li>${b}</li>`).join('');
+
+    const providesEl = document.getElementById('rec-club-provides');
+    if (providesEl && d.club_provides)
+      providesEl.innerHTML = d.club_provides.map(b => `<li>${b}</li>`).join('');
+
+    const bringEl = document.getElementById('rec-players-bring');
+    if (bringEl && d.players_bring)
+      bringEl.innerHTML = d.players_bring.map(b => `<li>${b}</li>`).join('');
+
+    const placementEl = document.getElementById('rec-placement-bullets');
+    if (placementEl && d.team_placement_bullets)
+      placementEl.innerHTML = d.team_placement_bullets.map(b => `<li>${b}</li>`).join('');
+
+    const waitlistEl = document.getElementById('rec-waitlist-text');
+    if (waitlistEl && d.waitlist_text)
+      waitlistEl.innerHTML = d.waitlist_text.split('\n\n').map(p => `<p>${p}</p>`).join('');
+
+    const commEl = document.getElementById('rec-commissioner');
+    if (commEl && d.commissioner_name)
+      commEl.innerHTML = `<strong>${d.commissioner_name}</strong>${d.commissioner_email ? ` &mdash; <a href="mailto:${d.commissioner_email}">${d.commissioner_email}</a>` : ''}`;
+  } catch(_) {}
+}
+
+/* ── TRAVEL CONTENT ──────────────────────────────────────────── */
+
+async function loadTravelContent() {
+  try {
+    const res = await fetch('data/travel.json');
+    if (!res.ok) return;
+    const d = await res.json();
+
+    const overviewEl = document.getElementById('travel-overview');
+    if (overviewEl && d.overview_paragraphs)
+      overviewEl.innerHTML = d.overview_paragraphs.map(p => `<p>${p}</p>`).join('');
+
+    const commEl = document.getElementById('travel-commissioner-highlight');
+    if (commEl && d.commissioner_name)
+      commEl.innerHTML = `📞 <strong>Contact the Overall Commissioner for general travel information and field scheduling:</strong><br>${d.commissioner_name} — <a href="mailto:${d.commissioner_email}">${d.commissioner_email}</a>`;
+
+    const tryoutsEl = document.getElementById('travel-tryouts');
+    if (tryoutsEl && d.tryouts_text)
+      tryoutsEl.innerHTML = `<p>${d.tryouts_text}</p>`;
+
+    const tecnicaEl = document.getElementById('travel-tecnica');
+    if (tecnicaEl && d.tecnica_description)
+      tecnicaEl.innerHTML = `<p>${d.tecnica_description}</p>${d.tecnica_philosophy ? `<p><strong>Our Philosophy:</strong> ${d.tecnica_philosophy}</p>` : ''}`;
+
+    const formsEl = document.getElementById('travel-resource-forms');
+    if (formsEl && d.resource_forms)
+      formsEl.innerHTML = d.resource_forms.map(f => `<a class="doc-link" href="${f.url}" target="_blank" rel="noopener">📋 ${f.label}</a>`).join('');
+
+    const acctEl = document.getElementById('travel-accounting-forms');
+    if (acctEl && d.accounting_forms)
+      acctEl.innerHTML = d.accounting_forms.map(f => `<a class="doc-link" href="${f.url}" target="_blank" rel="noopener">💵 ${f.label}</a>`).join('');
+
+    const policyEl = document.getElementById('travel-policy-docs');
+    if (policyEl && d.policy_docs)
+      policyEl.innerHTML = d.policy_docs.map(f => `<a class="doc-link" href="${f.url}" target="_blank" rel="noopener">📄 ${f.label}</a>`).join('');
+  } catch(_) {}
+}
+
+/* ── FIELDS CONTENT ──────────────────────────────────────────── */
+
+async function loadFieldsContent() {
+  try {
+    const res = await fetch('data/fields.json');
+    if (!res.ok) return;
+    const d = await res.json();
+
+    const rentalEl = document.getElementById('fields-rental-info');
+    if (rentalEl && d.rental_info) {
+      let html = d.rental_info.split('\n\n').map(p => `<p>${p}</p>`).join('');
+      if (d.rental_email)
+        html += `<div class="highlight">📧 For field rental inquiries, contact: <a href="mailto:${d.rental_email}">${d.rental_email}</a></div>`;
+      rentalEl.innerHTML = html;
+    }
+
+    const justiceEl = document.getElementById('fields-justice-location');
+    if (justiceEl && d.justice_address)
+      justiceEl.innerHTML = `${d.justice_address.split('\n').join('<br>')}<br><br><a href="${d.justice_map_url}" target="_blank" rel="noopener">View on Google Maps →</a>`;
+
+    const millsEl = document.getElementById('fields-mills-location');
+    if (millsEl && d.mills_address)
+      millsEl.innerHTML = `${d.mills_address.split('\n').join('<br>')}<br><br><a href="${d.mills_map_url}" target="_blank" rel="noopener">View on Google Maps →</a>`;
+  } catch(_) {}
+}
+
+/* ── HOMEPAGE CONTENT ────────────────────────────────────────── */
+
+async function loadHomepageContent() {
+  try {
+    const res = await fetch('data/homepage.json');
+    if (!res.ok) return;
+    const d = await res.json();
+
+    const subtextEl = document.getElementById('hero-subtext');
+    if (subtextEl && d.hero_subtext)
+      subtextEl.textContent = d.hero_subtext;
+
+    const linksEl = document.getElementById('helpful-links-list');
+    if (linksEl && d.helpful_links)
+      linksEl.innerHTML = d.helpful_links.map(l =>
+        `<li><a href="${l.url}"${l.url.startsWith('http') ? ' target="_blank" rel="noopener"' : ''} style="color:var(--red);font-weight:600;text-decoration:none;">${l.emoji ? l.emoji + ' ' : ''}${l.label}</a></li>`
+      ).join('');
   } catch(_) {}
 }
 

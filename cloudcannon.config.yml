@@ -153,6 +153,126 @@ _inputs:
     type: array
     label: Travel Coach Info
     cascade: true
+  about_bullets:
+    type: array
+    label: About the Program Bullets
+    cascade: true
+  club_provides:
+    type: array
+    label: Club Provides
+    cascade: true
+  players_bring:
+    type: array
+    label: Players Bring
+    cascade: true
+  team_placement_bullets:
+    type: array
+    label: Team Placement Bullets
+    cascade: true
+  register_highlight:
+    type: textarea
+    label: Register Early Highlight Text
+    cascade: true
+  waitlist_text:
+    type: textarea
+    label: Waitlist Policy Text
+    cascade: true
+  commissioner_name:
+    type: text
+    label: Commissioner Name
+    cascade: true
+  commissioner_email:
+    type: email
+    label: Commissioner Email
+    cascade: true
+  overview_paragraphs:
+    type: array
+    label: Overview Paragraphs
+    cascade: true
+  tryouts_text:
+    type: textarea
+    label: Tryouts Section Text
+    cascade: true
+  tecnica_description:
+    type: textarea
+    label: Tecnica Description
+    cascade: true
+  tecnica_philosophy:
+    type: textarea
+    label: Tecnica Philosophy
+    cascade: true
+  resource_forms:
+    type: array
+    label: Resource Forms
+    cascade: true
+  accounting_forms:
+    type: array
+    label: Accounting Forms
+    cascade: true
+  policy_docs:
+    type: array
+    label: Policy Documents
+    cascade: true
+  rental_email:
+    type: email
+    label: Field Rental Email
+    cascade: true
+  rental_info:
+    type: textarea
+    label: Field Rental Information
+    cascade: true
+  justice_address:
+    type: textarea
+    label: Justice Complex Address
+    cascade: true
+  justice_map_url:
+    type: url
+    label: Justice Complex Map URL
+    cascade: true
+  mills_address:
+    type: textarea
+    label: Mills Complex Address
+    cascade: true
+  mills_map_url:
+    type: url
+    label: Mills Complex Map URL
+    cascade: true
+  mailing_address:
+    type: textarea
+    label: Mailing Address
+    cascade: true
+  general_email:
+    type: email
+    label: General Inquiries Email
+    cascade: true
+  travel_commissioner_name:
+    type: text
+    label: Travel Commissioner Name
+    cascade: true
+  travel_commissioner_email:
+    type: email
+    label: Travel Commissioner Email
+    cascade: true
+  governing_docs:
+    type: array
+    label: Governing Documents
+    cascade: true
+  assistance_links:
+    type: array
+    label: Assistance Links
+    cascade: true
+  hero_subtext:
+    type: text
+    label: Hero Subtext
+    cascade: true
+  helpful_links:
+    type: array
+    label: Helpful Links
+    cascade: true
+  register_button_text:
+    type: text
+    label: Register Button Text
+    cascade: true
 data_config:
   board:
     path: data/board.json
@@ -166,6 +286,14 @@ data_config:
     path: data/coaches.json
   club_info:
     path: data/club-info.json
+  recreational:
+    path: data/recreational.json
+  travel:
+    path: data/travel.json
+  fields:
+    path: data/fields.json
+  homepage:
+    path: data/homepage.json
 timezone: Etc/UTC
 _array_structures:
   announcements:
@@ -196,3 +324,40 @@ _array_structures:
           photo: ''
           bio: ''
           open: true
+  resource_forms:
+    values:
+      - label: Form Link
+        value:
+          label: ''
+          url: ''
+  accounting_forms:
+    values:
+      - label: Accounting Form Link
+        value:
+          label: ''
+          url: ''
+  policy_docs:
+    values:
+      - label: Policy Document
+        value:
+          label: ''
+          url: ''
+  governing_docs:
+    values:
+      - label: Governing Document
+        value:
+          label: ''
+          url: ''
+  assistance_links:
+    values:
+      - label: Assistance Link
+        value:
+          label: ''
+          url: ''
+  helpful_links:
+    values:
+      - label: Helpful Link
+        value:
+          label: ''
+          url: ''
+          emoji: ''

@@ -50,7 +50,7 @@
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;">
         <div class="contact-block">
           <h3>Mailing Address</h3>
-          <p>
+          <p id="club-mailing-address">
             Jackson Soccer Club<br>
             P.O. Box 734<br>
             Jackson, New Jersey 08527
@@ -58,12 +58,12 @@
         </div>
         <div class="contact-block">
           <h3>General Inquiries</h3>
-          <p>
+          <p id="club-contact-general">
             <a href="mailto:info@jacksonsoccer.com">info@jacksonsoccer.com</a>
           </p>
           <br>
           <h3>Travel Program</h3>
-          <p>Contact <strong>Ryan Monday</strong> (Overall Commissioner)<br>for general travel info and field scheduling.</p>
+          <p id="club-contact-travel">Contact <strong>Ryan Monday</strong> (Overall Commissioner)<br>for general travel info and field scheduling.</p>
         </div>
       </div>
     </div>
@@ -72,7 +72,7 @@
       <h2>Resources &amp; Documents</h2>
 
       <h3>Governing Documents</h3>
-      <div class="doc-links">
+      <div class="doc-links" id="club-governing-docs">
         <a class="doc-link" href="https://drive.google.com/file/d/1WB0JVwceGJdYN4nB7Ow9imieMqsibVvo/view?usp=sharing" target="_blank" rel="noopener">📄 JSC By-Laws</a>
       </div>
 
@@ -80,7 +80,7 @@
       <p>As a 501(c)(3) nonprofit organization, Jackson Soccer Club publishes its tax filings for public review.</p>
 
       <h3>Assistance &amp; Programs</h3>
-      <div class="ext-link-grid">
+      <div class="ext-link-grid" id="club-assistance-links">
         <a class="ext-link" href="https://www.jacksonsoccer.com/Default.aspx?tabid=1434136" target="_blank" rel="noopener">💰 Financial Assistance</a>
         <a class="ext-link" href="https://www.jacksonsoccer.com/Default.aspx?tabid=1090841" target="_blank" rel="noopener">🤝 Peer Mentor Program</a>
       </div>
@@ -113,7 +113,7 @@
 
 <div id="site-footer"></div>
 
-<script src="assets/site.js?v=5"></script>
+<script src="assets/site.js?v=6"></script>
 <script>
   loadSettings().then(() => {
     initSite('club-info');

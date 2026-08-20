@@ -35,7 +35,7 @@
       <p>The Jackson Soccer Club Intramurals is a recreational program open to children ranging in age from 3 to 17 years old. The program strives to create a safe, fun, and exciting environment for children to learn the game of soccer.</p>
       <p>We form teams and divisions based on age. We follow US Soccer principles to develop kids — physically, technically, strategically, and grow their Soccer IQ.</p>
       <p>We offer both a <strong>Fall</strong> and <strong>Spring</strong> season:</p>
-      <ul>
+      <ul id="rec-about-bullets">
         <li><strong>Fall:</strong> Teams begin practicing mid-August; games run September to early November.</li>
         <li><strong>Spring:</strong> Teams begin practicing end of March; games run April to mid-June.</li>
       </ul>
@@ -106,14 +106,14 @@
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
         <div class="contact-block">
           <h3>✅ Club Provides</h3>
-          <ul>
+          <ul id="rec-club-provides">
             <li>Team shirt (uniform)</li>
             <li>Black socks</li>
           </ul>
         </div>
         <div class="contact-block">
           <h3>🎒 Players Bring</h3>
-          <ul>
+          <ul id="rec-players-bring">
             <li>Cleats</li>
             <li>Shin guards</li>
             <li>Black shorts</li>
@@ -131,7 +131,7 @@
       <h2>Important Information</h2>
 
       <h3>Team Placement</h3>
-      <ul>
+      <ul id="rec-placement-bullets">
         <li>Teams are chosen at random based on age/grade level/gender.</li>
         <li>We cannot accept player, coach, or teammate requests.</li>
         <li>We do our best to make teams as fair as possible.</li>
@@ -144,8 +144,13 @@
       </div>
 
       <h3>Waitlist Policy</h3>
-      <p>We run a waitlist when registration approaches our limit for any division. Registering for the waitlist holds your place in line. If you are on the waitlist and we don't assign you to a team by Week 3, you can receive a full refund.</p>
-      <p>If a division needs coaches, players whose parent volunteers to coach will be given priority on the waitlist.</p>
+      <div id="rec-waitlist-text">
+        <p>We run a waitlist when registration approaches our limit for any division. Registering for the waitlist holds your place in line. If you are on the waitlist and we don't assign you to a team by Week 3, you can receive a full refund.</p>
+        <p>If a division needs coaches, players whose parent volunteers to coach will be given priority on the waitlist.</p>
+      </div>
+
+      <h3>Contact</h3>
+      <p id="rec-commissioner">Jackson Soccer Club &mdash; <a href="mailto:info@jacksonsoccer.com">info@jacksonsoccer.com</a></p>
 
       <h3>Inclement Weather &amp; Makeup Games</h3>
       <p>We will make every effort to make up games cancelled due to inclement weather. Field status updates are posted in real time on the <a href="fields.html">Field Status</a> page and on our social media channels.</p>
@@ -186,7 +191,7 @@
 
 <div id="site-footer"></div>
 
-<script src="assets/site.js?v=5"></script>
-<script>loadSettings().then(() => initSite('recreational'));</script>
+<script src="assets/site.js?v=6"></script>
+<script>loadSettings().then(() => { initSite('recreational'); loadRecreationalContent(); });</script>
 </body>
 </html>

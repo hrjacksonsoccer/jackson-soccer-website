@@ -1,0 +1,14 @@
+{
+  "hero_subtext": "Jackson Township, New Jersey · Play · Train · Grow · Succeed",
+  "register_button_text": "Register for Fall 2026 →",
+  "helpful_links": [
+    {"label": "Intramural Overview", "url": "recreational.html", "emoji": "📋"},
+    {"label": "Intramural Registration", "url": "recreational.html", "emoji": "✏️"},
+    {"label": "Soccer Parent Resource Center", "url": "https://soccerparentresourcecenter.com/", "emoji": "⚽"},
+    {"label": "Volunteer Opportunities", "url": "recreational.html#volunteer", "emoji": "🙋"},
+    {"label": "Travel Team Registration", "url": "travel.html", "emoji": "🏅"},
+    {"label": "Sponsorships", "url": "club-info.html", "emoji": "🤝"},
+    {"label": "Field Status", "url": "#field-status-section", "emoji": "🟢"},
+    {"label": "Jackson Soccer Club on X", "url": "https://x.com/jacksonnjsoccer", "emoji": "𝕏"}
+  ]
+}

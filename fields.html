@@ -30,11 +30,13 @@
     <!-- Field Rental -->
     <div class="content-section" id="rental" style="margin-top:2rem;">
       <h2>Field Rental</h2>
-      <p>The Jackson Mills Vista fields are designated for soccer and may only be used for soccer games and soccer activities.</p>
-      <p>Scheduling is based on availability. Priority scheduling is given to Jackson Soccer Club first, then Youth Sports Organizations (non-profit). Priority is also given to requests for official games first (both teams in uniform and referee assigned), then scrimmages, and then practices.</p>
-      <p>Permits will be issued for hours between sunrise and sunset.</p>
-      <div class="highlight">
-        📧 For field rental inquiries, contact: <a href="mailto:info@jacksonsoccer.com">info@jacksonsoccer.com</a>
+      <div id="fields-rental-info">
+        <p>The Jackson Mills Vista fields are designated for soccer and may only be used for soccer games and soccer activities.</p>
+        <p>Scheduling is based on availability. Priority scheduling is given to Jackson Soccer Club first, then Youth Sports Organizations (non-profit). Priority is also given to requests for official games first (both teams in uniform and referee assigned), then scrimmages, and then practices.</p>
+        <p>Permits will be issued for hours between sunrise and sunset.</p>
+        <div class="highlight">
+          📧 For field rental inquiries, contact: <a href="mailto:info@jacksonsoccer.com">info@jacksonsoccer.com</a>
+        </div>
       </div>
     </div>
 
@@ -44,7 +46,7 @@
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
         <div class="contact-block" id="justice">
           <h3>Justice Complex (JSC)</h3>
-          <p>
+          <p id="fields-justice-location">
             1 Jackson Drive<br>
             Jackson, New Jersey 08527<br><br>
             <a href="https://maps.google.com/?q=1+Jackson+Drive+Jackson+NJ+08527" target="_blank" rel="noopener">View on Google Maps →</a>
@@ -52,7 +54,7 @@
         </div>
         <div class="contact-block" id="jackson-mills-loc">
           <h3>Jackson Mills Soccer Complex</h3>
-          <p>
+          <p id="fields-mills-location">
             334 Jackson Mills Road<br>
             Jackson, New Jersey 08527<br><br>
             <a href="https://maps.google.com/?q=334+Jackson+Mills+Road+Jackson+NJ+08527" target="_blank" rel="noopener">View on Google Maps →</a>
@@ -66,10 +68,11 @@
 
 <div id="site-footer"></div>
 
-<script src="assets/site.js?v=5"></script>
+<script src="assets/site.js?v=6"></script>
 <script>
   loadSettings().then(() => {
     initSite('fields');
+    loadFieldsContent();
     loadFieldStatus('field-status', 'field-refresh');
   });
 </script>
