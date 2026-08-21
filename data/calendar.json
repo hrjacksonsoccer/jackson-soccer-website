@@ -9,7 +9,8 @@
         "Practices Begin: Mid-August 2026",
         "Games: September – early November 2026",
         "Season Length: 8 weeks"
-      ]
+      ],
+      "active": true
     },
     {
       "season_name": "Spring 2027",
@@ -17,7 +18,8 @@
         "Practices Begin: End of March 2027",
         "Games: April – mid-June 2027",
         "Season Length: 8 weeks"
-      ]
+      ],
+      "active": true
     }
   ],
   "game_day_bullets": [

@@ -12,37 +12,43 @@
       "division": "Peanuts",
       "ages": "Pre-K",
       "format": "Introductory fun play",
-      "schedule": "Saturdays only"
+      "schedule": "Saturdays only",
+      "active": true
     },
     {
       "division": "Future Stars",
       "ages": "Kindergarten &amp; 1st Grade (Coed)",
       "format": "Mini games &amp; skills",
-      "schedule": "Saturday mornings only"
+      "schedule": "Saturday mornings only",
+      "active": true
     },
     {
       "division": "Micro Division",
       "ages": "2nd &amp; 3rd Grade (Coed)",
       "format": "Small-sided games &amp; training",
-      "schedule": "Saturday only"
+      "schedule": "Saturday only",
+      "active": true
     },
     {
       "division": "Collegiate Division",
       "ages": "4th &amp; 5th Grade (Coed)",
       "format": "7v7 or 9v9",
-      "schedule": "Practice Wed nights + Games Saturdays"
+      "schedule": "Practice Wed nights + Games Saturdays",
+      "active": true
     },
     {
       "division": "Major League",
       "ages": "6th–8th Grade (Coed)",
       "format": "9v9 or 11v11",
-      "schedule": "Practice Wed nights + Games Saturdays"
+      "schedule": "Practice Wed nights + Games Saturdays",
+      "active": true
     },
     {
       "division": "Premier Division",
       "ages": "Ages 14–17 (High School)",
       "format": "Full-sided",
-      "schedule": "Once per week — accommodates school schedules"
+      "schedule": "Once per week — accommodates school schedules",
+      "active": true
     }
   ],
   "divisions_note": "All age groups play Saturday mornings between 8:30 AM and noon. Professional Tecnica trainers lead every training session and are present on game days to support coaches and players.",

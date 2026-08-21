@@ -52,40 +52,40 @@ const SITE = {
   login_url: 'https://www.jacksonsoccer.com/Default.aspx?tabid=717119&isLogin=True',
   copyright_text: 'Jackson Soccer Club · Jackson Township, NJ',
   nav_links: [
-    { id: 'home',         label: 'Home',         href: 'index.html',        external: false },
-    { id: 'club-info',    label: 'Club Info',    href: 'club-info.html',    external: false },
-    { id: 'coaches',      label: 'Coaches',      href: 'coaches.html',      external: false },
-    { id: 'travel',       label: 'Travel',       href: 'travel.html',       external: false },
-    { id: 'recreational', label: 'Recreational', href: 'recreational.html', external: false },
-    { id: 'fields',       label: 'Fields',       href: 'fields.html',       external: false },
-    { id: 'calendar',     label: 'Calendar',     href: 'calendar.html',     external: false },
-    { id: 'store',        label: 'Store',        href: '{{STORE_URL}}',     external: true },
+    { id: 'home',         label: 'Home',         href: 'index.html',        external: false, active: true },
+    { id: 'club-info',    label: 'Club Info',    href: 'club-info.html',    external: false, active: true },
+    { id: 'coaches',      label: 'Coaches',      href: 'coaches.html',      external: false, active: true },
+    { id: 'travel',       label: 'Travel',       href: 'travel.html',       external: false, active: true },
+    { id: 'recreational', label: 'Recreational', href: 'recreational.html', external: false, active: true },
+    { id: 'fields',       label: 'Fields',       href: 'fields.html',       external: false, active: true },
+    { id: 'calendar',     label: 'Calendar',     href: 'calendar.html',     external: false, active: true },
+    { id: 'store',        label: 'Store',        href: '{{STORE_URL}}',     external: true,  active: true },
   ],
   social_links: [
-    { label: 'Facebook',  url: 'https://www.facebook.com/jacksonsoccerclub' },
-    { label: 'Instagram', url: 'https://www.instagram.com/jacksonnjsoccerclub' },
-    { label: 'YouTube',   url: 'https://www.youtube.com/channel/UCjI_MBOkDDY3vLQdjor0W8Q/' },
+    { label: 'Facebook',  url: 'https://www.facebook.com/jacksonsoccerclub', active: true },
+    { label: 'Instagram', url: 'https://www.instagram.com/jacksonnjsoccerclub', active: true },
+    { label: 'YouTube',   url: 'https://www.youtube.com/channel/UCjI_MBOkDDY3vLQdjor0W8Q/', active: true },
   ],
   footer_club_heading: 'Club',
   footer_club_links: [
-    { label: 'Board of Directors',  url: 'club-info.html' },
-    { label: 'Coaching Resources',  url: 'coaches.html' },
-    { label: 'Travel Program',      url: 'travel.html' },
-    { label: 'Recreational Soccer', url: 'recreational.html' },
+    { label: 'Board of Directors',  url: 'club-info.html',    active: true },
+    { label: 'Coaching Resources',  url: 'coaches.html',      active: true },
+    { label: 'Travel Program',      url: 'travel.html',       active: true },
+    { label: 'Recreational Soccer', url: 'recreational.html', active: true },
   ],
   footer_fields_heading: 'Fields',
   footer_fields_links: [
-    { label: 'Field Status',          url: 'fields.html' },
-    { label: 'Justice Complex',       url: 'fields.html#justice' },
-    { label: 'Jackson Mills Complex', url: 'fields.html#jackson-mills' },
-    { label: 'Field Rental',          url: 'fields.html#rental' },
+    { label: 'Field Status',          url: 'fields.html',               active: true },
+    { label: 'Justice Complex',       url: 'fields.html#justice',       active: true },
+    { label: 'Jackson Mills Complex', url: 'fields.html#jackson-mills', active: true },
+    { label: 'Field Rental',          url: 'fields.html#rental',        active: true },
   ],
   footer_more_heading: 'More',
   footer_more_links: [
-    { label: 'JSC Calendar', url: 'calendar.html' },
-    { label: 'Club Store',   url: '{{STORE_URL}}' },
-    { label: 'Contact Us',   url: 'mailto:info@jacksonsoccer.com' },
-    { label: 'Register Now', url: '{{REGISTER_URL}}' },
+    { label: 'JSC Calendar', url: 'calendar.html',                 active: true },
+    { label: 'Club Store',   url: '{{STORE_URL}}',                 active: true },
+    { label: 'Contact Us',   url: 'mailto:info@jacksonsoccer.com', active: true },
+    { label: 'Register Now', url: '{{REGISTER_URL}}',              active: true },
   ],
 };
 
@@ -95,6 +95,23 @@ function resolveUrl(u) {
   return String(u)
     .replace(/\{\{\s*STORE_URL\s*\}\}/g, CONFIG.STORE_URL)
     .replace(/\{\{\s*REGISTER_URL\s*\}\}/g, CONFIG.REGISTER_URL);
+}
+
+/* ── SHOW / HIDE ("Show on site" checkbox) ───────────────────────
+   Every list item in data/*.json supports an `active` flag, edited in
+   CloudCannon as the "Show on site" checkbox. Only an explicit
+   `active: false` hides an item — items with the field missing still
+   render, so older data keeps working.
+──────────────────────────────────────────────────────────────── */
+
+/** True unless the item is explicitly hidden (active === false). */
+function isVisible(item) {
+  return !item || item.active !== false;
+}
+
+/** Filter an array (or non-array) down to the items marked visible. */
+function visibleItems(list) {
+  return Array.isArray(list) ? list.filter(isVisible) : [];
 }
 
 /** True if a resolved URL should open in a new tab. */
@@ -277,7 +294,9 @@ function closeSearch() {
 /* ── NAV HTML ───────────────────────────────────────────────── */
 
 function buildHeader(activePage) {
-  const pages = (SITE.nav_links || []).map(p => ({
+  // "Show on site" unchecked (active: false) removes the link from both
+  // the desktop nav bar and the mobile menu.
+  const pages = visibleItems(SITE.nav_links).map(p => ({
     id: p.id || '',
     label: p.label || '',
     href: resolveUrl(p.href),
@@ -344,13 +363,13 @@ function buildHeader(activePage) {
 }
 
 function buildFooter() {
-  const footerList = (links) => (links || []).map(l => {
+  const footerList = (links) => visibleItems(links).map(l => {
     const href = resolveUrl(l.url);
     const ext  = isExternalUrl(href) ? ' target="_blank" rel="noopener"' : '';
     return `<li><a href="${href}"${ext}>${l.label || ''}</a></li>`;
   }).join('');
 
-  const socials = (SITE.social_links || []).map(s =>
+  const socials = visibleItems(SITE.social_links).map(s =>
     `<a href="${resolveUrl(s.url)}" target="_blank" rel="noopener">${s.label || ''}</a>`
   ).join('');
 
@@ -531,7 +550,10 @@ async function loadBoard(containerId) {
   try {
     const res = await fetch('data/board.json');
     if (!res.ok) return;
-    const members = await res.json();
+    // `active: false` hides a member entirely. That is separate from
+    // `open`, which marks a seat as vacant but still shows the card.
+    // Filtering up front keeps the "Read more" indexes in sync.
+    const members = visibleItems(await res.json());
 
     // Create bio modal once
     if (!document.getElementById('board-bio-modal')) {
@@ -1001,7 +1023,7 @@ async function loadCalendarContent(bannerId, scheduleId) {
     const el = document.getElementById(scheduleId);
     if (!el) return;
     let html = '';
-    (d.seasons || []).forEach(s => {
+    visibleItems(d.seasons).forEach(s => {
       html += `<h3>${s.season_name || ''}</h3><ul>${(s.bullets||[]).map(b=>`<li>${b}</li>`).join('')}</ul>`;
     });
     if (d.game_day_bullets && d.game_day_bullets.length) {
@@ -1022,7 +1044,9 @@ async function loadCalendarContent(bannerId, scheduleId) {
 function renderLinkList(containerId, links, cls, plainWhenNoUrl) {
   const el = document.getElementById(containerId);
   if (!el || !Array.isArray(links) || !links.length) return;
-  el.innerHTML = links.map(l => {
+  // Items with "Show on site" unchecked (active: false) are dropped here,
+  // so every caller of renderLinkList gets hide/unhide for free.
+  el.innerHTML = visibleItems(links).map(l => {
     const label = l.label || '';
     const url   = resolveUrl(l.url);
     if (!url) {
@@ -1115,7 +1139,7 @@ async function loadMissionContent(containerId) {
 
     const govDocsEl = document.getElementById('club-governing-docs');
     if (govDocsEl && d.governing_docs)
-      govDocsEl.innerHTML = d.governing_docs.map(f => `<a class="doc-link" href="${f.url}" target="_blank" rel="noopener">📄 ${f.label}</a>`).join('');
+      govDocsEl.innerHTML = visibleItems(d.governing_docs).map(f => `<a class="doc-link" href="${f.url}" target="_blank" rel="noopener">📄 ${f.label}</a>`).join('');
 
     renderLinkList('club-assistance-links', d.assistance_links, 'ext-link', false);
 
@@ -1124,7 +1148,7 @@ async function loadMissionContent(containerId) {
 
     const sponsorsEl = document.getElementById('club-sponsors-grid');
     if (sponsorsEl && Array.isArray(d.sponsors) && d.sponsors.length)
-      sponsorsEl.innerHTML = d.sponsors
+      sponsorsEl.innerHTML = visibleItems(d.sponsors)
         .filter(s => s.logo_url || s.name)
         .map(s => `
           <a href="${s.url || '#'}"${isExternalUrl(s.url) ? ' target="_blank" rel="noopener"' : ''} title="${s.name || ''}">
@@ -1156,7 +1180,7 @@ async function loadRecreationalContent() {
 
     const divEl = document.getElementById('rec-divisions-table');
     if (divEl && Array.isArray(d.divisions) && d.divisions.length)
-      divEl.innerHTML = d.divisions.map(r => `
+      divEl.innerHTML = visibleItems(d.divisions).map(r => `
         <tr>
           <td><strong>${r.division || ''}</strong></td>
           <td>${r.ages || ''}</td>
@@ -1306,13 +1330,13 @@ async function loadHomepageContent() {
 
     const linksEl = document.getElementById('helpful-links-list');
     if (linksEl && d.helpful_links)
-      linksEl.innerHTML = d.helpful_links.map(l =>
+      linksEl.innerHTML = visibleItems(d.helpful_links).map(l =>
         `<li><a href="${l.url}"${isExternalUrl(l.url) ? ' target="_blank" rel="noopener"' : ''} style="color:var(--red);font-weight:600;text-decoration:none;">${l.emoji ? l.emoji + ' ' : ''}${l.label}</a></li>`
       ).join('');
 
     const dirEl = document.getElementById('homepage-directions');
     if (dirEl && Array.isArray(d.directions) && d.directions.length)
-      dirEl.innerHTML = d.directions.map(l =>
+      dirEl.innerHTML = visibleItems(d.directions).map(l =>
         `<a href="${l.url}"${isExternalUrl(l.url) ? ' target="_blank" rel="noopener"' : ''}
             style="display:flex;align-items:center;gap:0.5rem;padding:0.6rem 0.9rem;background:var(--gray);border:1px solid var(--border);border-radius:7px;color:var(--text);text-decoration:none;font-size:0.88rem;font-weight:600;">
            ${l.label || ''} <span style="margin-left:auto;color:var(--red);">→</span>

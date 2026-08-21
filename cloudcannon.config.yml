@@ -87,7 +87,7 @@ _inputs:
   active:
     type: checkbox
     label: Show on site
-    comment: Uncheck to hide this announcement without deleting it
+    comment: Uncheck to hide this item from the website without deleting it
     cascade: true
   open:
     type: checkbox
@@ -581,6 +581,7 @@ _array_structures:
           photo: ''
           bio: ''
           open: false
+          active: true
       - label: Open Position
         value:
           name: Open Position
@@ -589,36 +590,42 @@ _array_structures:
           photo: ''
           bio: ''
           open: true
+          active: true
   resource_forms:
     values:
       - label: Form Link
         value:
           label: ''
           url: ''
+          active: true
   accounting_forms:
     values:
       - label: Accounting Form Link
         value:
           label: ''
           url: ''
+          active: true
   policy_docs:
     values:
       - label: Policy Document
         value:
           label: ''
           url: ''
+          active: true
   governing_docs:
     values:
       - label: Governing Document
         value:
           label: ''
           url: ''
+          active: true
   assistance_links:
     values:
       - label: Assistance Link
         value:
           label: ''
           url: ''
+          active: true
   helpful_links:
     values:
       - label: Helpful Link
@@ -626,42 +633,49 @@ _array_structures:
           label: ''
           url: ''
           emoji: ''
+          active: true
   directions:
     values:
       - label: Directions Link
         value:
           label: ''
           url: ''
+          active: true
   available_courses:
     values:
       - label: Coaching Course
         value:
           label: ''
           url: ''
+          active: true
   additional_resources:
     values:
       - label: Coaching Resource
         value:
           label: ''
           url: ''
+          active: true
   youth_trainer_links:
     values:
       - label: Youth Trainer Link
         value:
           label: ''
           url: ''
+          active: true
   education_pathway_links:
     values:
       - label: Education Pathway Link
         value:
           label: ''
           url: ''
+          active: true
   leagues:
     values:
       - label: League
         value:
           label: ''
           url: ''
+          active: true
   sponsors:
     values:
       - label: Sponsor
@@ -669,6 +683,7 @@ _array_structures:
           name: ''
           url: ''
           logo_url: ''
+          active: true
   divisions:
     values:
       - label: Division
@@ -677,12 +692,14 @@ _array_structures:
           ages: ''
           format: ''
           schedule: ''
+          active: true
   seasons:
     values:
       - label: Season
         value:
           season_name: ''
           bullets: []
+          active: true
   nav_links:
     values:
       - label: Navigation Link
@@ -691,27 +708,32 @@ _array_structures:
           label: ''
           href: ''
           external: false
+          active: true
   social_links:
     values:
       - label: Social Media Link
         value:
           label: ''
           url: ''
+          active: true
   footer_club_links:
     values:
       - label: Footer Link
         value:
           label: ''
           url: ''
+          active: true
   footer_fields_links:
     values:
       - label: Footer Link
         value:
           label: ''
           url: ''
+          active: true
   footer_more_links:
     values:
       - label: Footer Link
         value:
           label: ''
           url: ''
+          active: true
