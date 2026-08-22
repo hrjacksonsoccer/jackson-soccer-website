@@ -44,9 +44,12 @@ _inputs:
     comment: Leave blank to use CloudCannon announcements
     cascade: true
   google_calendar_src:
-    type: url
+    type: text
     label: Google Calendar Embed URL
-    comment: The src= URL from your Google Calendar embed code
+    comment: >-
+      Google Calendar > Settings > your calendar > Integrate calendar. Paste
+      either the whole embed code or just the URL that starts with
+      https://calendar.google.com/calendar/embed - both work.
     cascade: true
   name:
     type: text

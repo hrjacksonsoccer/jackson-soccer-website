@@ -870,16 +870,36 @@ async function loadAnnouncements(containerId, countId) {
 
 /* ── CALENDAR EMBED ─────────────────────────────────────────── */
 
-function loadCalendar(containerId) {
+async function loadCalendar(containerId) {
   const container = document.getElementById(containerId);
   if (!container) return;
 
-  if (CONFIG.GOOGLE_CALENDAR_SRC === 'YOUR_GOOGLE_CALENDAR_EMBED_SRC_HERE') {
+  // Embed URL lives in data/calendar.json (Calendar page in CloudCannon).
+  // Falls back to settings.json for backwards compatibility.
+  let src = '';
+  try {
+    const res = await fetch('data/calendar.json');
+    if (res.ok) {
+      const d = await res.json();
+      if (d.google_calendar_src) src = d.google_calendar_src;
+    }
+  } catch (_) {}
+  if (!src) src = CONFIG.GOOGLE_CALENDAR_SRC || '';
+
+  // Be forgiving: if someone pasted the whole <iframe ...> embed code
+  // instead of just the URL, pull the src="..." out of it.
+  if (src.includes('<iframe')) {
+    const m = src.match(/src=["']([^"']+)["']/i);
+    if (m) src = m[1];
+  }
+  src = src.trim();
+
+  if (!src || src === 'YOUR_GOOGLE_CALENDAR_EMBED_SRC_HERE') {
     container.innerHTML = `
       <div style="padding:2rem;text-align:center;color:#666;background:#f9f9f9;border-radius:8px;">
         <p style="font-size:1.5rem;margin-bottom:0.5rem;">📅</p>
         <p style="font-weight:700;margin-bottom:0.25rem;">Calendar Not Yet Configured</p>
-        <p style="font-size:0.85rem;">Paste your Google Calendar embed src URL into CONFIG.GOOGLE_CALENDAR_SRC in assets/site.js</p>
+        <p style="font-size:0.85rem;">Add your Google Calendar embed URL under <strong>Data &rsaquo; Calendar</strong> in CloudCannon.</p>
       </div>`;
     return;
   }
@@ -887,7 +907,7 @@ function loadCalendar(containerId) {
   container.innerHTML = `
     <div class="calendar-wrap">
       <iframe
-        src="${CONFIG.GOOGLE_CALENDAR_SRC}"
+        src="${src}"
         style="width:100%;height:650px;border:none;"
         title="Jackson Soccer Club Calendar">
       </iframe>
