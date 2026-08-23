@@ -1,4 +1,5 @@
 {
+  "hero_subtitle": "Competitive travel teams for ages U7–U17",
   "commissioner_name": "Ryan Monday",
   "commissioner_email": "info@jacksonsoccer.com",
   "overview_paragraphs": [
@@ -8,12 +9,36 @@
   ],
   "leagues_intro": "JSC travel teams compete in the following leagues each Fall and Spring season:",
   "leagues": [
-    {"label": "🏆 MOSA", "url": "https://mosa.gotsportsites.com", "active": true},
-    {"label": "⚽ EDP Soccer", "url": "https://www.edpsoccer.com", "active": true},
-    {"label": "⚽ MAPS", "url": "", "active": true},
-    {"label": "⚽ JAGS", "url": "", "active": true},
-    {"label": "⚽ N1", "url": "", "active": true},
-    {"label": "⚽ OCR", "url": "", "active": true}
+    {
+      "label": "🏆 MOSA",
+      "url": "https://mosa.gotsportsites.com",
+      "active": true
+    },
+    {
+      "label": "⚽ EDP Soccer",
+      "url": "https://www.edpsoccer.com",
+      "active": true
+    },
+    {
+      "label": "⚽ MAPS",
+      "url": "",
+      "active": true
+    },
+    {
+      "label": "⚽ JAGS",
+      "url": "",
+      "active": true
+    },
+    {
+      "label": "⚽ N1",
+      "url": "",
+      "active": true
+    },
+    {
+      "label": "⚽ OCR",
+      "url": "",
+      "active": true
+    }
   ],
   "tryouts_text": "JSC holds travel team tryouts each season. Dates and details are announced via email and on the JSC Calendar. Keep an eye on announcements and make sure your contact info is up to date in your registration account.",
   "tecnica_description": "Tecnica Soccer Training is JSC's official training partner, providing all soccer trainings, clinics, and programs for the JSC community. The Tecnica team has extensive experience in training both Soccer and Futsal, focusing highly on development.",
@@ -24,18 +49,54 @@
   "boys_teams_note_email": "info@jacksonsoccer.com",
   "policy_docs_note_email": "info@jacksonsoccer.com",
   "resource_forms": [
-    {"label": "📋 Club Pass Player Request Form", "url": "https://docs.google.com/forms/d/e/1FAIpQLSdKE7qdB1doW4cmukWOSUsBByaP8IMTMVbuNxvsxGgcPH69uA/viewform?usp=sf_link", "active": true},
-    {"label": "👕 Travel Player Uniform Account Request", "url": "https://docs.google.com/forms/d/e/1FAIpQLSenBewUJBbYgRug7rGWkGjWFwpkA_9-EU3IQbHbyUzR1AyceQ/viewform?usp=sf_link", "active": true},
-    {"label": "📄 Player Transfer Process (NJYS)", "url": "https://dt5602vnjxv0c.cloudfront.net/portals/50469/docs/sports%20connect-new%20jersey%20youth%20soccer-%20documents/ptprocess_2021.pdf", "active": true}
+    {
+      "label": "📋 Club Pass Player Request Form",
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLSdKE7qdB1doW4cmukWOSUsBByaP8IMTMVbuNxvsxGgcPH69uA/viewform?usp=sf_link",
+      "active": true
+    },
+    {
+      "label": "👕 Travel Player Uniform Account Request",
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLSenBewUJBbYgRug7rGWkGjWFwpkA_9-EU3IQbHbyUzR1AyceQ/viewform?usp=sf_link",
+      "active": true
+    },
+    {
+      "label": "📄 Player Transfer Process (NJYS)",
+      "url": "https://dt5602vnjxv0c.cloudfront.net/portals/50469/docs/sports%20connect-new%20jersey%20youth%20soccer-%20documents/ptprocess_2021.pdf",
+      "active": true
+    }
   ],
   "accounting_forms": [
-    {"label": "💵 Check Request Form", "url": "https://www.jacksonsoccer.com/LinkClick.aspx?fileticket=9ogujFHf27U%3d&tabid=755765&portalid=50583", "active": true},
-    {"label": "🙏 Fundraising Request Form", "url": "https://docs.google.com/forms/d/e/1FAIpQLSehZduM6UweiXVy2HtNkDmcXDNJJMqW2SV5xl22lOFg6xg-Mw/viewform", "active": true},
-    {"label": "🏦 Deposit Request Form", "url": "https://www.jacksonsoccer.com/LinkClick.aspx?fileticket=PiYTtxa9W8s%3d&tabid=755767&portalid=50583", "active": true}
+    {
+      "label": "💵 Check Request Form",
+      "url": "https://www.jacksonsoccer.com/LinkClick.aspx?fileticket=9ogujFHf27U%3d&tabid=755765&portalid=50583",
+      "active": true
+    },
+    {
+      "label": "🙏 Fundraising Request Form",
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLSehZduM6UweiXVy2HtNkDmcXDNJJMqW2SV5xl22lOFg6xg-Mw/viewform",
+      "active": true
+    },
+    {
+      "label": "🏦 Deposit Request Form",
+      "url": "https://www.jacksonsoccer.com/LinkClick.aspx?fileticket=PiYTtxa9W8s%3d&tabid=755767&portalid=50583",
+      "active": true
+    }
   ],
   "policy_docs": [
-    {"label": "📄 JSC Travel Policy and Guidelines", "url": "https://docs.google.com/document/d/1Kjf7VEG2GNAYn5TisAO7NpjYudt_3wvshJ6_YR9VKkc/edit?usp=sharing", "active": true},
-    {"label": "📄 JSC Team Fundraising Policy", "url": "https://drive.google.com/file/d/1bvk5i2kxf4x7dQr-FlO-p8HeBZuD8Ro0/view?usp=sharing", "active": true},
-    {"label": "📄 Travel Parent Handbook", "url": "https://drive.google.com/file/d/1lCtTOawj4H_ROoa5Sl80Y-Ba9JD87eUQ/view?usp=sharing", "active": true}
+    {
+      "label": "📄 JSC Travel Policy and Guidelines",
+      "url": "https://docs.google.com/document/d/1Kjf7VEG2GNAYn5TisAO7NpjYudt_3wvshJ6_YR9VKkc/edit?usp=sharing",
+      "active": true
+    },
+    {
+      "label": "📄 JSC Team Fundraising Policy",
+      "url": "https://drive.google.com/file/d/1bvk5i2kxf4x7dQr-FlO-p8HeBZuD8Ro0/view?usp=sharing",
+      "active": true
+    },
+    {
+      "label": "📄 Travel Parent Handbook",
+      "url": "https://drive.google.com/file/d/1lCtTOawj4H_ROoa5Sl80Y-Ba9JD87eUQ/view?usp=sharing",
+      "active": true
+    }
   ]
 }

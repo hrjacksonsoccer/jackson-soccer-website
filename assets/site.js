@@ -110,6 +110,12 @@ function isVisible(item) {
   return !item || item.active !== false;
 }
 
+/** Set a page-hero subtitle <p id="..."> from a data object's hero_subtitle field. */
+function setHeroSubtitle(id, d) {
+  const el = document.getElementById(id);
+  if (el && d && d.hero_subtitle) el.textContent = d.hero_subtitle;
+}
+
 /** Filter an array (or non-array) down to the items marked visible. */
 function visibleItems(list) {
   return Array.isArray(list) ? list.filter(isVisible) : [];
@@ -1035,6 +1041,7 @@ async function loadCalendarContent(bannerId, scheduleId) {
     const res = await fetch('data/calendar.json');
     if (!res.ok) return;
     const d = await res.json();
+    setHeroSubtitle('page-hero-subtitle', d);
 
     // Update meeting dates banner
     const banner = document.getElementById(bannerId);
@@ -1090,6 +1097,7 @@ async function loadCoachesContent() {
     const res = await fetch('data/coaches.json');
     if (!res.ok) return;
     const d = await res.json();
+    setHeroSubtitle('page-hero-subtitle', d);
 
     renderLinkList('coaches-available-courses',    d.available_courses,       'doc-link', false);
     renderLinkList('coaches-additional-resources', d.additional_resources,    'ext-link', false);
@@ -1129,6 +1137,7 @@ async function loadMissionContent(containerId) {
     const res = await fetch('data/club-info.json');
     if (!res.ok) return;
     const d = await res.json();
+    setHeroSubtitle('page-hero-subtitle', d);
 
     const el = document.getElementById(containerId);
     if (el) {
@@ -1256,6 +1265,7 @@ async function loadPoliciesContent(containerId) {
     const res = await fetch('data/policies.json');
     if (!res.ok) return;
     const d = await res.json();
+    setHeroSubtitle('page-hero-subtitle', d);
 
     const introEl = document.getElementById('policies-intro');
     if (introEl && d.intro) introEl.textContent = d.intro;
@@ -1381,6 +1391,7 @@ async function loadTravelContent() {
     const res = await fetch('data/travel.json');
     if (!res.ok) return;
     const d = await res.json();
+    setHeroSubtitle('page-hero-subtitle', d);
 
     const overviewEl = document.getElementById('travel-overview');
     if (overviewEl && d.overview_paragraphs)
@@ -1436,6 +1447,7 @@ async function loadFieldsContent() {
     const res = await fetch('data/fields.json');
     if (!res.ok) return;
     const d = await res.json();
+    setHeroSubtitle('page-hero-subtitle', d);
 
     const rentalEl = document.getElementById('fields-rental-info');
     if (rentalEl && d.rental_info) {

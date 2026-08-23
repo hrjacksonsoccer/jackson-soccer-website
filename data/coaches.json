@@ -1,4 +1,5 @@
 {
+  "hero_subtitle": "Resources, education, and licensing for JSC coaches",
   "director_name": "Anthony Desiderio",
   "director_email": "info@jacksonsoccer.com",
   "njys_contact_email": "coach@njyouthsoccer.com",
@@ -6,28 +7,92 @@
   "volunteer_cta_text": "We need coaches at every level. No experience necessary — just energy and a willingness to help kids enjoy soccer.",
   "volunteer_cta_link_label": "Email us to get started.",
   "available_courses": [
-    {"label": "📄 State Certificate Course (formerly NJYS F Certificate)", "url": "https://www.njyouthsoccer.com/coaching-courses/#state-certificate", "active": true},
-    {"label": "📄 NJYS Y Course", "url": "http://www.njyslive.com/home.php?layout=5578641", "active": true},
-    {"label": "📄 State E Course", "url": "https://www.njyouthsoccer.com/coaching-courses/#state-certificate", "active": true},
-    {"label": "📄 US Soccer Grassroots In-Person License", "url": "http://www.njyouthsoccer.com/grassroots-in-person-licenses", "active": true},
-    {"label": "📄 US Soccer Online Grassroots Licenses – 4v4, 7v7, 9v9, 11v11 ($25)", "url": "https://www.njyouthsoccer.com/coaching-courses/#grassroots-licenses", "active": true},
-    {"label": "📄 National D License", "url": "http://www.njyslive.com/home.php?layout=5577161", "active": true},
-    {"label": "📄 National Youth Coaching Course", "url": "https://www.njyouthsoccer.com/coaching-courses/", "active": true},
-    {"label": "📄 Lost License Replacement Form", "url": "https://www.njyouthsoccer.com/coaching-courses/#lost-license", "active": true},
-    {"label": "📄 Hosting a State Certificate Course", "url": "https://www.njyouthsoccer.com/coaching-courses/#state-certificate", "active": true}
+    {
+      "label": "📄 State Certificate Course (formerly NJYS F Certificate)",
+      "url": "https://www.njyouthsoccer.com/coaching-courses/#state-certificate",
+      "active": true
+    },
+    {
+      "label": "📄 NJYS Y Course",
+      "url": "http://www.njyslive.com/home.php?layout=5578641",
+      "active": true
+    },
+    {
+      "label": "📄 State E Course",
+      "url": "https://www.njyouthsoccer.com/coaching-courses/#state-certificate",
+      "active": true
+    },
+    {
+      "label": "📄 US Soccer Grassroots In-Person License",
+      "url": "http://www.njyouthsoccer.com/grassroots-in-person-licenses",
+      "active": true
+    },
+    {
+      "label": "📄 US Soccer Online Grassroots Licenses – 4v4, 7v7, 9v9, 11v11 ($25)",
+      "url": "https://www.njyouthsoccer.com/coaching-courses/#grassroots-licenses",
+      "active": true
+    },
+    {
+      "label": "📄 National D License",
+      "url": "http://www.njyslive.com/home.php?layout=5577161",
+      "active": true
+    },
+    {
+      "label": "📄 National Youth Coaching Course",
+      "url": "https://www.njyouthsoccer.com/coaching-courses/",
+      "active": true
+    },
+    {
+      "label": "📄 Lost License Replacement Form",
+      "url": "https://www.njyouthsoccer.com/coaching-courses/#lost-license",
+      "active": true
+    },
+    {
+      "label": "📄 Hosting a State Certificate Course",
+      "url": "https://www.njyouthsoccer.com/coaching-courses/#state-certificate",
+      "active": true
+    }
   ],
   "additional_resources": [
-    {"label": "⚽ Play-Practice-Play Initiative", "url": "https://www.njyouthsoccer.com/coaching-courses/", "active": true},
-    {"label": "🧠 NJYS Concussion Training", "url": "https://www.njyouthsoccer.com/safe-soccer/", "active": true},
-    {"label": "🔄 Player Transfers", "url": "https://www.njyouthsoccer.com/registration/#transfers", "active": true},
-    {"label": "🎓 US Soccer Digital Coaching Center", "url": "https://www.ussoccer.com/coaching-education", "active": true}
+    {
+      "label": "⚽ Play-Practice-Play Initiative",
+      "url": "https://www.njyouthsoccer.com/coaching-courses/",
+      "active": true
+    },
+    {
+      "label": "🧠 NJYS Concussion Training",
+      "url": "https://www.njyouthsoccer.com/safe-soccer/",
+      "active": true
+    },
+    {
+      "label": "🔄 Player Transfers",
+      "url": "https://www.njyouthsoccer.com/registration/#transfers",
+      "active": true
+    },
+    {
+      "label": "🎓 US Soccer Digital Coaching Center",
+      "url": "https://www.ussoccer.com/coaching-education",
+      "active": true
+    }
   ],
   "youth_trainer_links": [
-    {"label": "📋 NJYS Youth Trainer Role Info", "url": "https://www.njyouthsoccer.com/Default.aspx?tabid=733255", "active": true}
+    {
+      "label": "📋 NJYS Youth Trainer Role Info",
+      "url": "https://www.njyouthsoccer.com/Default.aspx?tabid=733255",
+      "active": true
+    }
   ],
   "education_pathway_links": [
-    {"label": "🎓 NJYS Coaching Courses", "url": "https://www.njyouthsoccer.com/coaching-courses/", "active": true},
-    {"label": "⚽ US Soccer Coaching Education", "url": "https://www.ussoccer.com/coaching-education", "active": true}
+    {
+      "label": "🎓 NJYS Coaching Courses",
+      "url": "https://www.njyouthsoccer.com/coaching-courses/",
+      "active": true
+    },
+    {
+      "label": "⚽ US Soccer Coaching Education",
+      "url": "https://www.ussoccer.com/coaching-education",
+      "active": true
+    }
   ],
   "youth_trainer_bullets": [
     "The Youth Trainer program exists because an individual <strong>under 18 years of age may not hold a USYS Coach's Pass</strong>. The Youth Trainer pass allows younger volunteers to assist on the field legitimately.",
