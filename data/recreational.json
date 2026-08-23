@@ -47,14 +47,6 @@
       "ball_size": "Size 5",
       "schedule": "Practice Wed nights + Games Saturdays",
       "active": true
-    },
-    {
-      "division": "Premier Division",
-      "ages": "Ages 14–17 (High School)",
-      "format": "Full-sided",
-      "ball_size": "Size 5",
-      "schedule": "Once per week — accommodates school schedules",
-      "active": true
     }
   ],
   "divisions_note": "All age groups play Saturday mornings between 8:30 AM and noon. Professional Tecnica trainers lead every training session and are present on game days to support coaches and players.",
@@ -81,7 +73,7 @@
   "commissioner_name": "Jackson Soccer Club",
   "commissioner_email": "info@jacksonsoccer.com",
   "cta_heading": "Fall 2026 Registration Open",
-  "cta_subtext": "June 1 – August 20, 2026 &nbsp;·&nbsp; Season starts early September",
+  "cta_subtext": "June 1 – August 20, 2026 - Season starts early September",
   "register_button_text": "Register Now →",
   "how_to_register_bullets": [
     "Only create a new account if you are new to Jackson Soccer Club. If your child has played on a Jackson travel team or in our Intramural Program, you already have an account.",
