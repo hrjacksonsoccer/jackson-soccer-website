@@ -621,7 +621,53 @@ _inputs:
       Use {{STORE_URL}} or {{REGISTER_URL}} as a Link URL to reuse the values
       from Settings.
     cascade: true
+  hero_subtitle:
+    type: text
+    label: Page Subtitle
+    cascade: true
+  approved_note:
+    type: text
+    label: Board Approval Note
+    comment: e.g. Approved by the JSC Board, February 2022
+    cascade: true
+  confidentiality_text:
+    type: textarea
+    label: Confidentiality Statement
+    cascade: true
+  procedures:
+    type: array
+    label: Request Procedures
+    comment: The numbered list of rules families must follow when applying.
+    cascade: true
+  text:
+    type: textarea
+    label: Text
+    cascade: true
+  application_url:
+    type: url
+    label: Online Application URL
+    comment: The Google Form families submit to request assistance.
+    cascade: true
+  application_button_text:
+    type: text
+    label: Apply Button Text
+    cascade: true
+  policy_pdf_url:
+    type: text
+    label: Policy PDF
+    comment: The signed policy document, hosted on this site.
+    cascade: true
+  policy_pdf_label:
+    type: text
+    label: Policy PDF Link Text
+    cascade: true
+  contact_text:
+    type: textarea
+    label: Questions Text
+    cascade: true
 data_config:
+  financial_assistance:
+    path: data/financial-assistance.json
   board:
     path: data/board.json
   announcements:
@@ -648,6 +694,12 @@ data_config:
     path: data/policies.json
 timezone: Etc/UTC
 _array_structures:
+  procedures:
+    values:
+      - label: Procedure
+        value:
+          text: ''
+          active: true
   announcements:
     values:
       - label: Announcement

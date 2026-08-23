@@ -1202,6 +1202,53 @@ async function loadMissionContent(containerId) {
   } catch(_) {}
 }
 
+/* ── FINANCIAL ASSISTANCE CONTENT ───────────────────────────── */
+
+async function loadFinancialAssistanceContent() {
+  try {
+    const res = await fetch('data/financial-assistance.json');
+    if (!res.ok) return;
+    const d = await res.json();
+
+    const setText = (id, val) => {
+      const el = document.getElementById(id);
+      if (el && val) el.textContent = val;
+    };
+    const toParas = t => (t || '').split('\n\n')
+      .map(p => p.trim()).filter(Boolean)
+      .map(p => `<p>${p}</p>`).join('');
+
+    setText('fa-hero-subtitle', d.hero_subtitle);
+    setText('fa-confidentiality', d.confidentiality_text);
+    setText('fa-approved-note', d.approved_note);
+
+    const introEl = document.getElementById('fa-intro');
+    if (introEl && d.intro) introEl.innerHTML = toParas(d.intro);
+
+    const procEl = document.getElementById('fa-procedures');
+    if (procEl && Array.isArray(d.procedures)) {
+      const items = visibleItems(d.procedures);
+      if (items.length) procEl.innerHTML = items.map(p => `<li>${p.text || ''}</li>`).join('');
+    }
+
+    const btn = document.getElementById('fa-apply-btn');
+    if (btn && d.application_url) {
+      btn.href = d.application_url;
+      if (d.application_button_text) btn.textContent = d.application_button_text + ' →';
+    }
+
+    const docEl = document.getElementById('fa-policy-doc');
+    if (docEl && d.policy_pdf_url) {
+      docEl.innerHTML = `<a class="doc-link" href="${d.policy_pdf_url}" target="_blank" rel="noopener">📄 ${d.policy_pdf_label || 'Financial Assistance Policy (PDF)'}</a>`;
+    }
+
+    const contactEl = document.getElementById('fa-contact');
+    if (contactEl && d.contact_email) {
+      contactEl.innerHTML = `<p>${d.contact_text || ''}<br><a href="mailto:${d.contact_email}">${d.contact_email}</a></p>`;
+    }
+  } catch(_) {}
+}
+
 /* ── POLICIES CONTENT ────────────────────────────────────────── */
 
 async function loadPoliciesContent(containerId) {

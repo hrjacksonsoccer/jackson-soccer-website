@@ -26,13 +26,8 @@
   ],
   "assistance_links": [
     {
-      "label": "💰 Financial Assistance — Online Application",
-      "url": "https://docs.google.com/forms/d/e/1FAIpQLSd-B3qpzVfHYfAeH8eCmkD1LxQN7vSHVP0UyZ_Fa1DWrMPbnA/viewform?usp=sf_link",
-      "active": true
-    },
-    {
-      "label": "📄 Financial Assistance Policy (PDF)",
-      "url": "https://drive.google.com/file/d/1rePisBPDEmf0wx8_DnXrfLNoz0pB2uRo/view?usp=share_link",
+      "label": "💰 Financial Assistance",
+      "url": "financial-assistance.html",
       "active": true
     },
     {
@@ -46,36 +41,36 @@
     {
       "name": "Puma",
       "url": "https://us.puma.com/en/us/home",
-      "logo_url": "https://www.jacksonsoccer.com/portals/50583/homesponsors/homesponsors637160232371269297.png",
+      "logo_url": "assets/sponsor-puma.png",
       "active": true
     },
     {
       "name": "CentraState Medical Center",
       "url": "https://www.centrastate.com",
-      "logo_url": "https://www.jacksonsoccer.com/portals/50583/homesponsors/homesponsors637340517172952198.png",
+      "logo_url": "assets/sponsor-centrastate.png",
       "active": true
     },
     {
       "name": "Lions FC NJ",
       "url": "https://www.jacksonlions.com",
-      "logo_url": "https://www.jacksonsoccer.com/portals/50583/homesponsors/homesponsors637340518008347504.png",
+      "logo_url": "assets/sponsor-lions.png",
       "active": true
     },
     {
       "name": "Positive Coaching Alliance",
       "url": "https://positivecoach.org/",
-      "logo_url": "https://www.jacksonsoccer.com/portals/50583/homesponsors/homesponsors637340543688738436.png",
+      "logo_url": "assets/sponsor-pca.png",
       "active": true
     },
     {
       "name": "Soccer Parent Resource Center",
       "url": "https://soccerparentresourcecenter.com/",
-      "logo_url": "https://www.jacksonsoccer.com/portals/50583/homesponsors/homesponsors637346870686256361.png",
+      "logo_url": "assets/sponsor-sprc.png",
       "active": true
     }
   ],
-  "financial_assistance_text": "Jackson Soccer Club never wants cost to be the reason a child cannot play. Families who need help with registration fees may apply for financial assistance.\n\nApplications are reviewed confidentially by the board. Assistance is awarded based on demonstrated need and the funds available for that season, and it applies to registration fees only — uniforms, equipment, and travel-team costs are not covered.\n\nFamilies who receive assistance are asked to give back to the club through <strong>volunteer hours</strong> during the season (for example helping at the fields, at events, or with equipment). Please apply before the registration deadline for the season you are applying for; late applications may not be able to be processed in time for team placement.",
-  "peer_mentor_text": "The Peer Mentor program pairs older players with our youngest members, giving Peanuts and Future Stars an extra set of hands on the field and giving teen players a chance to lead.\n\nPeer Mentors help the trainers and coaches run Saturday morning sessions — setting up drills, demonstrating skills, and encouraging the little ones. Sessions run Saturday mornings during the season, alongside the regular 8:30 AM to noon program.\n\nPeer Mentors must be born in an eligible birth year for the program (roughly middle-school and high-school age) and must have parental permission. Volunteer hours served as a Peer Mentor can be used toward school community service requirements — let us know and we will sign off on your hours.",
+  "financial_assistance_text": "Jackson Soccer Club offers assistance to families who have a financial hardship in regard to registration fees. All applications are confidential and reviewed by a committee appointed by the Board of Directors. See the Financial Assistance page for the full policy and to apply.",
+  "peer_mentor_text": "Jackson Soccer Club and Tecnica FC run a Peer Mentoring Program designed to provide mentoring, support, and positive role models for aspiring younger players, and to give leadership and teaching opportunities to the oldest age groups in the club.\n\nEach mentor earns volunteer hours while taking part in our Intramural Program's Saturday morning training sessions, answering questions and helping keep a fun and engaging environment on the field. You can volunteer to be a Peer Mentor for:\n\n- Peanuts (birth years 2018 and 2017) - Saturdays at 8:30 AM\n- Mini Kickers (birth years 2016 and 2015) - Saturdays at 9:30 AM\n- Micro Kickers (birth years 2014 and 2013) - Saturdays at 10:30 AM and 11:30 AM\n\nPlayers born in 2008 or earlier are invited to complete the volunteer application.",
   "financial_docs": [
     {
       "label": "2018 Form 990",

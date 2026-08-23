@@ -70,10 +70,11 @@
     "Reusable water bottle (write child's name on it)"
   ],
   "team_placement_bullets": [
-    "Teams are chosen at random based on age/grade level/gender.",
-    "We cannot accept player, coach, or teammate requests.",
+    "Teams are formed by an automated computer draft based on age, grade level, and gender.",
+    "There are no player, coach, or teammate requests in any division. The only exceptions are siblings and special circumstances.",
+    "If you are considering asking for an exception, please be prepared to volunteer as a coach.",
     "We do our best to make teams as fair as possible.",
-    "Coaches will reach out to families 1–2 weeks before the season starts."
+    "Coaches will reach out to families 1-2 weeks before the season starts."
   ],
   "register_highlight": "Please register early. Late registrations cannot be guaranteed team placement or uniforms. Full payment is required to be placed on a waitlist.",
   "waitlist_text": "We run a waitlist when registration approaches our limit for any division. Registering for the waitlist holds your place in line. If you are on the waitlist and we don't assign you to a team by Week 3, you can receive a full refund.\n\nIf a division needs coaches, players whose parent volunteers to coach will be given priority on the waitlist.",
@@ -83,14 +84,12 @@
   "cta_subtext": "June 1 – August 20, 2026 &nbsp;·&nbsp; Season starts early September",
   "register_button_text": "Register Now →",
   "how_to_register_bullets": [
-    "Go to the Jackson Soccer Club registration site and choose the program your child will play in.",
-    "<strong>Existing members: log in to your existing account rather than creating a second one.</strong> Creating a duplicate account splits your family's history and delays team placement.",
-    "New families: create one household account, then add each child as a participant under that account.",
-    "Select the correct program and division for each child, then complete the registration questions.",
-    "Read and accept the club waivers and codes of conduct during checkout.",
-    "Pay in full to complete registration — a registration is not finished until payment is received.",
-    "Upload the required documents (see below). Team assignment cannot happen until these are uploaded.",
-    "Watch for a confirmation email. Your coach will contact you 1&ndash;2 weeks before the season starts."
+    "Only create a new account if you are new to Jackson Soccer Club. If your child has played on a Jackson travel team or in our Intramural Program, you already have an account.",
+    "Use the Login button in the upper right to sign in to your existing account, then choose from the programs available for your children.",
+    "If you do not remember your login or password, use the \"Forgot Login or Password\" link on the login page.",
+    "Players registering after official registration closes will be placed on a waitlist.",
+    "Matching uniforms and team placement cannot be guaranteed for players who register after official registration ends.",
+    "Team assignments and schedules are released 1-2 weeks before the season begins. Once teams are formed, your coach becomes your point of contact."
   ],
-  "required_documents_text": "Every player must have two documents on file before they can be placed on a team: (1) proof of age &mdash; a birth certificate or passport, and (2) a current color photo of the player's face.\n\nBoth are uploaded through your registration account. <strong>A player will not be assigned to a team until both documents have been uploaded and approved</strong>, so please complete this step as soon as you register.\n\nIf you have already uploaded these documents in a previous season under the same account, you do not need to upload them again unless the club asks you for an updated photo."
+  "required_documents_text": ""
 }
