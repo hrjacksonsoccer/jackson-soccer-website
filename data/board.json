@@ -10,16 +10,7 @@
   },
   {
     "name": "Ryan Monday",
-    "role": "Vice President / Overall Commissioner",
-    "email": "info@jacksonsoccer.com",
-    "photo": "",
-    "bio": "",
-    "open": false,
-    "active": true
-  },
-  {
-    "name": "Shaun Olsen",
-    "role": "Treasurer",
+    "role": "Vice President",
     "email": "info@jacksonsoccer.com",
     "photo": "",
     "bio": "",
@@ -36,18 +27,9 @@
     "active": true
   },
   {
-    "name": "Joel Levine",
-    "role": "Intramural Director",
+    "name": "Anthony Desiderio",
+    "role": "Director of Coaching",
     "email": "info@jacksonsoccer.com",
-    "photo": "",
-    "bio": "",
-    "open": false,
-    "active": true
-  },
-  {
-    "name": "Jason Blind",
-    "role": "Deputy Intramural Director",
-    "email": "",
     "photo": "",
     "bio": "",
     "open": false,
@@ -72,8 +54,17 @@
     "active": true
   },
   {
-    "name": "Anthony Desiderio",
-    "role": "Director of Coaching",
+    "name": "Jason Blind",
+    "role": "Deputy Intramural Director",
+    "email": "",
+    "photo": "",
+    "bio": "",
+    "open": false,
+    "active": true
+  },
+  {
+    "name": "Joel Levine",
+    "role": "Intramural Director",
     "email": "info@jacksonsoccer.com",
     "photo": "",
     "bio": "",
@@ -92,6 +83,15 @@
   {
     "name": "Mike Pinto",
     "role": "Registrar",
+    "email": "info@jacksonsoccer.com",
+    "photo": "",
+    "bio": "Mike Pinto is the volunteer Registrar for the Jackson Soccer Club. He has held the position for about a year and a half, and before that served two years as a recreational coach. He is currently the head coach of the travel U9 Boys Strikers, a role he has held for the past two seasons, and he has also coached flag football and currently coaches basketball as well.\n\nHe handles team rosters, player registration, and league administration so that coaches and players can focus entirely on the game. He also helps manage the club's social media pages, including Facebook, Instagram, and X.\n\nA local parent of two, Mike is thrilled to support the community and help make every season organized and fun for everyone.",
+    "open": false,
+    "active": true
+  },
+  {
+    "name": "Shaun Olsen",
+    "role": "Treasurer",
     "email": "info@jacksonsoccer.com",
     "photo": "",
     "bio": "",
