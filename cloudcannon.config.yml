@@ -274,6 +274,39 @@ _inputs:
     type: array
     label: Assistance Links
     cascade: true
+  financial_docs:
+    type: array
+    label: Financial Transparency Documents
+    comment: >-
+      ACTION NEEDED: these PDFs (Form 990, tax return, CRI-200) are still hosted
+      on the old jacksonsoccer.com DNN website. Re-upload them to Google Drive
+      and replace the URLs here BEFORE the old site is retired, or the links
+      will break.
+    cascade: true
+  financial_assistance_text:
+    type: textarea
+    label: Financial Assistance Explanation
+    comment: >-
+      Shown above the assistance links on the Club Info page. Leave a blank line
+      between paragraphs.
+    cascade: true
+  peer_mentor_text:
+    type: textarea
+    label: Peer Mentor Program Explanation
+    comment: >-
+      Shown above the assistance links on the Club Info page. Leave a blank line
+      between paragraphs.
+    cascade: true
+  sponsor_application_url:
+    type: url
+    label: Sponsorship Application Form URL
+    comment: Google Form businesses use to apply to sponsor the club
+    cascade: true
+  sponsors_cta_text:
+    type: textarea
+    label: Sponsorship Call-to-Action Text
+    comment: Shown under the sponsor logos, above the application button
+    cascade: true
   hero_subtext:
     type: text
     label: Hero Subtext
@@ -415,9 +448,25 @@ _inputs:
     type: text
     label: Schedule
     cascade: true
+  ball_size:
+    type: text
+    label: Ball Size
+    comment: e.g. Size 3, Size 4, Size 5 — the match ball used by this division
+    cascade: true
   divisions_note:
     type: textarea
     label: Program Divisions Footnote
+    cascade: true
+  how_to_register_bullets:
+    type: array
+    label: How to Register Steps
+    cascade: true
+  required_documents_text:
+    type: textarea
+    label: Required Documents Text
+    comment: >-
+      The birth certificate / passport and player photo upload requirement.
+      Leave a blank line between paragraphs.
     cascade: true
   volunteer_email:
     type: email
@@ -438,6 +487,39 @@ _inputs:
   cta_subtext:
     type: text
     label: Registration Banner Subtext
+    cascade: true
+
+  # ── Policies page ──────────────────────────────────────────
+  intro:
+    type: textarea
+    label: Policies Intro Paragraph
+    cascade: true
+  policies:
+    type: array
+    label: Club Policies
+    comment: >-
+      Each policy shows as a collapsible section on the Policies page, grouped
+      by Category.
+    cascade: true
+  category:
+    type: select
+    label: Category
+    comment: Policies are grouped under this heading on the page
+    options:
+      values:
+        - General
+        - Codes of Conduct
+        - Coaches
+    cascade: true
+  body:
+    type: textarea
+    label: Policy Text
+    comment: The full text of the policy. Leave a blank line between paragraphs.
+    cascade: true
+  doc_url:
+    type: url
+    label: Printable Document URL
+    comment: Optional — link to a printable Google Doc or PDF of this policy
     cascade: true
 
   # ── Homepage ───────────────────────────────────────────────
@@ -505,8 +587,8 @@ _inputs:
     label: Page ID
     comment: >-
       Internal name used to highlight the current page in the nav — must match
-      the page (home, club-info, coaches, travel, recreational, fields,
-      calendar, store). Leave as-is unless adding a brand new page.
+      the page (home, club-info, policies, coaches, travel, recreational,
+      fields, calendar, store). Leave as-is unless adding a brand new page.
     cascade: true
   social_links:
     type: array
@@ -562,6 +644,8 @@ data_config:
     path: data/homepage.json
   site:
     path: data/site.json
+  policies:
+    path: data/policies.json
 timezone: Etc/UTC
 _array_structures:
   announcements:
@@ -694,7 +778,24 @@ _array_structures:
           division: ''
           ages: ''
           format: ''
+          ball_size: ''
           schedule: ''
+          active: true
+  policies:
+    values:
+      - label: Policy
+        value:
+          title: ''
+          category: General
+          body: ''
+          doc_url: ''
+          active: true
+  financial_docs:
+    values:
+      - label: Financial Document
+        value:
+          label: ''
+          url: ''
           active: true
   seasons:
     values:

@@ -12,6 +12,7 @@
       "division": "Peanuts",
       "ages": "Pre-K",
       "format": "Introductory fun play",
+      "ball_size": "Size 3",
       "schedule": "Saturdays only",
       "active": true
     },
@@ -19,6 +20,7 @@
       "division": "Future Stars",
       "ages": "Kindergarten &amp; 1st Grade (Coed)",
       "format": "Mini games &amp; skills",
+      "ball_size": "Size 3",
       "schedule": "Saturday mornings only",
       "active": true
     },
@@ -26,6 +28,7 @@
       "division": "Micro Division",
       "ages": "2nd &amp; 3rd Grade (Coed)",
       "format": "Small-sided games &amp; training",
+      "ball_size": "Size 3 or 4",
       "schedule": "Saturday only",
       "active": true
     },
@@ -33,6 +36,7 @@
       "division": "Collegiate Division",
       "ages": "4th &amp; 5th Grade (Coed)",
       "format": "7v7 or 9v9",
+      "ball_size": "Size 4",
       "schedule": "Practice Wed nights + Games Saturdays",
       "active": true
     },
@@ -40,6 +44,7 @@
       "division": "Major League",
       "ages": "6th–8th Grade (Coed)",
       "format": "9v9 or 11v11",
+      "ball_size": "Size 5",
       "schedule": "Practice Wed nights + Games Saturdays",
       "active": true
     },
@@ -47,6 +52,7 @@
       "division": "Premier Division",
       "ages": "Ages 14–17 (High School)",
       "format": "Full-sided",
+      "ball_size": "Size 5",
       "schedule": "Once per week — accommodates school schedules",
       "active": true
     }
@@ -75,5 +81,16 @@
   "commissioner_email": "info@jacksonsoccer.com",
   "cta_heading": "Fall 2026 Registration Open",
   "cta_subtext": "June 1 – August 20, 2026 &nbsp;·&nbsp; Season starts early September",
-  "register_button_text": "Register Now →"
+  "register_button_text": "Register Now →",
+  "how_to_register_bullets": [
+    "Go to the Jackson Soccer Club registration site and choose the program your child will play in.",
+    "<strong>Existing members: log in to your existing account rather than creating a second one.</strong> Creating a duplicate account splits your family's history and delays team placement.",
+    "New families: create one household account, then add each child as a participant under that account.",
+    "Select the correct program and division for each child, then complete the registration questions.",
+    "Read and accept the club waivers and codes of conduct during checkout.",
+    "Pay in full to complete registration — a registration is not finished until payment is received.",
+    "Upload the required documents (see below). Team assignment cannot happen until these are uploaded.",
+    "Watch for a confirmation email. Your coach will contact you 1&ndash;2 weeks before the season starts."
+  ],
+  "required_documents_text": "Every player must have two documents on file before they can be placed on a team: (1) proof of age &mdash; a birth certificate or passport, and (2) a current color photo of the player's face.\n\nBoth are uploaded through your registration account. <strong>A player will not be assigned to a team until both documents have been uploaded and approved</strong>, so please complete this step as soon as you register.\n\nIf you have already uploaded these documents in a previous season under the same account, you do not need to upload them again unless the club asks you for an updated photo."
 }

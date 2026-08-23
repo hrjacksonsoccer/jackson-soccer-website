@@ -5,11 +5,12 @@
   "address_line2": "Jackson, New Jersey 08527",
   "contact_email": "info@jacksonsoccer.com",
   "login_label": "Login",
-  "login_url": "https://www.jacksonsoccer.com/Default.aspx?tabid=717119&isLogin=True",
+  "login_url": "https://login.stacksports.com/login?client_id=612b0399b1854a002e427f78&redirect_uri=https://core-api.bluesombrero.com/login/redirect/portal/50583&app_name=Jackson+Soccer+Club&portalid=50583&instancekey=clubs",
   "copyright_text": "Jackson Soccer Club · Jackson Township, NJ",
   "nav_links": [
     {"id": "home",         "label": "Home",         "href": "index.html",         "external": false, "active": true},
     {"id": "club-info",    "label": "Club Info",    "href": "club-info.html",     "external": false, "active": true},
+    {"id": "policies",     "label": "Policies",     "href": "policies.html",      "external": false, "active": true},
     {"id": "coaches",      "label": "Coaches",      "href": "coaches.html",       "external": false, "active": true},
     {"id": "travel",       "label": "Travel",       "href": "travel.html",        "external": false, "active": true},
     {"id": "recreational", "label": "Recreational", "href": "recreational.html",  "external": false, "active": true},

@@ -49,11 +49,12 @@ const SITE = {
   address_line2: 'Jackson, New Jersey 08527',
   contact_email: 'info@jacksonsoccer.com',
   login_label: 'Login',
-  login_url: 'https://www.jacksonsoccer.com/Default.aspx?tabid=717119&isLogin=True',
+  login_url: 'https://login.stacksports.com/login?client_id=612b0399b1854a002e427f78&redirect_uri=https://core-api.bluesombrero.com/login/redirect/portal/50583&app_name=Jackson+Soccer+Club&portalid=50583&instancekey=clubs',
   copyright_text: 'Jackson Soccer Club · Jackson Township, NJ',
   nav_links: [
     { id: 'home',         label: 'Home',         href: 'index.html',        external: false, active: true },
     { id: 'club-info',    label: 'Club Info',    href: 'club-info.html',    external: false, active: true },
+    { id: 'policies',     label: 'Policies',     href: 'policies.html',     external: false, active: true },
     { id: 'coaches',      label: 'Coaches',      href: 'coaches.html',      external: false, active: true },
     { id: 'travel',       label: 'Travel',       href: 'travel.html',       external: false, active: true },
     { id: 'recreational', label: 'Recreational', href: 'recreational.html', external: false, active: true },
@@ -237,13 +238,16 @@ const DEMO_ANNOUNCEMENTS = [
 const SEARCH_INDEX = [
   { title: 'Home',                              url: 'index.html',                  keywords: 'home announcements news field status helpful links' },
   { title: 'Register for Fall 2026',            url: CONFIG.REGISTER_URL,           keywords: 'register registration sign up fall 2026 intramural recreational' },
-  { title: 'Board of Directors',                url: 'club-info.html',              keywords: 'board directors president vice president treasurer secretary registrar commissioner robert greg ryan shaun zack lou ben anthony mary mike' },
+  { title: 'Board of Directors',                url: 'club-info.html',              keywords: 'board directors president vice president treasurer secretary registrar commissioner greg ginis ryan monday shaun olsen ashley montgomery joel levine jason blind ben felicelli hagos rush anthony desiderio mary taveira mike pinto' },
   { title: 'Mission & Vision',                  url: 'club-info.html',              keywords: 'mission vision values positive coaching educational athletic program goals' },
   { title: 'Contact Us',                        url: 'club-info.html',              keywords: 'contact email address info@jacksonsoccer.com mailing box' },
   { title: 'Sponsors & Partners',               url: 'club-info.html',              keywords: 'sponsors partners puma centrastate lions positive coaching alliance soccer parent resource center' },
   { title: 'By-Laws & Financial Documents',     url: 'club-info.html',              keywords: 'bylaws by-laws financial transparency 990 tax return cri-200 peer mentor financial assistance' },
   { title: 'Coaches – Education & Certificates',url: 'coaches.html',               keywords: 'coaching license certificate njys f license e license d license grassroots courses' },
-  { title: 'Youth Trainer Pass',                url: 'coaches.html',               keywords: 'youth trainer pass njys assistant coach 18 requirement' },
+  { title: 'Youth Trainer Pass',                url: 'coaches.html',               keywords: 'youth trainer pass njys assistant coach age 14 15 16 17 18 teen high school volunteer parental permission' },
+  { title: 'Club Policies',                     url: 'policies.html',               keywords: 'policies policy refund uniform registration fee code of conduct player parent anti-bullying bullying conflict resolution coach expectations sideline terminate refuse' },
+  { title: 'Refund Policy',                     url: 'policies.html',               keywords: 'refund money back cancel withdraw policy' },
+  { title: 'Codes of Conduct',                  url: 'policies.html',               keywords: 'player code of conduct parent code of conduct anti-bullying conflict resolution behavior sportsmanship' },
   { title: 'Coaching Education Pathway',        url: 'coaches.html',               keywords: 'coaching education pathway us soccer njys courses progression' },
   { title: 'Concussion Training',               url: 'coaches.html',               keywords: 'concussion training njys cdc awareness certification' },
   { title: 'Player Transfers',                  url: 'coaches.html',               keywords: 'player transfers njys rules process' },
@@ -1161,10 +1165,31 @@ async function loadMissionContent(containerId) {
     if (govDocsEl && d.governing_docs)
       govDocsEl.innerHTML = visibleItems(d.governing_docs).map(f => `<a class="doc-link" href="${f.url}" target="_blank" rel="noopener">📄 ${f.label}</a>`).join('');
 
+    const finDocsEl = document.getElementById('club-financial-docs');
+    if (finDocsEl && Array.isArray(d.financial_docs) && d.financial_docs.length)
+      finDocsEl.innerHTML = visibleItems(d.financial_docs).map(f => `<a class="doc-link" href="${f.url}" target="_blank" rel="noopener">📄 ${f.label}</a>`).join('');
+
+    const faTextEl = document.getElementById('club-financial-assistance-text');
+    if (faTextEl && d.financial_assistance_text)
+      faTextEl.innerHTML = d.financial_assistance_text.split('\n\n').map(p => `<p>${p}</p>`).join('');
+
+    const pmTextEl = document.getElementById('club-peer-mentor-text');
+    if (pmTextEl && d.peer_mentor_text)
+      pmTextEl.innerHTML = d.peer_mentor_text.split('\n\n').map(p => `<p>${p}</p>`).join('');
+
     renderLinkList('club-assistance-links', d.assistance_links, 'ext-link', false);
 
     const sponsorsIntroEl = document.getElementById('club-sponsors-intro');
     if (sponsorsIntroEl && d.sponsors_intro) sponsorsIntroEl.textContent = d.sponsors_intro;
+
+    const sponsorCtaEl = document.getElementById('club-sponsor-cta');
+    if (sponsorCtaEl && d.sponsor_application_url) {
+      sponsorCtaEl.innerHTML = `
+        ${d.sponsors_cta_text ? `<p>${d.sponsors_cta_text}</p>` : ''}
+        <div class="doc-links">
+          <a class="doc-link" href="${d.sponsor_application_url}" target="_blank" rel="noopener">📝 Sponsorship Application Form</a>
+        </div>`;
+    }
 
     const sponsorsEl = document.getElementById('club-sponsors-grid');
     if (sponsorsEl && Array.isArray(d.sponsors) && d.sponsors.length)
@@ -1174,6 +1199,47 @@ async function loadMissionContent(containerId) {
           <a href="${s.url || '#'}"${isExternalUrl(s.url) ? ' target="_blank" rel="noopener"' : ''} title="${s.name || ''}">
             <img src="${s.logo_url || ''}" alt="${s.name || ''}">
           </a>`).join('');
+  } catch(_) {}
+}
+
+/* ── POLICIES CONTENT ────────────────────────────────────────── */
+
+async function loadPoliciesContent(containerId) {
+  try {
+    const res = await fetch('data/policies.json');
+    if (!res.ok) return;
+    const d = await res.json();
+
+    const introEl = document.getElementById('policies-intro');
+    if (introEl && d.intro) introEl.textContent = d.intro;
+
+    const el = document.getElementById(containerId || 'policies-content');
+    if (!el || !Array.isArray(d.policies)) return;
+
+    const items = visibleItems(d.policies);
+    if (!items.length) return;
+
+    // Preserve the order the categories first appear in the data file.
+    const order = [];
+    const groups = {};
+    items.forEach(p => {
+      const cat = p.category || 'General';
+      if (!groups[cat]) { groups[cat] = []; order.push(cat); }
+      groups[cat].push(p);
+    });
+
+    el.innerHTML = order.map(cat => `
+      <div class="policy-group">
+        <h3 class="policy-group-title">${cat}</h3>
+        ${groups[cat].map(p => `
+          <details class="policy-item">
+            <summary>${p.title || 'Policy'}</summary>
+            <div class="policy-body">
+              ${(p.body || '').split('\n\n').filter(t => t.trim()).map(t => `<p>${t}</p>`).join('')}
+              ${p.doc_url ? `<div class="doc-links"><a class="doc-link" href="${p.doc_url}" target="_blank" rel="noopener">📄 Printable ${p.title || 'Policy'}</a></div>` : ''}
+            </div>
+          </details>`).join('')}
+      </div>`).join('');
   } catch(_) {}
 }
 
@@ -1205,6 +1271,7 @@ async function loadRecreationalContent() {
           <td><strong>${r.division || ''}</strong></td>
           <td>${r.ages || ''}</td>
           <td>${r.format || ''}</td>
+          <td>${r.ball_size || ''}</td>
           <td>${r.schedule || ''}</td>
         </tr>`).join('');
 
@@ -1242,6 +1309,14 @@ async function loadRecreationalContent() {
     const waitlistEl = document.getElementById('rec-waitlist-text');
     if (waitlistEl && d.waitlist_text)
       waitlistEl.innerHTML = d.waitlist_text.split('\n\n').map(p => `<p>${p}</p>`).join('');
+
+    const howToEl = document.getElementById('rec-how-to-register');
+    if (howToEl && Array.isArray(d.how_to_register_bullets) && d.how_to_register_bullets.length)
+      howToEl.innerHTML = d.how_to_register_bullets.map(b => `<li>${b}</li>`).join('');
+
+    const reqDocsEl = document.getElementById('rec-required-documents');
+    if (reqDocsEl && d.required_documents_text)
+      reqDocsEl.innerHTML = d.required_documents_text.split('\n\n').map(p => `<p>${p}</p>`).join('');
 
     const commEl = document.getElementById('rec-commissioner');
     if (commEl && d.commissioner_name)

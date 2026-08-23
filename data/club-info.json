@@ -18,11 +18,28 @@
   "travel_commissioner_email": "info@jacksonsoccer.com",
   "financial_transparency_text": "As a 501(c)(3) nonprofit organization, Jackson Soccer Club publishes its tax filings for public review.",
   "governing_docs": [
-    {"label": "JSC By-Laws", "url": "https://drive.google.com/file/d/1WB0JVwceGJdYN4nB7Ow9imieMqsibVvo/view?usp=sharing", "active": true}
+    {
+      "label": "JSC By-Laws",
+      "url": "https://drive.google.com/file/d/1WB0JVwceGJdYN4nB7Ow9imieMqsibVvo/view?usp=sharing",
+      "active": true
+    }
   ],
   "assistance_links": [
-    {"label": "💰 Financial Assistance", "url": "https://www.jacksonsoccer.com/Default.aspx?tabid=1434136", "active": true},
-    {"label": "🤝 Peer Mentor Program", "url": "https://www.jacksonsoccer.com/Default.aspx?tabid=1090841", "active": true}
+    {
+      "label": "💰 Financial Assistance — Online Application",
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLSd-B3qpzVfHYfAeH8eCmkD1LxQN7vSHVP0UyZ_Fa1DWrMPbnA/viewform?usp=sf_link",
+      "active": true
+    },
+    {
+      "label": "📄 Financial Assistance Policy (PDF)",
+      "url": "https://drive.google.com/file/d/1rePisBPDEmf0wx8_DnXrfLNoz0pB2uRo/view?usp=share_link",
+      "active": true
+    },
+    {
+      "label": "🤝 Peer Mentor Volunteer Application",
+      "url": "https://forms.gle/uMLHLebKU69E7Thd8",
+      "active": true
+    }
   ],
   "sponsors_intro": "We are proud to partner with the following organizations in support of youth soccer in Jackson Township.",
   "sponsors": [
@@ -52,9 +69,30 @@
     },
     {
       "name": "Soccer Parent Resource Center",
-      "url": "https://www.jacksonsoccer.com/Default.aspx?tabid=942286",
+      "url": "https://soccerparentresourcecenter.com/",
       "logo_url": "https://www.jacksonsoccer.com/portals/50583/homesponsors/homesponsors637346870686256361.png",
       "active": true
     }
-  ]
+  ],
+  "financial_assistance_text": "Jackson Soccer Club never wants cost to be the reason a child cannot play. Families who need help with registration fees may apply for financial assistance.\n\nApplications are reviewed confidentially by the board. Assistance is awarded based on demonstrated need and the funds available for that season, and it applies to registration fees only — uniforms, equipment, and travel-team costs are not covered.\n\nFamilies who receive assistance are asked to give back to the club through <strong>volunteer hours</strong> during the season (for example helping at the fields, at events, or with equipment). Please apply before the registration deadline for the season you are applying for; late applications may not be able to be processed in time for team placement.",
+  "peer_mentor_text": "The Peer Mentor program pairs older players with our youngest members, giving Peanuts and Future Stars an extra set of hands on the field and giving teen players a chance to lead.\n\nPeer Mentors help the trainers and coaches run Saturday morning sessions — setting up drills, demonstrating skills, and encouraging the little ones. Sessions run Saturday mornings during the season, alongside the regular 8:30 AM to noon program.\n\nPeer Mentors must be born in an eligible birth year for the program (roughly middle-school and high-school age) and must have parental permission. Volunteer hours served as a Peer Mentor can be used toward school community service requirements — let us know and we will sign off on your hours.",
+  "financial_docs": [
+    {
+      "label": "2018 Form 990",
+      "url": "https://www.jacksonsoccer.com/LinkClick.aspx?fileticket=K5t2IgCxFlw%3d&tabid=755825&portalid=50583",
+      "active": true
+    },
+    {
+      "label": "2017 Tax Return",
+      "url": "https://www.jacksonsoccer.com/LinkClick.aspx?fileticket=z-YMUNkVhbE%3d&tabid=755823&portalid=50583",
+      "active": true
+    },
+    {
+      "label": "2018 CRI-200",
+      "url": "https://www.jacksonsoccer.com/LinkClick.aspx?fileticket=ZnScApxVTcA%3d&tabid=755827&portalid=50583",
+      "active": true
+    }
+  ],
+  "sponsor_application_url": "https://docs.google.com/forms/d/e/1FAIpQLSeYPPiMFNsadOtCrUqaqE-zcS_dK4JA6QgbIqJSYy1XSYsjmQ/viewform",
+  "sponsors_cta_text": "Interested in sponsoring Jackson Soccer Club? Sponsorship helps keep registration affordable for every family in Jackson Township and puts your business in front of hundreds of local families. Complete the sponsorship application below and a board member will be in touch."
 }

@@ -30,10 +30,14 @@
     {"label": "⚽ US Soccer Coaching Education", "url": "https://www.ussoccer.com/coaching-education", "active": true}
   ],
   "youth_trainer_bullets": [
-    "Youth Trainers must be <strong>18 or older</strong> to hold a USYS Coach's Pass issued by NJYS.",
+    "The Youth Trainer program exists because an individual <strong>under 18 years of age may not hold a USYS Coach's Pass</strong>. The Youth Trainer pass allows younger volunteers to assist on the field legitimately.",
+    "A Youth Trainer must be <strong>at least 14 years old and no older than 18 years old</strong> as of September 1 of the current seasonal year.",
+    "Must complete the NJYS <strong>State \"F\" Certificate / State Certificate course</strong>.",
+    "Must complete <strong>CDC Concussion Awareness</strong> certification and keep a copy of the certificate available.",
     "Must complete a medical waiver certification.",
-    "Must maintain a copy of their NJYS State Certificate and CDC Concussion Awareness Certification.",
-    "An adult coach must always be supervising and leading during any training event."
+    "Requires <strong>written parental permission</strong> to participate in the program.",
+    "A Youth Trainer <strong>may not be listed on the game-day roster</strong>, but may be present in the team's bench area.",
+    "An <strong>adult coach must always be supervising and leading</strong> during any training event or game — a Youth Trainer may never run a session alone."
   ],
   "rec_coach_bullets": [
     "Peanuts, Mini Kickers, and Micro Divisions have JSC trainer-led sessions.",
