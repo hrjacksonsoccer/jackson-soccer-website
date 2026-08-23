@@ -1123,11 +1123,18 @@ a { color: var(--red); }
 }
 
 /* ── DIVISIONS TABLE ── */
+.div-table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-top: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
 .div-table {
   width: 100%;
+  min-width: 640px;
   border-collapse: collapse;
   font-size: 0.88rem;
-  margin-top: 0.75rem;
 }
 
 .div-table th {

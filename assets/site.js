@@ -1298,6 +1298,9 @@ async function loadRecreationalContent() {
     if (!res.ok) return;
     const d = await res.json();
 
+    const heroSubEl = document.getElementById('rec-hero-subtitle');
+    if (heroSubEl && d.hero_subtitle) heroSubEl.textContent = d.hero_subtitle;
+
     const aboutIntroEl = document.getElementById('rec-about-intro');
     if (aboutIntroEl && d.about_intro) aboutIntroEl.textContent = d.about_intro;
 
