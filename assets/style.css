@@ -40,6 +40,32 @@ img { max-width: 100%; display: block; }
 
 a { color: var(--red); }
 
+/* ── LANGUAGE TOGGLE BAR (Google Translate) ── */
+#translate-bar {
+  background: var(--dark-red);
+  color: #fff;
+  font-size: 0.78rem;
+  padding: 0.35rem 1rem;
+}
+.translate-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+.translate-bar-label { font-weight: 700; letter-spacing: 0.02em; }
+#google_translate_element { line-height: 1; }
+#google_translate_element .goog-te-gadget { font-family: inherit; font-size: 0.72rem; color: #fff !important; }
+#google_translate_element .goog-te-gadget-simple { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.3); border-radius: 4px; padding: 2px 6px; }
+#google_translate_element .goog-te-gadget-simple span,
+#google_translate_element .goog-te-gadget-simple a { color: #fff !important; text-decoration: none !important; }
+/* Google injects a full-width iframe banner + shifts <body> down on translate — suppress both so our layout doesn't jump */
+.goog-te-banner-frame { display: none !important; }
+body { top: 0 !important; }
+.goog-tooltip, .goog-tooltip:hover { display: none !important; }
+.goog-text-highlight { background: none !important; box-shadow: none !important; }
+
 /* ── HEADER ── */
 #site-header header {
   background: var(--black);

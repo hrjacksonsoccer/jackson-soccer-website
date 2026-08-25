@@ -301,6 +301,44 @@ function closeSearch() {
   }, 150);
 }
 
+/* ── LANGUAGE TOGGLE (Google Translate) ──────────────────────────
+   Whole-page machine translation. No content is duplicated or kept
+   in a second language anywhere — Google translates the live DOM,
+   which means anything added later (new pages, new CloudCannon
+   content) is translated automatically with zero extra setup.
+──────────────────────────────────────────────────────────────── */
+
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'en',
+    includedLanguages: 'en,es',
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+    autoDisplay: false,
+  }, 'google_translate_element');
+}
+
+function initTranslateBar() {
+  if (document.getElementById('translate-bar')) return;
+
+  const bar = document.createElement('div');
+  bar.id = 'translate-bar';
+  bar.innerHTML = `
+    <div class="translate-bar-inner">
+      <span class="translate-bar-label">🌐 English / Español</span>
+      <div id="google_translate_element"></div>
+    </div>
+  `;
+  document.body.insertBefore(bar, document.body.firstChild);
+
+  if (!document.getElementById('google-translate-script')) {
+    window.googleTranslateElementInit = googleTranslateElementInit;
+    const script = document.createElement('script');
+    script.id = 'google-translate-script';
+    script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    document.body.appendChild(script);
+  }
+}
+
 /* ── NAV HTML ───────────────────────────────────────────────── */
 
 function buildHeader(activePage) {
@@ -425,6 +463,7 @@ function buildFooter() {
 /* ── INIT ───────────────────────────────────────────────────── */
 
 function initSite(activePage) {
+  initTranslateBar();
   const headerEl = document.getElementById('site-header');
   const footerEl = document.getElementById('site-footer');
   if (headerEl) headerEl.innerHTML = buildHeader(activePage);
