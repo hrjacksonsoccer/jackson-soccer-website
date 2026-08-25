@@ -1200,7 +1200,7 @@ body { top: 0 !important; }
   color: #ccc;
 }
 
-.contact-block p, .contact-block a {
+.contact-block p, .contact-block a, .contact-block li {
   font-size: 0.88rem;
   line-height: 1.7;
   color: #ddd;
