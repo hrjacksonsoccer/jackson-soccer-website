@@ -306,29 +306,33 @@ function closeSearch() {
    in a second language anywhere — Google translates the live DOM,
    which means anything added later (new pages, new CloudCannon
    content) is translated automatically with zero extra setup.
+
+   Google's own widget UI is intentionally hidden (it's ugly and hard
+   to skin). Instead we drive its hidden <select> ("goog-te-combo")
+   from a small custom pill + dropdown that matches the site's look.
 ──────────────────────────────────────────────────────────────── */
+
+const LANG_META = {
+  en: { flag: '🇺🇸', label: 'English' },
+  es: { flag: '🇪🇸', label: 'Español' },
+};
 
 function googleTranslateElementInit() {
   new google.translate.TranslateElement({
     pageLanguage: 'en',
     includedLanguages: 'en,es',
-    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
     autoDisplay: false,
   }, 'google_translate_element');
 }
 
-function initTranslateBar() {
-  if (document.getElementById('translate-bar')) return;
+/** Create the hidden Google widget once per page (only needs to exist, never seen). */
+function initTranslateEngine() {
+  if (document.getElementById('google_translate_element')) return;
 
-  const bar = document.createElement('div');
-  bar.id = 'translate-bar';
-  bar.innerHTML = `
-    <div class="translate-bar-inner">
-      <span class="translate-bar-label">🌐 English / Español</span>
-      <div id="google_translate_element"></div>
-    </div>
-  `;
-  document.body.insertBefore(bar, document.body.firstChild);
+  const el = document.createElement('div');
+  el.id = 'google_translate_element';
+  el.style.display = 'none';
+  document.body.appendChild(el);
 
   if (!document.getElementById('google-translate-script')) {
     window.googleTranslateElementInit = googleTranslateElementInit;
@@ -337,6 +341,75 @@ function initTranslateBar() {
     script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
     document.body.appendChild(script);
   }
+}
+
+/** HTML for the custom language pill + dropdown, dropped into the header. */
+function langSwitcherHtml() {
+  return `
+    <div class="lang-switcher" id="lang-switcher">
+      <button type="button" class="lang-btn" onclick="toggleLangMenu(event)" aria-label="Change language">
+        <span id="lang-flag">${LANG_META.en.flag}</span>
+        <span id="lang-current">${LANG_META.en.label}</span>
+        <span class="lang-chevron">⌄</span>
+      </button>
+      <div class="lang-menu" id="lang-menu">
+        <button type="button" class="lang-option" data-lang="en" onclick="setLanguage('en')">
+          <span>${LANG_META.en.flag} ${LANG_META.en.label}</span><span class="lang-check"></span>
+        </button>
+        <button type="button" class="lang-option" data-lang="es" onclick="setLanguage('es')">
+          <span>${LANG_META.es.flag} ${LANG_META.es.label}</span><span class="lang-check"></span>
+        </button>
+      </div>
+    </div>
+  `;
+}
+
+function toggleLangMenu(e) {
+  if (e) e.stopPropagation();
+  const menu = document.getElementById('lang-menu');
+  if (menu) menu.classList.toggle('open');
+}
+
+document.addEventListener('click', () => {
+  document.querySelectorAll('.lang-menu.open').forEach(m => m.classList.remove('open'));
+});
+
+function currentLangFromCookie() {
+  const m = document.cookie.match(/googtrans=\/en\/(\w{2})/);
+  return m ? m[1] : 'en';
+}
+
+function updateLangButtons(lang) {
+  const meta = LANG_META[lang] || LANG_META.en;
+  document.querySelectorAll('#lang-flag').forEach(el => el.textContent = meta.flag);
+  document.querySelectorAll('#lang-current').forEach(el => el.textContent = meta.label);
+  document.querySelectorAll('.lang-option').forEach(o => {
+    const check = o.querySelector('.lang-check');
+    if (check) check.textContent = (o.dataset.lang === lang) ? '✓' : '';
+  });
+}
+
+function waitForGoogleCombo(lang, attempts) {
+  attempts = attempts || 0;
+  const combo = document.querySelector('select.goog-te-combo');
+  if (combo) {
+    combo.value = lang;
+    combo.dispatchEvent(new Event('change'));
+  } else if (attempts < 40) {
+    setTimeout(() => waitForGoogleCombo(lang, attempts + 1), 150);
+  }
+}
+
+function setLanguage(lang) {
+  const menu = document.getElementById('lang-menu');
+  if (menu) menu.classList.remove('open');
+  updateLangButtons(lang);
+  waitForGoogleCombo(lang);
+}
+
+function initTranslateBar() {
+  initTranslateEngine();
+  updateLangButtons(currentLangFromCookie());
 }
 
 /* ── NAV HTML ───────────────────────────────────────────────── */
@@ -378,6 +451,7 @@ function buildHeader(activePage) {
               aria-label="Search site">
             <div id="search-results" class="search-results"></div>
           </div>
+          ${langSwitcherHtml()}
           <a href="${SITE.login_url}"
              target="_blank" rel="noopener" class="header-login-btn">⬡&nbsp; ${SITE.login_label}
           </a>
@@ -463,11 +537,11 @@ function buildFooter() {
 /* ── INIT ───────────────────────────────────────────────────── */
 
 function initSite(activePage) {
-  initTranslateBar();
   const headerEl = document.getElementById('site-header');
   const footerEl = document.getElementById('site-footer');
   if (headerEl) headerEl.innerHTML = buildHeader(activePage);
   if (footerEl) footerEl.innerHTML = buildFooter();
+  initTranslateBar();
 }
 
 function toggleMobileNav() {

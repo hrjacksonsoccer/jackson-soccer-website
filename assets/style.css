@@ -40,31 +40,71 @@ img { max-width: 100%; display: block; }
 
 a { color: var(--red); }
 
-/* ── LANGUAGE TOGGLE BAR (Google Translate) ── */
-#translate-bar {
-  background: var(--dark-red);
-  color: #fff;
+/* ── LANGUAGE TOGGLE (Google Translate, custom UI) ──
+   Google's own widget is rendered off-screen (#google_translate_element,
+   display:none in JS) purely to drive translation; everything visible
+   here is our own markup so it matches the rest of the header. */
+.lang-switcher { position: relative; flex-shrink: 0; }
+
+.lang-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.38rem 0.75rem;
+  background: transparent;
+  border: 1px solid #555;
+  border-radius: 5px;
+  color: #ddd;
   font-size: 0.78rem;
-  padding: 0.35rem 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color 0.15s, color 0.15s;
 }
-.translate-bar-inner {
+.lang-btn:hover { border-color: var(--red); color: #fff; }
+.lang-chevron { font-size: 0.7rem; opacity: 0.7; margin-left: 0.1rem; }
+
+.lang-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+  padding: 0.4rem;
+  min-width: 160px;
+  z-index: 200;
+}
+.lang-menu.open { display: block; }
+
+.lang-option {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.5rem 0.6rem;
+  background: none;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.88rem;
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
 }
-.translate-bar-label { font-weight: 700; letter-spacing: 0.02em; }
-#google_translate_element { line-height: 1; }
-#google_translate_element .goog-te-gadget { font-family: inherit; font-size: 0.72rem; color: #fff !important; }
-#google_translate_element .goog-te-gadget-simple { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.3); border-radius: 4px; padding: 2px 6px; }
-#google_translate_element .goog-te-gadget-simple span,
-#google_translate_element .goog-te-gadget-simple a { color: #fff !important; text-decoration: none !important; }
+.lang-option:hover { background: var(--gray); }
+.lang-check { color: var(--red); font-weight: 700; }
+
 /* Google injects a full-width iframe banner + shifts <body> down on translate — suppress both so our layout doesn't jump */
 .goog-te-banner-frame { display: none !important; }
 body { top: 0 !important; }
 .goog-tooltip, .goog-tooltip:hover { display: none !important; }
 .goog-text-highlight { background: none !important; box-shadow: none !important; }
+
+@media (max-width: 640px) {
+  .lang-menu { right: -1rem; }
+}
 
 /* ── HEADER ── */
 #site-header header {
