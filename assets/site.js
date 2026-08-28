@@ -626,7 +626,7 @@ async function loadFieldStatus(containerId, refreshId) {
     return;
   }
   try {
-    const res = await fetch(CONFIG.FIELD_STATUS_CSV);
+    const res = await fetch(CONFIG.FIELD_STATUS_CSV + (CONFIG.FIELD_STATUS_CSV.includes('?') ? '&' : '?') + '_=' + Date.now(), { cache: 'no-store' });
     const rawText = await res.text();
     const lines = rawText.split(/\r?\n/);
     const headerIdx = lines.findIndex(l => l.startsWith('Complex'));
@@ -968,7 +968,7 @@ async function loadAnnouncements(containerId, countId) {
   // 2. Fall back to CSV if configured
   if (CONFIG.ANNOUNCEMENTS_CSV) {
     try {
-      const res = await fetch(CONFIG.ANNOUNCEMENTS_CSV);
+      const res = await fetch(CONFIG.ANNOUNCEMENTS_CSV + (CONFIG.ANNOUNCEMENTS_CSV.includes('?') ? '&' : '?') + '_=' + Date.now(), { cache: 'no-store' });
       const rows = parseCSV(await res.text());
       const items = rows
         .filter(r => r['Title'])
@@ -1088,7 +1088,10 @@ async function loadPracticeSchedule(containerId) {
   }
 
   try {
-    const res = await fetch(PRACTICE_SCHEDULE_URL);
+    // cache: 'no-store' + a timestamp param force a fresh copy from Google every
+    // page load, so edits in the sheet don't get stuck behind a stale browser cache.
+    const bustUrl = PRACTICE_SCHEDULE_URL + (PRACTICE_SCHEDULE_URL.includes('?') ? '&' : '?') + '_=' + Date.now();
+    const res = await fetch(bustUrl, { cache: 'no-store' });
     if (!res.ok) throw new Error();
     const html = await res.text();
     const doc = new DOMParser().parseFromString(html, 'text/html');
@@ -1681,7 +1684,7 @@ async function loadTravelTeams(csvUrl) {
   }
 
   try {
-    const res  = await fetch(csvUrl);
+    const res  = await fetch(csvUrl + (csvUrl.includes('?') ? '&' : '?') + '_=' + Date.now(), { cache: 'no-store' });
     const rows = parseCSV(await res.text());
     const girls = rows.filter(r => r['Gender'] && r['Gender'].toLowerCase().startsWith('g'));
     const boys  = rows.filter(r => r['Gender'] && r['Gender'].toLowerCase().startsWith('b'));
