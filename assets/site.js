@@ -1039,6 +1039,34 @@ async function loadCalendar(containerId) {
 
 /* ── PRACTICE SCHEDULE ──────────────────────────────────────── */
 
+/** Parse the .sN{...} CSS rules straight out of a published Google Sheet's
+    own HTML, so cell colors always match whatever is actually in the sheet —
+    no hand-maintained/hardcoded color list to go stale when the sheet changes. */
+function parseSheetColorMap(html) {
+  const map = {};
+  const ruleRe = /((?:\.s\d+\s*,?\s*)+)\{([^}]*)\}/g;
+  let m;
+  while ((m = ruleRe.exec(html))) {
+    const classes = m[1].match(/s\d+/g) || [];
+    const decls = m[2].split(';');
+    const rule = { bold: false };
+    decls.forEach(d => {
+      const idx = d.indexOf(':');
+      if (idx === -1) return;
+      const prop = d.slice(0, idx).trim();
+      const val  = d.slice(idx + 1).trim();
+      if (!prop || !val) return;
+      if (prop === 'background-color') rule.bg = val;
+      else if (prop === 'color') rule.fg = val;
+      else if (prop === 'font-weight' && /bold/i.test(val)) rule.bold = true;
+    });
+    classes.forEach(cls => {
+      map[cls] = { ...(map[cls] || {}), ...rule };
+    });
+  }
+  return map;
+}
+
 const PRACTICE_SCHEDULE_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSwq5L_mTvhaOXzfJOfLhwu37TF_Qu7bFwSnYSKJTsEZ7EJMRMyEZ7x_UXG2xgYqeiEWY44tcDLB575/pubhtml?gid=939394155&single=true&widget=false&headers=false';
 
 async function loadPracticeSchedule(containerId) {
@@ -1067,22 +1095,10 @@ async function loadPracticeSchedule(containerId) {
     const allRows = Array.from(doc.querySelectorAll('tbody tr'));
     if (!allRows.length) throw new Error();
 
-    // Color map from getComputedStyle on live sheet — covers all sN classes in this sheet
-    const classMap = {
-      s1:  { bg: 'rgb(153,153,153)', fg: null,    bold: true  },
-      s3:  { bg: 'rgb(39,78,19)',    fg: '#ffffff', bold: true  },
-      s6:  { bg: 'rgb(146,208,80)',  fg: null,    bold: true  },
-      s8:  { bg: 'rgb(146,208,80)',  fg: null,    bold: true  },
-      s10: { bg: 'rgb(255,255,0)',   fg: null,    bold: true  },
-      s12: { bg: 'rgb(0,0,0)',       fg: '#ffffff', bold: true  },
-      s13: { bg: 'rgb(0,255,0)',     fg: null,    bold: true  },
-      s14: { bg: 'rgb(255,255,0)',   fg: null,    bold: true  },
-      s15: { bg: 'rgb(255,255,0)',   fg: null,    bold: true  },
-      s17: { bg: 'rgb(255,0,0)',     fg: '#ffffff', bold: true  },
-      s23: { bg: 'rgb(0,255,0)',     fg: null,    bold: true  },
-      s24: { bg: 'rgb(153,153,153)', fg: null,    bold: false },
-      s33: { bg: 'rgb(0,255,0)',     fg: null,    bold: true  },
-    };
+    // Color map read live from the sheet's own published CSS (not hardcoded) —
+    // whatever colors are set in the Google Sheet show up here automatically,
+    // even if the sheet is re-colored, re-split, or re-published later.
+    const classMap = parseSheetColorMap(html);
 
     // Group rows by day; skip rows where every cell is empty text
     const groups = {};
