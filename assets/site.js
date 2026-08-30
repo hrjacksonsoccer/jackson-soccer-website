@@ -69,7 +69,7 @@ const SITE = {
   ],
   footer_club_heading: 'Club',
   footer_club_links: [
-    { label: 'Board of Directors',  url: 'club-info.html',    active: true },
+    { label: 'Board of Directors',  url: 'club-info.html#board', active: true },
     { label: 'Coaching Resources',  url: 'coaches.html',      active: true },
     { label: 'Travel Program',      url: 'travel.html',       active: true },
     { label: 'Recreational Soccer', url: 'recreational.html', active: true },
