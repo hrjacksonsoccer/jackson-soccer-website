@@ -68,11 +68,6 @@
       "label": "🎓 US Soccer Digital Coaching Center",
       "url": "https://www.ussoccer.com/coaching-education",
       "active": true
-    },
-    {
-      "label": "Coaches / Team Work Bond",
-      "url": "https://jackson-soccer-work-bond.hagosrush-447.workers.dev",
-      "active": true
     }
   ],
   "youth_trainer_bullets": [
@@ -104,7 +99,13 @@
       "active": true
     }
   ],
-  "general_coaching_links": [],
+  "general_coaching_links": [
+    {
+      "label": "Coaches / Team Work Bond",
+      "url": "https://jackson-soccer-work-bond.hagosrush-447.workers.dev",
+      "active": true
+    }
+  ],
   "rec_coach_bullets": [
     "Peanuts, Mini Kickers, and Micro Divisions have JSC trainer-led sessions.",
     "Collegiate & Major League coaches receive trainer-led Wednesday night practice support.",
