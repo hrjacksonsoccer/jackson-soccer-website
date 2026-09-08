@@ -1204,6 +1204,23 @@ async function loadCalendarContent(bannerId, scheduleId) {
  * plainWhenNoUrl — if true, entries with an empty url render as a
  *                  non-clickable <span class="{cls} {cls}--plain">
  */
+/** Render a link array as a plain bulleted list (<ul><li><a>) instead of the
+    chip/pill style renderLinkList uses — for spots where links should look
+    like the other text bullets around them (e.g. Coaching Resources). */
+function renderLinkBulletList(containerId, links) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  const items = visibleItems(links);
+  if (!items.length) { el.innerHTML = ''; return; }
+  el.innerHTML = items.map(l => {
+    const label = l.label || '';
+    const url   = resolveUrl(l.url);
+    if (!url) return `<li>${label}</li>`;
+    const ext = isExternalUrl(url) ? ' target="_blank" rel="noopener"' : '';
+    return `<li><a href="${url}"${ext}>${label}</a></li>`;
+  }).join('');
+}
+
 function renderLinkList(containerId, links, cls, plainWhenNoUrl) {
   const el = document.getElementById(containerId);
   if (!el || !Array.isArray(links) || !links.length) return;
@@ -1239,6 +1256,8 @@ async function loadCoachesContent() {
     const njysEl = document.getElementById('coaches-njys-email');
     if (njysEl && d.njys_contact_email)
       njysEl.innerHTML = `For questions about NJYS Coaching Schools, email <a href="mailto:${d.njys_contact_email}">${d.njys_contact_email}</a>.`;
+
+    renderLinkBulletList('coaches-general-links', d.general_coaching_links);
 
     const ctaEl = document.getElementById('coaches-volunteer-cta');
     if (ctaEl && d.volunteer_cta_email)

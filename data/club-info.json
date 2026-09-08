@@ -17,7 +17,6 @@
   "general_email": "info@jacksonsoccer.com",
   "travel_commissioner_name": "Ryan Monday",
   "travel_commissioner_email": "info@jacksonsoccer.com",
-  "financial_transparency_text": "As a 501(c)(3) nonprofit organization, Jackson Soccer Club publishes its tax filings for public review.",
   "governing_docs": [
     {
       "label": "JSC By-Laws",
@@ -25,6 +24,26 @@
       "active": true
     }
   ],
+  "financial_transparency_text": "As a 501(c)(3) nonprofit organization, Jackson Soccer Club publishes its tax filings for public review.",
+  "financial_docs": [
+    {
+      "label": "2018 Form 990",
+      "url": "https://www.jacksonsoccer.com/LinkClick.aspx?fileticket=K5t2IgCxFlw%3d&tabid=755825&portalid=50583",
+      "active": true
+    },
+    {
+      "label": "2017 Tax Return",
+      "url": "https://www.jacksonsoccer.com/LinkClick.aspx?fileticket=z-YMUNkVhbE%3d&tabid=755823&portalid=50583",
+      "active": true
+    },
+    {
+      "label": "2018 CRI-200",
+      "url": "https://www.jacksonsoccer.com/LinkClick.aspx?fileticket=ZnScApxVTcA%3d&tabid=755827&portalid=50583",
+      "active": true
+    }
+  ],
+  "financial_assistance_text": "Jackson Soccer Club offers assistance to families who have a financial hardship in regard to registration fees. All applications are confidential and reviewed by a committee appointed by the Board of Directors. See the Financial Assistance page for the full policy and to apply.",
+  "peer_mentor_text": "Jackson Soccer Club and Tecnica FC run a Peer Mentoring Program designed to provide mentoring, support, and positive role models for aspiring younger players, and to give leadership and teaching opportunities to the oldest age groups in the club.\n\nEach mentor earns volunteer hours while taking part in our Intramural Program's Saturday morning training sessions, answering questions and helping keep a fun and engaging environment on the field. You can volunteer to be a Peer Mentor for:\n\n- Peanuts (birth years 2018 and 2017) - Saturdays at 8:30 AM\n- Mini Kickers (birth years 2016 and 2015) - Saturdays at 9:30 AM\n- Micro Kickers (birth years 2014 and 2013) - Saturdays at 10:30 AM and 11:30 AM\n\nPlayers born in 2008 or earlier are invited to complete the volunteer application.",
   "assistance_links": [
     {
       "label": "💰 Financial Assistance",
@@ -70,25 +89,6 @@
       "active": true
     }
   ],
-  "financial_assistance_text": "Jackson Soccer Club offers assistance to families who have a financial hardship in regard to registration fees. All applications are confidential and reviewed by a committee appointed by the Board of Directors. See the Financial Assistance page for the full policy and to apply.",
-  "peer_mentor_text": "Jackson Soccer Club and Tecnica FC run a Peer Mentoring Program designed to provide mentoring, support, and positive role models for aspiring younger players, and to give leadership and teaching opportunities to the oldest age groups in the club.\n\nEach mentor earns volunteer hours while taking part in our Intramural Program's Saturday morning training sessions, answering questions and helping keep a fun and engaging environment on the field. You can volunteer to be a Peer Mentor for:\n\n- Peanuts (birth years 2018 and 2017) - Saturdays at 8:30 AM\n- Mini Kickers (birth years 2016 and 2015) - Saturdays at 9:30 AM\n- Micro Kickers (birth years 2014 and 2013) - Saturdays at 10:30 AM and 11:30 AM\n\nPlayers born in 2008 or earlier are invited to complete the volunteer application.",
-  "financial_docs": [
-    {
-      "label": "2018 Form 990",
-      "url": "https://www.jacksonsoccer.com/LinkClick.aspx?fileticket=K5t2IgCxFlw%3d&tabid=755825&portalid=50583",
-      "active": true
-    },
-    {
-      "label": "2017 Tax Return",
-      "url": "https://www.jacksonsoccer.com/LinkClick.aspx?fileticket=z-YMUNkVhbE%3d&tabid=755823&portalid=50583",
-      "active": true
-    },
-    {
-      "label": "2018 CRI-200",
-      "url": "https://www.jacksonsoccer.com/LinkClick.aspx?fileticket=ZnScApxVTcA%3d&tabid=755827&portalid=50583",
-      "active": true
-    }
-  ],
-  "sponsor_application_url": "https://docs.google.com/forms/d/e/1FAIpQLSeYPPiMFNsadOtCrUqaqE-zcS_dK4JA6QgbIqJSYy1XSYsjmQ/viewform",
-  "sponsors_cta_text": "Interested in sponsoring Jackson Soccer Club? Sponsorship helps keep registration affordable for every family in Jackson Township and puts your business in front of hundreds of local families. Complete the sponsorship application below and a board member will be in touch."
+  "sponsors_cta_text": "Interested in sponsoring Jackson Soccer Club? Sponsorship helps keep registration affordable for every family in Jackson Township and puts your business in front of hundreds of local families. Complete the sponsorship application below and a board member will be in touch.",
+  "sponsor_application_url": "https://docs.google.com/forms/d/e/1FAIpQLSeYPPiMFNsadOtCrUqaqE-zcS_dK4JA6QgbIqJSYy1XSYsjmQ/viewform"
 }

@@ -1,5 +1,8 @@
 {
   "hero_subtitle": "Ages 3–14 · Saturday mornings · All levels welcome",
+  "cta_heading": "Fall 2026 Registration Open",
+  "cta_subtext": "June 1 – August 20, 2026 - Season starts early September",
+  "register_button_text": "Register Now →",
   "about_intro": "We form teams and divisions based on age. We follow US Soccer principles to develop kids — physically, technically, strategically, and grow their Soccer IQ.",
   "about_bullets": [
     "<strong>Fall:</strong> Teams begin practicing mid-August; games run September to early November.",
@@ -51,6 +54,15 @@
     }
   ],
   "divisions_note": "All age groups play Saturday mornings between 8:30 AM and noon. Professional Tecnica trainers lead every training session and are present on game days to support coaches and players.",
+  "how_to_register_bullets": [
+    "Only create a new account if you are new to Jackson Soccer Club. If your child has played on a Jackson travel team or in our Intramural Program, you already have an account.",
+    "Use the Login button in the upper right to sign in to your existing account, then choose from the programs available for your children.",
+    "If you do not remember your login or password, use the \"Forgot Login or Password\" link on the login page.",
+    "Players registering after official registration closes will be placed on a waitlist.",
+    "Matching uniforms and team placement cannot be guaranteed for players who register after official registration ends.",
+    "Team assignments and schedules are released 1-2 weeks before the season begins. Once teams are formed, your coach becomes your point of contact."
+  ],
+  "required_documents_text": "",
   "club_provides": [
     "Team shirt (uniform)",
     "Black socks"
@@ -72,17 +84,5 @@
   "register_highlight": "Please register early. Late registrations cannot be guaranteed team placement or uniforms. Full payment is required to be placed on a waitlist.",
   "waitlist_text": "We run a waitlist when registration approaches our limit for any division. Registering for the waitlist holds your place in line. If you are on the waitlist and we don't assign you to a team by Week 3, you can receive a full refund.\n\nIf a division needs coaches, players whose parent volunteers to coach will be given priority on the waitlist.",
   "commissioner_name": "Jackson Soccer Club",
-  "commissioner_email": "info@jacksonsoccer.com",
-  "cta_heading": "Fall 2026 Registration Open",
-  "cta_subtext": "June 1 – August 20, 2026 - Season starts early September",
-  "register_button_text": "Register Now →",
-  "how_to_register_bullets": [
-    "Only create a new account if you are new to Jackson Soccer Club. If your child has played on a Jackson travel team or in our Intramural Program, you already have an account.",
-    "Use the Login button in the upper right to sign in to your existing account, then choose from the programs available for your children.",
-    "If you do not remember your login or password, use the \"Forgot Login or Password\" link on the login page.",
-    "Players registering after official registration closes will be placed on a waitlist.",
-    "Matching uniforms and team placement cannot be guaranteed for players who register after official registration ends.",
-    "Team assignments and schedules are released 1-2 weeks before the season begins. Once teams are formed, your coach becomes your point of contact."
-  ],
-  "required_documents_text": ""
+  "commissioner_email": "info@jacksonsoccer.com"
 }

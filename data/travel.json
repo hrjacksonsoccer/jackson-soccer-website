@@ -1,12 +1,12 @@
 {
   "hero_subtitle": "Competitive travel teams for ages U7–U17",
-  "commissioner_name": "Ryan Monday",
-  "commissioner_email": "info@jacksonsoccer.com",
   "overview_paragraphs": [
     "The Jackson Soccer Club supports over 30 travel teams each Fall and Spring season. The teams play in many local and state organized travel leagues including EDP, MAPS, JAGS, MOSA, and Ocean County Recreation.",
     "Teams are organized by gender and age according to the rules of NJYS. We currently have teams starting at U7 through U17.",
     "Tournament play is encouraged and recommended. Our teams have traveled to many tournaments along the East Coast including those in Virginia, Pennsylvania, New Jersey, Maryland, Delaware, and New York."
   ],
+  "commissioner_name": "Ryan Monday",
+  "commissioner_email": "info@jacksonsoccer.com",
   "leagues_intro": "JSC travel teams compete in the following leagues each Fall and Spring season:",
   "leagues": [
     {
@@ -40,14 +40,13 @@
       "active": true
     }
   ],
+  "boys_teams_note_email": "info@jacksonsoccer.com",
   "tryouts_text": "JSC holds travel team tryouts each season. Dates and details are announced via email and on the JSC Calendar. Keep an eye on announcements and make sure your contact info is up to date in your registration account.",
   "tecnica_description": "Tecnica Soccer Training is JSC's official training partner, providing all soccer trainings, clinics, and programs for the JSC community. The Tecnica team has extensive experience in training both Soccer and Futsal, focusing highly on development.",
   "tecnica_philosophy": "Tecnica Soccer is dedicated to implementing an environment that introduces the necessary tools to develop the fundamentals needed to progress as a player and a person. We accomplish this by believing in each player and understanding that each one develops differently. We encourage individual freedom to improvise and make decisions at game speed while having the consideration of the entire team.",
   "tecnica_url": "https://tecnicasoccer.com",
   "tecnica_link_label": "🌐 tecnicasoccer.com",
   "tecnica_social_note": "Follow <strong>@tecnicasoccer</strong> on Facebook and Instagram for training announcements and updates.",
-  "boys_teams_note_email": "info@jacksonsoccer.com",
-  "policy_docs_note_email": "info@jacksonsoccer.com",
   "resource_forms": [
     {
       "label": "📋 Club Pass Player Request Form",
@@ -98,5 +97,6 @@
       "url": "https://drive.google.com/file/d/1lCtTOawj4H_ROoa5Sl80Y-Ba9JD87eUQ/view?usp=sharing",
       "active": true
     }
-  ]
+  ],
+  "policy_docs_note_email": "info@jacksonsoccer.com"
 }

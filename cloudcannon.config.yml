@@ -353,6 +353,10 @@ _inputs:
     type: array
     label: Coaching Education Pathway Links
     cascade: true
+  general_coaching_links:
+    type: array
+    label: General Coaching Links
+    cascade: true
   volunteer_cta_email:
     type: email
     label: Coach Volunteer Email
@@ -804,6 +808,13 @@ _array_structures:
   education_pathway_links:
     values:
       - label: Education Pathway Link
+        value:
+          label: ''
+          url: ''
+          active: true
+  general_coaching_links:
+    values:
+      - label: Coaching Link
         value:
           label: ''
           url: ''

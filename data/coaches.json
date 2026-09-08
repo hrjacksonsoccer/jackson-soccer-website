@@ -1,11 +1,6 @@
 {
   "hero_subtitle": "Resources, education, and licensing for JSC coaches",
-  "director_name": "Anthony Desiderio",
-  "director_email": "info@jacksonsoccer.com",
   "njys_contact_email": "coach@njyouthsoccer.com",
-  "volunteer_cta_email": "info@jacksonsoccer.com",
-  "volunteer_cta_text": "We need coaches at every level. No experience necessary — just energy and a willingness to help kids enjoy soccer.",
-  "volunteer_cta_link_label": "Email us to get started.",
   "available_courses": [
     {
       "label": "📄 State Certificate Course (formerly NJYS F Certificate)",
@@ -80,6 +75,16 @@
       "active": true
     }
   ],
+  "youth_trainer_bullets": [
+    "The Youth Trainer program exists because an individual <strong>under 18 years of age may not hold a USYS Coach's Pass</strong>. The Youth Trainer pass allows younger volunteers to assist on the field legitimately.",
+    "A Youth Trainer must be <strong>at least 14 years old and no older than 18 years old</strong> as of September 1 of the current seasonal year.",
+    "Must complete the NJYS <strong>State \"F\" Certificate / State Certificate course</strong>.",
+    "Must complete <strong>CDC Concussion Awareness</strong> certification and keep a copy of the certificate available.",
+    "Must complete a medical waiver certification.",
+    "Requires <strong>written parental permission</strong> to participate in the program.",
+    "A Youth Trainer <strong>may not be listed on the game-day roster</strong>, but may be present in the team's bench area.",
+    "An <strong>adult coach must always be supervising and leading</strong> during any training event or game — a Youth Trainer may never run a session alone."
+  ],
   "youth_trainer_links": [
     {
       "label": "📋 NJYS Youth Trainer Role Info",
@@ -99,16 +104,7 @@
       "active": true
     }
   ],
-  "youth_trainer_bullets": [
-    "The Youth Trainer program exists because an individual <strong>under 18 years of age may not hold a USYS Coach's Pass</strong>. The Youth Trainer pass allows younger volunteers to assist on the field legitimately.",
-    "A Youth Trainer must be <strong>at least 14 years old and no older than 18 years old</strong> as of September 1 of the current seasonal year.",
-    "Must complete the NJYS <strong>State \"F\" Certificate / State Certificate course</strong>.",
-    "Must complete <strong>CDC Concussion Awareness</strong> certification and keep a copy of the certificate available.",
-    "Must complete a medical waiver certification.",
-    "Requires <strong>written parental permission</strong> to participate in the program.",
-    "A Youth Trainer <strong>may not be listed on the game-day roster</strong>, but may be present in the team's bench area.",
-    "An <strong>adult coach must always be supervising and leading</strong> during any training event or game — a Youth Trainer may never run a session alone."
-  ],
+  "general_coaching_links": [],
   "rec_coach_bullets": [
     "Peanuts, Mini Kickers, and Micro Divisions have JSC trainer-led sessions.",
     "Collegiate & Major League coaches receive trainer-led Wednesday night practice support.",
@@ -119,5 +115,10 @@
     "Contact the Overall Commissioner (Ryan Monday) for field scheduling and travel league info.",
     "JSC supports 30+ travel teams each Fall and Spring season.",
     "Leagues include EDP, MAPS, JAGS, MOSA, and Ocean County Recreation."
-  ]
+  ],
+  "volunteer_cta_text": "We need coaches at every level. No experience necessary — just energy and a willingness to help kids enjoy soccer.",
+  "volunteer_cta_email": "info@jacksonsoccer.com",
+  "volunteer_cta_link_label": "Email us to get started.",
+  "director_name": "Anthony Desiderio",
+  "director_email": "info@jacksonsoccer.com"
 }

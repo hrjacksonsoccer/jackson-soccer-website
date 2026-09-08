@@ -1,8 +1,9 @@
 {
   "hero_subtitle": "Help with registration fees for Jackson families",
-  "approved_note": "Approved by the JSC Board, February 2022",
   "intro": "Jackson Soccer Club aspires to be an outstanding educational-athletic organization that provides a high-quality experience to every athlete, regardless of their financial circumstances, and promotes the positives of team sports.\n\nThe Jackson Soccer Club offers assistance to a limited number of families who have a financial hardship in regard to the payment of registration. Assistance can take the form of funds awarded or modified payment plans to spread out the burden. All assistance is based on financial need or hardship. The awarding of funds is determined solely by a financial assistance committee appointed by the Board of Directors. The committee acts on the board's behalf and has the authority to award aid as it sees fit. The fund for financial aid is subsidized by donations and club fundraising efforts.\n\nTo be eligible for financial assistance, players must be registered in the system for either Travel or Intramural.",
   "confidentiality_text": "All information obtained from this application is held in strict confidence and will only be reviewed by the Financial Assistance Committee. The primary criteria for evaluation will be the family's eligibility for or participation in the Free/Reduced lunch program. If there are circumstances where your child or children are not enrolled in this program, please submit a letter with the application explaining your situation. Please provide as much information as possible to justify your request.",
+  "application_url": "https://docs.google.com/forms/d/e/1FAIpQLSd-B3qpzVfHYfAeH8eCmkD1LxQN7vSHVP0UyZ_Fa1DWrMPbnA/viewform",
+  "application_button_text": "Apply for Financial Assistance",
   "procedures": [
     {
       "text": "All hardship requests must be submitted through our online form. No requests will be taken by email or word of mouth.",
@@ -41,10 +42,9 @@
       "active": true
     }
   ],
-  "application_url": "https://docs.google.com/forms/d/e/1FAIpQLSd-B3qpzVfHYfAeH8eCmkD1LxQN7vSHVP0UyZ_Fa1DWrMPbnA/viewform",
-  "application_button_text": "Apply for Financial Assistance",
   "policy_pdf_url": "assets/jsc-financial-assistance-policy.pdf",
   "policy_pdf_label": "Financial Assistance Policy (PDF)",
+  "approved_note": "Approved by the JSC Board, February 2022",
   "contact_text": "Questions about financial assistance? Email us and a member of the committee will get back to you confidentially.",
   "contact_email": "info@jacksonsoccer.com"
 }
