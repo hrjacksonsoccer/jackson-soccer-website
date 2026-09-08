@@ -73,6 +73,11 @@
       "label": "🎓 US Soccer Digital Coaching Center",
       "url": "https://www.ussoccer.com/coaching-education",
       "active": true
+    },
+    {
+      "label": "Coaches / Team Work Bond",
+      "url": "https://jackson-soccer-work-bond.hagosrush-447.workers.dev",
+      "active": true
     }
   ],
   "youth_trainer_links": [
