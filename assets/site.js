@@ -1257,7 +1257,7 @@ async function loadCoachesContent() {
     if (njysEl && d.njys_contact_email)
       njysEl.innerHTML = `For questions about NJYS Coaching Schools, email <a href="mailto:${d.njys_contact_email}">${d.njys_contact_email}</a>.`;
 
-    renderLinkBulletList('coaches-general-links', d.general_coaching_links);
+    renderLinkList('coaches-general-links', d.general_coaching_links, 'ext-link', false);
 
     const ctaEl = document.getElementById('coaches-volunteer-cta');
     if (ctaEl && d.volunteer_cta_email)
