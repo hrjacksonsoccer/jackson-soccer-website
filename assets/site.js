@@ -536,12 +536,44 @@ function buildFooter() {
 
 /* ── INIT ───────────────────────────────────────────────────── */
 
+/* ── HALLOWEEN THEME ────────────────────────────────────────────
+   Turns itself on Oct 24 through Nov 1 every year and off again
+   after. Preview any time with ?halloween=1 (stays on for the tab
+   session); ?halloween=0 forces it off. Nothing loads outside the
+   window, so the normal site is untouched. */
+function isHalloweenSeason() {
+  try {
+    const q = new URLSearchParams(location.search).get('halloween');
+    if (q === '1') sessionStorage.setItem('hw_force', 'on');
+    if (q === '0') sessionStorage.setItem('hw_force', 'off');
+    const forced = sessionStorage.getItem('hw_force');
+    if (forced === 'on')  return true;
+    if (forced === 'off') return false;
+  } catch (e) { /* storage unavailable: fall through to the date check */ }
+  const now   = new Date();
+  const start = new Date(now.getFullYear(), 9, 24);   // Oct 24
+  const end   = new Date(now.getFullYear(), 10, 2);   // before Nov 2 (through Nov 1)
+  return now >= start && now < end;
+}
+
+function initHalloween() {
+  if (!isHalloweenSeason()) return;
+  const css = document.createElement('link');
+  css.rel  = 'stylesheet';
+  css.href = 'assets/halloween.css?v=3';
+  document.head.appendChild(css);
+  const js = document.createElement('script');
+  js.src = 'assets/halloween.js?v=4';
+  document.body.appendChild(js);
+}
+
 function initSite(activePage) {
   const headerEl = document.getElementById('site-header');
   const footerEl = document.getElementById('site-footer');
   if (headerEl) headerEl.innerHTML = buildHeader(activePage);
   if (footerEl) footerEl.innerHTML = buildFooter();
   initTranslateBar();
+  initHalloween();
 }
 
 function toggleMobileNav() {

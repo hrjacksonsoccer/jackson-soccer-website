@@ -1,0 +1,350 @@
+/* ================================================================
+   Jackson Soccer Club — Halloween theme
+   Only loaded by site.js during the Halloween window (Oct 24 – Nov 1)
+   or when previewing with ?halloween=1. Everything is scoped to
+   body.halloween so removing the class returns the site to normal.
+   ================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
+
+body.halloween {
+  --red:       #c2410c;   /* burnt orange: links, buttons, accents (readable on cream) */
+  --dark-red:  #9a3412;
+  --black:     #0d0617;
+  --gray:      #f6efe6;
+  --border:    #e6d7c3;
+  --muted:     #6b5b73;
+  background: radial-gradient(ellipse at 50% 0%, #3b1578 0%, #1a0b2e 45%, #08030f 100%) fixed;
+}
+
+/* ── Top banner ── */
+.hw-banner {
+  position: relative;
+  z-index: 600;
+  background: linear-gradient(90deg, #ea580c, #6d28d9, #ea580c);
+  color: #fff;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  padding: 0.5rem 2.75rem 0.5rem 1rem;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+}
+.hw-banner button {
+  position: absolute;
+  right: 0.6rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.25);
+  border: none;
+  color: #fff;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 0.8rem;
+  line-height: 1;
+}
+.hw-banner button:hover { background: rgba(0,0,0,0.45); }
+
+/* ── Header ── */
+body.halloween #site-header header {
+  background: linear-gradient(180deg, #0d0617, #1a0b2e);
+  border-bottom: 2px solid #f97316;
+  box-shadow: 0 4px 24px rgba(168, 85, 247, 0.5);
+}
+body.halloween .site-logo img {
+  filter: drop-shadow(0 0 10px rgba(249, 115, 22, 0.75));
+}
+body.halloween .logo-text small { color: #c4b5fd; }
+body.halloween .main-nav-bar {
+  background: linear-gradient(90deg, #9a3412, #c2410c, #9a3412);
+}
+
+/* ── Cobwebs + spider (injected into the header) ── */
+.hw-web {
+  position: absolute;
+  top: 0;
+  width: 150px;
+  height: 150px;
+  pointer-events: none;
+  z-index: 4;
+  opacity: 0.5;
+}
+.hw-web-l { left: 0; }
+.hw-web-r { right: 0; transform: scaleX(-1); }
+.hw-web path { fill: none; stroke: #e9e2f5; stroke-width: 1; }
+
+.hw-spider {
+  position: absolute;
+  top: 0;
+  left: 58%;
+  z-index: 5;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.hw-thread {
+  width: 1px;
+  background: rgba(255, 255, 255, 0.6);
+  animation: hw-thread 8s ease-in-out infinite;
+}
+.hw-spider-body { font-size: 1.5rem; line-height: 1; filter: drop-shadow(0 0 6px rgba(168,85,247,0.8)); }
+@keyframes hw-thread {
+  0%, 100% { height: 10px; }
+  50%      { height: 62px; }
+}
+
+/* ── Heroes ── */
+body.halloween .page-hero,
+body.halloween .home-hero {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 4px solid #f97316;
+}
+body.halloween .page-hero {
+  background: linear-gradient(180deg, #1b0836, #2e1065);
+}
+body.halloween .home-hero {
+  background: linear-gradient(180deg, #2e1065 0%, #6b21a8 60%, #c2410c 130%);
+}
+body.halloween .page-hero > *,
+body.halloween .home-hero > * { position: relative; z-index: 1; }
+
+/* Full moon */
+body.halloween .page-hero::before,
+body.halloween .home-hero::before {
+  content: '';
+  position: absolute;
+  top: 18px;
+  right: 8%;
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 32%, rgba(0,0,0,0.10) 0 8px, transparent 9px),
+    radial-gradient(circle at 62% 58%, rgba(0,0,0,0.08) 0 11px, transparent 12px),
+    radial-gradient(circle at 36% 70%, rgba(0,0,0,0.07) 0 6px, transparent 7px),
+    radial-gradient(circle at 35% 35%, #fffbe6, #f7d774 62%, #d9a93a);
+  box-shadow: 0 0 40px 12px rgba(255, 214, 102, 0.45), 0 0 120px 40px rgba(255, 214, 102, 0.18);
+  z-index: 0;
+}
+
+body.halloween .page-hero h1,
+body.halloween .home-hero h1 {
+  font-family: 'Creepster', 'Chiller', 'Papyrus', fantasy;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0.08em;
+  font-size: clamp(2.4rem, 6.5vw, 4.4rem);
+  text-shadow: 0 0 10px #f97316, 0 0 28px #a855f7;
+  animation: hw-glow 4s ease-in-out infinite;
+}
+body.halloween .page-hero p { color: #d8c8f5; }
+body.halloween .home-hero p { opacity: 1; color: #f3e8ff; }
+@keyframes hw-glow {
+  0%, 100% { text-shadow: 0 0 10px #f97316, 0 0 28px #a855f7; }
+  50%      { text-shadow: 0 0 18px #fb923c, 0 0 44px #c084fc; }
+}
+
+/* ── Content panel (keeps every schedule/form/table readable) ── */
+body.halloween .page-body,
+body.halloween .home-layout {
+  background: #fffaf2;
+  border: 2px solid rgba(249, 115, 22, 0.55);
+  border-radius: 16px;
+  box-shadow: 0 0 0 4px rgba(88, 28, 135, 0.4), 0 10px 60px rgba(168, 85, 247, 0.5);
+  width: calc(100% - 1.5rem);
+  padding-top: 1.75rem;
+}
+
+body.halloween .section-title,
+body.halloween .content-section h2 {
+  font-family: 'Creepster', 'Chiller', 'Papyrus', fantasy;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0.06em;
+  font-size: 1.45rem;
+  border-bottom: 3px dashed #f97316;
+}
+
+/* ── Footer ── */
+body.halloween #site-footer footer {
+  background: linear-gradient(180deg, #14072a, #07030d);
+  border-top: 3px solid #f97316;
+}
+body.halloween #site-footer footer::before {
+  content: '\1F383  \1F47B  \1F987  \1F577\FE0F  \1F383  \1F578\FE0F  \1F480  \1F383  \1F47B  \1F987  \1F577\FE0F  \1F383';
+  display: block;
+  text-align: center;
+  font-size: 1.4rem;
+  letter-spacing: 0.5rem;
+  padding: 0.75rem 0 0;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* ── Floating layer: bats, fog, ghost ── */
+.hw-bats {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 450;
+}
+.hw-bat {
+  position: absolute;
+  left: -120px;
+  animation-name: hw-fly;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  filter: drop-shadow(0 0 4px rgba(168, 85, 247, 0.9));
+}
+.hw-bat.rev { animation-name: hw-fly-rev; left: auto; right: -120px; }
+.hw-bat svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  fill: #170a2b;
+  stroke: #7c3aed;
+  stroke-width: 1.2;
+  transform-origin: 50% 45%;
+  animation: hw-flap 0.32s ease-in-out infinite alternate;
+}
+@keyframes hw-flap {
+  from { transform: scaleY(1); }
+  to   { transform: scaleY(0.45); }
+}
+@keyframes hw-fly {
+  0%   { transform: translate(0, 0); }
+  25%  { transform: translate(28vw, -34px); }
+  50%  { transform: translate(55vw, 22px); }
+  75%  { transform: translate(82vw, -26px); }
+  100% { transform: translate(calc(100vw + 240px), 0); }
+}
+@keyframes hw-fly-rev {
+  0%   { transform: translate(0, 0) scaleX(-1); }
+  25%  { transform: translate(-28vw, -34px) scaleX(-1); }
+  50%  { transform: translate(-55vw, 22px) scaleX(-1); }
+  75%  { transform: translate(-82vw, -26px) scaleX(-1); }
+  100% { transform: translate(calc(-100vw - 240px), 0) scaleX(-1); }
+}
+
+.hw-fog {
+  position: fixed;
+  left: -50%;
+  width: 200%;
+  bottom: 0;
+  height: 150px;
+  pointer-events: none;
+  z-index: 440;
+  background:
+    radial-gradient(ellipse 320px 70px at 15% 100%, rgba(226, 214, 255, 0.20), transparent),
+    radial-gradient(ellipse 420px 80px at 45% 100%, rgba(226, 214, 255, 0.16), transparent),
+    radial-gradient(ellipse 360px 70px at 78% 100%, rgba(226, 214, 255, 0.20), transparent);
+  animation: hw-fog 45s linear infinite alternate;
+}
+@keyframes hw-fog {
+  from { transform: translateX(0); }
+  to   { transform: translateX(25%); }
+}
+
+.hw-ghost {
+  position: fixed;
+  right: 18px;
+  bottom: 24px;
+  z-index: 460;
+  font-size: 2.4rem;
+  line-height: 1;
+  cursor: pointer;
+  user-select: none;
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.85));
+  animation: hw-bob 3.4s ease-in-out infinite;
+  background: none;
+  border: none;
+  padding: 0;
+}
+.hw-ghost .hw-boo {
+  position: absolute;
+  right: 58px;
+  top: -4px;
+  background: #fff;
+  color: #1a0b2e;
+  font-weight: 900;
+  font-size: 0.9rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 14px 14px 2px 14px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+  opacity: 0;
+  transform: scale(0.6);
+  transform-origin: bottom right;
+  transition: opacity 0.18s, transform 0.18s;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.hw-ghost.boo .hw-boo { opacity: 1; transform: scale(1); }
+@keyframes hw-bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-14px); }
+}
+
+.hw-sound {
+  position: fixed;
+  left: 14px;
+  bottom: 24px;
+  z-index: 460;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 2px solid #f97316;
+  background: rgba(20, 7, 42, 0.92);
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 0 14px rgba(168, 85, 247, 0.6);
+}
+.hw-sound:hover { background: #3b1578; }
+
+/* Keep the footer layout stable even if the logo is slow or fails to load */
+body.halloween .footer-logo-wrap img { flex-shrink: 0; max-width: 64px; object-fit: contain; }
+body.halloween .footer-grid > div { min-width: 0; }
+
+/* ── Small screens ── */
+@media (max-width: 700px) {
+  .hw-web { width: 90px; height: 90px; }
+  .hw-spider { display: none; }
+  body.halloween .page-hero::before,
+  body.halloween .home-hero::before { width: 56px; height: 56px; top: 12px; right: 6%; }
+  .hw-ghost { font-size: 1.8rem; right: 10px; bottom: 14px; }
+  .hw-sound { width: 34px; height: 34px; left: 10px; bottom: 14px; }
+  .hw-banner { font-size: 0.74rem; }
+  body.halloween #site-footer footer::before { font-size: 1.1rem; letter-spacing: 0.3rem; }
+}
+
+/* ── Respect reduced-motion preferences ── */
+@media (prefers-reduced-motion: reduce) {
+  .hw-bats, .hw-fog { display: none; }
+  .hw-thread, .hw-ghost,
+  body.halloween .page-hero h1,
+  body.halloween .home-hero h1 { animation: none; }
+  .hw-thread { height: 30px; }
+}
+
+/* ── Lightning flash (one soft flash per strike) ── */
+.hw-flash {
+  position: fixed;
+  inset: 0;
+  z-index: 700;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(circle at 72% 8%, #ffffff 0%, #d8c8ff 38%, rgba(120, 80, 220, 0.25) 75%);
+  animation: hw-flash 0.9s ease-out forwards;
+}
+@keyframes hw-flash {
+  0%   { opacity: 0; }
+  8%   { opacity: 0.55; }
+  22%  { opacity: 0.08; }
+  34%  { opacity: 0.4; }
+  100% { opacity: 0; }
+}
