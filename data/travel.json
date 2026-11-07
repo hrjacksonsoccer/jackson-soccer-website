@@ -22,16 +22,16 @@
     {
       "label": "⚽ MAPS",
       "url": "",
-      "active": true
+      "active": false
     },
     {
       "label": "⚽ JAGS",
       "url": "",
-      "active": true
+      "active": false
     },
     {
       "label": "⚽ N1",
-      "url": "",
+      "url": "https://national1league.org/",
       "active": true
     },
     {
